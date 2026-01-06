@@ -1,4 +1,7 @@
 package com.example.demo.repository;
 
-public interface BillingDetailRepository {
+import com.example.demo.entity.BillingDetail;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface BillingDetailRepository extends JpaRepository<BillingDetail, Integer> {
 }

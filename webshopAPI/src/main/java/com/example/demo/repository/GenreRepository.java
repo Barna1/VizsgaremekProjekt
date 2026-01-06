@@ -1,4 +1,7 @@
 package com.example.demo.repository;
 
-public interface GenreRepository {
+import com.example.demo.entity.Genre;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface GenreRepository extends JpaRepository<Genre, Integer> {
 }

@@ -1,4 +1,7 @@
 package com.example.demo.repository;
 
-public interface OrderHistoryRepository {
+import com.example.demo.entity.OrderHistory;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface OrderHistoryRepository extends JpaRepository<OrderHistory, Integer> {
 }
