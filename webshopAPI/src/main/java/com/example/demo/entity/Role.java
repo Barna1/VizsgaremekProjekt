@@ -1,11 +1,13 @@
 package com.example.demo.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.antlr.v4.runtime.misc.NotNull;
+
+import java.util.Date;
 
 @Entity
 @Table(name = "role")
@@ -14,4 +16,20 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class Role {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Integer id;
+
+    @Column(name="name")
+    @NotNull
+    private String name;
+
+    @Column(name="is_deleted")
+    @NotNull
+    private Boolean isDeleted;
+
+    @Column(name="deleted_at")
+    @NotNull
+    private Date deletedAt;
 }
