@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: localhost:3306
--- Létrehozás ideje: 2026. Jan 07. 16:09
+-- Létrehozás ideje: 2026. Jan 07. 16:11
 -- Kiszolgáló verziója: 5.7.24
 -- PHP verzió: 8.3.1
 
@@ -30,6 +30,15 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `clearBasket` (IN `idIN` INT)   BEGI
 	`is_deleted`=1, `deleted_at`=CURRENT_TIMESTAMP 
     WHERE
     basket_product.basket_id = idIN;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `deleteAuthor` (IN `idIN` INT)   BEGIN 
+	UPDATE `author` 
+    SET 
+    `is_deleted`= 1,
+    `deleted_at`= CURRENT_TIMESTAMP 
+    WHERE
+    author.id = idIN;
 END$$
 
 DELIMITER ;
