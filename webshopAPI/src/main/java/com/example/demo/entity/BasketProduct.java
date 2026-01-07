@@ -36,4 +36,19 @@ public class BasketProduct {
     @Column(name = "deleted_at")
     @NotNull
     private Date deletedAt;
+
+
+    @ManyToOne(cascade = {})
+    @JoinColumn(name = "basket_id")
+    private Basket basket;
+
+    @ManyToOne(cascade = {})
+    @JoinColumn(name = "product_id")
+    private Book basketBook;
+
+    public BasketProduct(Integer amount, Book book) {
+        this.amount = amount;
+        this.basketBook = book;
+        this.addedAt = new Date();
+    }
 }

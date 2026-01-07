@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "publisher")
@@ -47,4 +48,11 @@ public class Publisher {
     @Column(name = "deleted_at")
     @JsonIgnore
     private Date deletedAt;
+
+
+    @OneToMany(
+            mappedBy = "publisher",
+            cascade = {}
+    )
+    private List<Book> bookList;
 }

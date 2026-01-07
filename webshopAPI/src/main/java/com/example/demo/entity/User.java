@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,6 +9,7 @@ import lombok.ToString;
 import javax.validation.constraints.NotNull;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "user")
@@ -56,4 +58,29 @@ public class User {
     @Column(name = "v_code")
     @NotNull
     private String vCode;
+
+
+    @OneToOne(mappedBy = "basketUser", cascade = {CascadeType.ALL})
+    private Basket basket;
+
+    @OneToMany(mappedBy = "author", cascade = {})
+    private List<Review> writtenReviews;
+
+    @JsonIgnore
+    @OneToMany(
+            mappedBy = "ordererUser",
+            cascade = {}
+    )
+    private List<OrderHistory> orderHistoryList;
+
+    @JsonIgnore
+    @OneToMany(
+            mappedBy = "cancelerUser",
+            cascade = {}
+    )
+    private List<OrderHistory> canceledOrderHistoryList;
+
+    @ManyToOne(cascade = {})
+    @JoinColumn(name = "role_id")
+    private Role role;
 }

@@ -22,4 +22,18 @@ public class OrderHistoryProduct {
     @Column(name="amount")
     @NotNull
     private Integer amount;
+
+
+    @ManyToOne(cascade = {})
+    @JoinColumn(name = "order_history_id")
+    private OrderHistory history;
+
+    @ManyToOne(cascade = {})
+    @JoinColumn(name = "product_id")
+    private Book orderHistoryBook;
+
+    public OrderHistoryProduct(Integer amount, Book orderHistoryBook) {
+        this.amount = amount;
+        this.orderHistoryBook = orderHistoryBook;
+    }
 }

@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "order_history")
@@ -65,4 +66,37 @@ public class OrderHistory {
     @Null
     @JsonIgnore
     private String cancelerVCode;
+
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "billing_detail_id")
+    private BillingDetail historyBillingDetail;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "transport_detail_id")
+    private TransportDetail historyTransportDetail;
+
+    @ManyToOne(cascade = {})
+    @JoinColumn(name = "user_id")
+    private User ordererUser;
+
+    @ManyToOne(cascade = {})
+    @JoinColumn(name = "payment_method_id")
+    private PaymentMethod paymentMethod;
+
+    @ManyToOne(cascade = {})
+    @JoinColumn(name = "status_id")
+    private Status status;
+
+    @ManyToOne(cascade = {})
+    @JoinColumn(name = "canceler_user_id")
+    @Null
+    private User cancelerUser;
+
+    @OneToMany(
+            mappedBy = "history",
+            cascade = CascadeType.ALL
+    )
+    private List<OrderHistoryProduct> orderHistoryProductList;
+
 }

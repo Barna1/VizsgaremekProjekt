@@ -47,4 +47,13 @@ public class BillingDetail {
     @Column(name="other")
     @Null
     private String other;
+
+
+    @ManyToOne(cascade = {})
+    @JoinColumn(name = "address_type_id")
+    @Null
+    private AddressType billingDetailsAddressType;
+
+    @OneToOne(mappedBy = "historyBillingDetail")
+    private OrderHistory history;
 }

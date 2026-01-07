@@ -40,4 +40,13 @@ public class Review {
     @Column(name="deleted_at")
     @NotNull
     private Date deletedAt;
+
+
+    @ManyToOne(cascade = {})
+    @JoinColumn(name = "product_id")
+    private Book reviewedBook;
+
+    @ManyToOne(cascade = {})
+    @JoinColumn(name = "user_id")
+    private User author;
 }

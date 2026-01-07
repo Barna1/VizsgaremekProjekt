@@ -38,4 +38,12 @@ public class TransportDetail {
     @Column(name="other")
     @NotNull
     private String other;
+
+
+    @ManyToOne(cascade = {})
+    @JoinColumn(name = "address_type_id")
+    private AddressType transportDetailAddressType;
+
+    @OneToOne(mappedBy = "historyTransportDetail")
+    private OrderHistory history;
 }

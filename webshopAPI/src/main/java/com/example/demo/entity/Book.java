@@ -11,6 +11,7 @@ import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "book")
@@ -62,4 +63,33 @@ public class Book {
     @Null
     @JsonIgnore
     private Date deletedAt;
+
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {}, mappedBy = "writtenBooks")
+    private List<Author> authors;
+
+    @JsonIgnore
+    @OneToMany(
+            mappedBy = "basketBook",
+            fetch = FetchType.LAZY,
+            cascade = {}
+    )
+    private List<BasketProduct> basketProducts;
+
+    @ManyToOne()
+    @JoinColumn(name = "publisher_id")
+    private Publisher publisher;
+
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {}, mappedBy = "bookList")
+    private List<Genre> genreList;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = {}, mappedBy = "reviewedBook")
+    private List<Review> reviewList;
+
+    @OneToMany(
+            mappedBy = "orderHistoryBook",
+            cascade = {}
+    )
+    private List<OrderHistoryProduct> orderHistoryProductList;
 }

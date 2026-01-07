@@ -1,11 +1,13 @@
 package com.example.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
 @Table(name = "status")
@@ -22,4 +24,12 @@ public class Status {
     @Column(name = "name")
     @NotNull
     private String name;
+
+
+    @JsonIgnore
+    @OneToMany(
+            mappedBy = "status",
+            cascade = {}
+    )
+    private List<OrderHistory> orderHistoryList;
 }

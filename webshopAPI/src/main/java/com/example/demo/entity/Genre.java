@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,6 +9,7 @@ import lombok.ToString;
 import javax.validation.constraints.NotNull;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "genre")
@@ -32,4 +34,14 @@ public class Genre {
     @Column(name="deleted_at")
     @NotNull
     private Date deletedAt;
+
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {})
+    @JoinTable(
+            name = "book_genre",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "genre_id")
+    )
+    @JsonIgnore
+    private List<Book> bookList;
 }

@@ -8,6 +8,7 @@ import lombok.ToString;
 import javax.validation.constraints.NotNull;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "role")
@@ -32,4 +33,11 @@ public class Role {
     @Column(name="deleted_at")
     @NotNull
     private Date deletedAt;
+
+
+    @OneToMany(
+            mappedBy = "role",
+            cascade = {}
+    )
+    private List<User> users;
 }
