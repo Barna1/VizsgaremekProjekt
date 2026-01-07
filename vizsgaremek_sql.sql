@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: localhost:3306
--- Létrehozás ideje: 2026. Jan 07. 16:27
+-- Létrehozás ideje: 2026. Jan 07. 16:29
 -- Kiszolgáló verziója: 5.7.24
 -- PHP verzió: 8.3.1
 
@@ -88,6 +88,12 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `deleteUserById` (IN `idIN` INT)   B
     `deleted_at`=CURRENT_TIMESTAMP 
     WHERE 
     user.id = idIN;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getAddressTypeById` (IN `idIN` INT)   BEGIN 
+	SELECT * FROM address_type
+    WHERE 
+    address_type.id = idIN;
 END$$
 
 DELIMITER ;
