@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: localhost:3306
--- Létrehozás ideje: 2026. Jan 07. 16:54
+-- Létrehozás ideje: 2026. Jan 07. 16:56
 -- Kiszolgáló verziója: 5.7.24
 -- PHP verzió: 8.3.1
 
@@ -177,6 +177,15 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `getBasketProductById` (IN `idIN` IN
     basket_product.id = idIN 
     AND 
     basket_product.is_deleted = 0;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getBookById` (IN `idIN` INT)   BEGIN 
+	SELECT * FROM book 
+    WHERE
+    book.is_deleted = 0
+    AND 
+    book.id = idIN
+    ;
 END$$
 
 DELIMITER ;
