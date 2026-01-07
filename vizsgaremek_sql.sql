@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: localhost:3306
--- Létrehozás ideje: 2026. Jan 07. 17:03
+-- Létrehozás ideje: 2026. Jan 07. 17:05
 -- Kiszolgáló verziója: 5.7.24
 -- PHP verzió: 8.3.1
 
@@ -212,6 +212,12 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `getOrderHistoryByUserId` (IN `userI
 	SELECT * FROM order_history
     WHERE 
     order_history.user_id = userIdIN;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getPaymentMethodById` (IN `idIN` INT)   BEGIN 
+	SELECT * FROM payment_method
+    WHERE 
+    payment_method.id = idIN;
 END$$
 
 DELIMITER ;
