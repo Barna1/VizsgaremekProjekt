@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: localhost:3306
--- Létrehozás ideje: 2026. Jan 07. 16:29
+-- Létrehozás ideje: 2026. Jan 07. 16:31
 -- Kiszolgáló verziója: 5.7.24
 -- PHP verzió: 8.3.1
 
@@ -94,6 +94,12 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `getAddressTypeById` (IN `idIN` INT)
 	SELECT * FROM address_type
     WHERE 
     address_type.id = idIN;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getAllAuthor` ()   BEGIN 
+	SELECT * FROM author
+    WHERE 
+    author.is_deleted = 0;
 END$$
 
 DELIMITER ;
