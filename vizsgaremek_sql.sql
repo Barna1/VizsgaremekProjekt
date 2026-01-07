@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: localhost:3306
--- Létrehozás ideje: 2026. Jan 07. 16:31
+-- Létrehozás ideje: 2026. Jan 07. 16:35
 -- Kiszolgáló verziója: 5.7.24
 -- PHP verzió: 8.3.1
 
@@ -100,6 +100,18 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `getAllAuthor` ()   BEGIN
 	SELECT * FROM author
     WHERE 
     author.is_deleted = 0;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getAllBookIdByAuthor` (IN `authorIdIN` INT)   BEGIN
+	SELECT b.id FROM book b 
+    INNER JOIN book_author ba ON 
+    b.id = ba.book_id
+    INNER JOIN author a ON 
+    a.id = ba.author_id 
+    WHERE 
+    b.is_deleted = 0 
+    AND 
+    a.id = authorIdIN;
 END$$
 
 DELIMITER ;
