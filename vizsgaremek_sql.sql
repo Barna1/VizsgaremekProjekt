@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: localhost:3306
--- Létrehozás ideje: 2026. Jan 07. 16:39
+-- Létrehozás ideje: 2026. Jan 07. 16:42
 -- Kiszolgáló verziója: 5.7.24
 -- PHP verzió: 8.3.1
 
@@ -126,6 +126,13 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `getAllBooksOrderByPrice` ()   BEGIN
     WHERE 
     book.is_deleted = 0 
     ORDER BY book.price;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getAllBooksOrderByPublishYear` ()   BEGIN 
+	SELECT * FROM book
+    WHERE 
+    book.is_deleted = 0
+    ORDER BY book.publishing_year;
 END$$
 
 DELIMITER ;
