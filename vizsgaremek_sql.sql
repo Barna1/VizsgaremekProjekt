@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: localhost:3306
--- Létrehozás ideje: 2025. Dec 02. 08:50
+-- Létrehozás ideje: 2026. Jan 07. 16:09
 -- Kiszolgáló verziója: 5.7.24
 -- PHP verzió: 8.3.1
 
@@ -21,6 +21,19 @@ SET time_zone = "+00:00";
 -- Adatbázis: `vizsgaremek_sql`
 --
 
+DELIMITER $$
+--
+-- Eljárások
+--
+CREATE DEFINER=`root`@`localhost` PROCEDURE `clearBasket` (IN `idIN` INT)   BEGIN 
+	UPDATE `basket_product` SET
+	`is_deleted`=1, `deleted_at`=CURRENT_TIMESTAMP 
+    WHERE
+    basket_product.basket_id = idIN;
+END$$
+
+DELIMITER ;
+
 -- --------------------------------------------------------
 
 --
@@ -29,7 +42,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `address_type` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) DEFAULT NULL
+  `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
