@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: localhost:3306
--- Létrehozás ideje: 2026. Jan 07. 17:05
+-- Létrehozás ideje: 2026. Jan 07. 17:07
 -- Kiszolgáló verziója: 5.7.24
 -- PHP verzió: 8.3.1
 
@@ -218,6 +218,14 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `getPaymentMethodById` (IN `idIN` IN
 	SELECT * FROM payment_method
     WHERE 
     payment_method.id = idIN;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getPublisherById` (IN `idIN` INT)   BEGIN 
+	SELECT * FROM publisher 
+    WHERE 
+    publisher.id = idIN
+    AND 
+    publisher.is_deleted = 0;
 END$$
 
 DELIMITER ;
