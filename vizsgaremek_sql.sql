@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: localhost:3306
--- Létrehozás ideje: 2026. Jan 07. 17:07
+-- Létrehozás ideje: 2026. Jan 07. 17:09
 -- Kiszolgáló verziója: 5.7.24
 -- PHP verzió: 8.3.1
 
@@ -226,6 +226,14 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `getPublisherById` (IN `idIN` INT)  
     publisher.id = idIN
     AND 
     publisher.is_deleted = 0;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getReviewById` (IN `idIN` INT)   BEGIN 
+	SELECT * FROM review
+    WHERE 
+    review.id = idIN
+    AND 
+    review.is_deleted = 0;
 END$$
 
 DELIMITER ;
