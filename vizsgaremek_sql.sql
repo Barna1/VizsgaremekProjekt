@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: localhost:3306
--- Létrehozás ideje: 2026. Jan 07. 16:56
+-- Létrehozás ideje: 2026. Jan 07. 16:57
 -- Kiszolgáló verziója: 5.7.24
 -- PHP verzió: 8.3.1
 
@@ -186,6 +186,14 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `getBookById` (IN `idIN` INT)   BEGI
     AND 
     book.id = idIN
     ;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getGenreById` (IN `idIN` INT)   BEGIN 
+	SELECT * FROM genre
+    WHERE 
+    genre.id = idIN 
+    AND 
+    genre.is_deleted = 0;
 END$$
 
 DELIMITER ;
