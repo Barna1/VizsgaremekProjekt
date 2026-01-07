@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: localhost:3306
--- Létrehozás ideje: 2026. Jan 07. 16:57
+-- Létrehozás ideje: 2026. Jan 07. 16:59
 -- Kiszolgáló verziója: 5.7.24
 -- PHP verzió: 8.3.1
 
@@ -194,6 +194,12 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `getGenreById` (IN `idIN` INT)   BEG
     genre.id = idIN 
     AND 
     genre.is_deleted = 0;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getOrderHistoriesByEmail` (IN `emailIN` VARCHAR(255))   BEGIN 
+	SELECT * FROM order_history oh 
+    WHERE 
+    oh.email = emailIN;
 END$$
 
 DELIMITER ;
