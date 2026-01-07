@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: localhost:3306
--- Létrehozás ideje: 2026. Jan 07. 17:11
+-- Létrehozás ideje: 2026. Jan 07. 17:13
 -- Kiszolgáló verziója: 5.7.24
 -- PHP verzió: 8.3.1
 
@@ -241,6 +241,13 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `getUserByEmail` (IN `emailIN` VARCH
     WHERE 
     u.email = emailIN
     AND 
+    u.is_deleted = 0;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getUserById` (IN `idIN` INT)   BEGIN 
+	SELECT * FROM user u 
+    WHERE 
+    u.id = idIN AND 
     u.is_deleted = 0;
 END$$
 
