@@ -6,7 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import org.antlr.v4.runtime.misc.NotNull;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
+import javax.validation.constraints.Size;
 
 import java.util.Date;
 
@@ -36,6 +38,7 @@ public class Book {
 
     @Column(name = "publishing_year")
     @NotNull
+    @Size(max=4)
     private Integer publishingYear;
 
     @Column(name = "ISBN")
@@ -51,12 +54,12 @@ public class Book {
     private Integer stockQuantity;
 
     @Column(name = "is_deleted")
-    @NotNull
+    @Null
     @JsonIgnore
     private Boolean isDeleted;
 
     @Column(name = "deleted_at")
-    @NotNull
+    @Null
     @JsonIgnore
     private Date deletedAt;
 }

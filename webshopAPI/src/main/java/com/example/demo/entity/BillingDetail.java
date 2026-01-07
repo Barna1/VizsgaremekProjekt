@@ -5,7 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import org.antlr.v4.runtime.misc.NotNull;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
 
 @Entity
 @Table(name = "billing_detail")
@@ -36,14 +37,14 @@ public class BillingDetail {
     private Integer houseNumber;
 
     @Column(name="company_name")
-    @NotNull
+    @Null
     private String companyName;
 
     @Column(name="company_tax_number")
-    @NotNull
+    @Null
     private String companyTaxNumber;
 
     @Column(name="other")
-    @NotNull
+    @Null
     private String other;
 }

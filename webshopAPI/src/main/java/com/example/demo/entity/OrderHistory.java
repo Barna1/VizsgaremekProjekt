@@ -6,7 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import org.antlr.v4.runtime.misc.NotNull;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
 
 import java.util.Date;
 
@@ -47,7 +48,7 @@ public class OrderHistory {
     private Date orderedAt;
 
     @Column(name = "canceled_at")
-    @NotNull
+    @Null
     private Date canceled_at;
 
     @Column(name = "is_canceled")
@@ -56,12 +57,12 @@ public class OrderHistory {
     private Boolean isCanceled;
 
     @Column(name = "canceler_email")
-    @NotNull
+    @Null
     @JsonIgnore
     private String cancelerEmail;
 
     @Column(name = "canceler_v_code")
-    @NotNull
+    @Null
     @JsonIgnore
     private String cancelerVCode;
 }

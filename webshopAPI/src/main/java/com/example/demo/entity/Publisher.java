@@ -6,7 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import org.antlr.v4.runtime.misc.NotNull;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import java.util.Date;
 
@@ -36,6 +37,7 @@ public class Publisher {
 
     @Column(name = "isbn_sign")
     @NotNull
+    @Size(max=5)
     private Integer isbnSign;
 
     @Column(name = "is_deleted")
