@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: localhost:3306
--- Létrehozás ideje: 2026. Jan 08. 09:43
+-- Létrehozás ideje: 2026. Jan 08. 09:48
 -- Kiszolgáló verziója: 5.7.24
 -- PHP verzió: 8.3.1
 
@@ -586,7 +586,12 @@ CREATE TABLE `publisher` (
 
 INSERT INTO `publisher` (`id`, `name`, `email`, `phone`) VALUES
 (1, 'Penguin Books', 'contact@penguin.com', '12345678'),
-(2, 'HarperCollins', 'info@harpercollins.com', '87654321');
+(2, 'HarperCollins', 'info@harpercollins.com', '87654321'),
+(3, 'Silver Leaf Publishing', 'contact@silverleaf.com', '001555123456'),
+(4, 'North Star Books', 'info@northstarbooks.com', '001555123457'),
+(5, 'Blue Horizon Press', 'support@bluehorizonpress.com', '001555123458'),
+(6, 'Oak Tree Publishing', 'hello@oaktreepublishing.com', '001555123459'),
+(7, 'Riverstone Media', 'office@riverstonemedia.com', '001555123460');
 
 -- --------------------------------------------------------
 
@@ -909,7 +914,7 @@ ALTER TABLE `photo`
 -- AUTO_INCREMENT a táblához `publisher`
 --
 ALTER TABLE `publisher`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT a táblához `review`
