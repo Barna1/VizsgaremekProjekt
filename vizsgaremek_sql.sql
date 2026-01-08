@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: localhost:3306
--- Létrehozás ideje: 2026. Jan 08. 09:55
+-- Létrehozás ideje: 2026. Jan 08. 10:01
 -- Kiszolgáló verziója: 5.7.24
 -- PHP verzió: 8.3.1
 
@@ -504,7 +504,10 @@ CREATE TABLE `order_history` (
 
 INSERT INTO `order_history` (`id`, `first_name`, `last_name`, `phone`, `email`, `user_id`, `billing_detail_id`, `transport_detail_id`, `payment_method_id`, `ordered_at`, `canceled_at`, `is_canceled`, `canceler_user_id`, `canceler_email`, `canceler_v_code`) VALUES
 (1, 'John', 'Doe', '111222333', 'john@example.com', 2, 1, 1, 1, '2025-12-02 09:42:37', NULL, 0, NULL, NULL, NULL),
-(2, 'Jane', 'Smith', '444555666', 'jane@example.com', 3, 2, 2, 2, '2025-12-02 09:42:37', '2025-12-02 09:42:37', 1, 1, 'admin@example.com', 'ABC123');
+(2, 'Jane', 'Smith', '444555666', 'jane@example.com', 3, 2, 2, 2, '2025-12-02 09:42:37', '2025-12-02 09:42:37', 1, 1, 'admin@example.com', 'ABC123'),
+(3, 'Olivia', 'Wilson', '0012345678', 'olivia.wilson@example.com', 9, 2, 2, 2, '2026-01-08 11:01:14', NULL, 0, NULL, NULL, NULL),
+(4, 'Michael', 'Brown', '0012345679', 'michael.brown@example.com', 7, 1, 1, 1, '2026-01-08 11:01:14', NULL, 0, NULL, NULL, NULL),
+(5, 'John', 'Smith', '0012345680', 'john.smith@example.com', 5, 2, 2, 3, '2026-01-08 11:01:14', NULL, 0, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -895,7 +898,7 @@ ALTER TABLE `genre`
 -- AUTO_INCREMENT a táblához `order_history`
 --
 ALTER TABLE `order_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT a táblához `order_history_product`
