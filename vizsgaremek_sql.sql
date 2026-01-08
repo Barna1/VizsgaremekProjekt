@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: localhost:3306
--- Létrehozás ideje: 2026. Jan 08. 10:01
+-- Létrehozás ideje: 2026. Jan 08. 10:14
 -- Kiszolgáló verziója: 5.7.24
 -- PHP verzió: 8.3.1
 
@@ -405,7 +405,22 @@ CREATE TABLE `book` (
 
 INSERT INTO `book` (`id`, `title`, `description`, `ISBN`, `photo_list_id`, `publisher_id`, `price`, `is_deleted`, `deleted_at`) VALUES
 (1, 'The Great Adventure', 'Adventure novel description', 'ISBN123456', 1, 1, 3500, 0, NULL),
-(2, 'Learning SQL', 'Database learning book', 'ISBN987654', 2, 2, 4200, 0, NULL);
+(2, 'Learning SQL', 'Database learning book', 'ISBN987654', 2, 2, 4200, 0, NULL),
+(3, 'Hidden City', 'Adventures in a secret city.', 'ISBN123001', NULL, 3, 3990, 0, NULL),
+(4, 'Traces of Time', 'A science fiction story about time travel.', 'ISBN123002', NULL, 5, 4490, 0, NULL),
+(5, 'Cyber Dream', 'A future ruled by artificial intelligence.', 'ISBN123003', NULL, 2, 4290, 0, NULL),
+(6, 'Shadows of Light', 'A fantasy tale of good versus evil.', 'ISBN123004', NULL, 6, 4990, 0, NULL),
+(7, 'The Final Key', 'A mysterious thriller.', 'ISBN123005', NULL, 1, 3890, 0, NULL),
+(8, 'Secret Code', 'A crime novel about hackers.', 'ISBN123006', NULL, 7, 4190, 0, NULL),
+(9, 'Memory Market', 'A sci-fi story about trading memories.', 'ISBN123007', NULL, 4, 4690, 0, NULL),
+(10, 'Black Snowfall', 'A dark crime novel.', 'ISBN123008', NULL, 3, 3790, 0, NULL),
+(11, 'Second Chance', 'A romantic story about new beginnings.', 'ISBN123009', NULL, 5, 3490, 0, NULL),
+(12, 'Inside the Mountains', 'An adventure novel about a dangerous expedition.', 'ISBN123010', NULL, 2, 4090, 0, NULL),
+(13, 'Before the Storm', 'A political drama.', 'ISBN123011', NULL, 6, 3890, 0, NULL),
+(14, 'Behind Glass Walls', 'A modern social drama.', 'ISBN123012', NULL, 1, 3690, 0, NULL),
+(15, 'Borderlands', 'A western-inspired story.', 'ISBN123013', NULL, 7, 3590, 0, NULL),
+(16, 'Voices of the Street', 'A contemporary urban novel.', 'ISBN123014', NULL, 4, 3290, 0, NULL),
+(17, 'Hidden Paths', 'A novel about self-discovery.', 'ISBN123015', NULL, 2, 3390, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -874,7 +889,7 @@ ALTER TABLE `billing_detail`
 -- AUTO_INCREMENT a táblához `book`
 --
 ALTER TABLE `book`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT a táblához `book_author`
