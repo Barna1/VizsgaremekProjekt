@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: localhost:3306
--- Létrehozás ideje: 2026. Jan 08. 09:48
+-- Létrehozás ideje: 2026. Jan 08. 09:55
 -- Kiszolgáló verziója: 5.7.24
 -- PHP verzió: 8.3.1
 
@@ -301,7 +301,12 @@ CREATE TABLE `author` (
 
 INSERT INTO `author` (`id`, `first_name`, `middle_name`, `last_name`, `is_deleted`, `deleted_at`) VALUES
 (1, 'John', NULL, 'Writer', 0, NULL),
-(2, 'Emily', 'A.', 'Johnson', 0, NULL);
+(2, 'Emily', 'A.', 'Johnson', 0, NULL),
+(3, 'John', NULL, 'Miller', 0, NULL),
+(4, 'Emma', 'Grace', 'Thompson', 0, NULL),
+(5, 'Peter', NULL, 'Anderson', 0, NULL),
+(6, 'Michael', 'James', 'Brown', 0, NULL),
+(7, 'Helen', NULL, 'Wilson', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -842,7 +847,7 @@ ALTER TABLE `address_type`
 -- AUTO_INCREMENT a táblához `author`
 --
 ALTER TABLE `author`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT a táblához `basket`
