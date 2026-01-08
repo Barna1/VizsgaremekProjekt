@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: localhost:3306
--- Létrehozás ideje: 2026. Jan 07. 17:15
+-- Létrehozás ideje: 2026. Jan 08. 09:43
 -- Kiszolgáló verziója: 5.7.24
 -- PHP verzió: 8.3.1
 
@@ -683,7 +683,12 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `username`, `email`, `password`, `role_id`, `last_login`, `register_at`, `is_deleted`, `deleted_at`) VALUES
 (1, 'admin', 'admin@example.com', 'hashed_pw_1', 1, '2025-12-02 09:37:05', '2025-12-02 08:37:05', 0, NULL),
 (2, 'john_doe', 'john@example.com', 'hashed_pw_2', 2, '2025-12-02 09:37:05', '2025-12-02 08:37:05', 0, NULL),
-(3, 'jane_smith', 'jane@example.com', 'hashed_pw_3', 2, '2025-12-02 09:37:05', '2025-12-02 08:37:05', 0, NULL);
+(3, 'jane_smith', 'jane@example.com', 'hashed_pw_3', 2, '2025-12-02 09:37:05', '2025-12-02 08:37:05', 0, NULL),
+(4, 'admin2', 'admin2@example.com', 'hashed_pw_4', 1, NULL, '2026-01-08 09:36:36', 0, NULL),
+(5, 'john_smith', 'john.smith@example.com', 'hashed_pw_5', 2, NULL, '2026-01-08 09:36:36', 0, NULL),
+(6, 'emma_johnson', 'emma.johnson@example.com', 'hashed_pw_6', 2, NULL, '2026-01-08 09:36:36', 0, NULL),
+(7, 'michael_brown', 'michael.brown@example.com', 'hashed_pw_7', 2, NULL, '2026-01-08 09:36:36', 0, NULL),
+(9, 'olivia_wilson', 'olivia.wilson@example.com', 'hashed_pw_8', 2, NULL, '2026-01-08 09:39:01', 0, NULL);
 
 --
 -- Indexek a kiírt táblákhoz
@@ -928,7 +933,7 @@ ALTER TABLE `transport_detail`
 -- AUTO_INCREMENT a táblához `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Megkötések a kiírt táblákhoz
