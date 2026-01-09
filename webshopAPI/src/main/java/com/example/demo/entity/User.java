@@ -17,6 +17,21 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @ToString
+@NamedStoredProcedureQueries({
+        @NamedStoredProcedureQuery(name = "getUserByUsername", procedureName = "getUserByUsername", parameters = {
+                @StoredProcedureParameter(name = "usernameIN", type = String.class, mode = ParameterMode.IN)
+        }, resultClasses = User.class),
+        @NamedStoredProcedureQuery(name = "getUserById", procedureName = "getUserById", parameters = {
+                @StoredProcedureParameter(name = "idIN", type = Integer.class, mode = ParameterMode.IN)
+        }, resultClasses = User.class),
+        @NamedStoredProcedureQuery(name = "getUserByEmail", procedureName = "getUserByEmail", parameters = {
+                @StoredProcedureParameter(name = "emailIN", type = String.class, mode = ParameterMode.IN)
+        }, resultClasses = User.class),
+
+        @NamedStoredProcedureQuery(name = "deleteUserById", procedureName = "deleteUserById", parameters = {
+                @StoredProcedureParameter(name = "idIN", type = String.class, mode = ParameterMode.IN)
+        }),
+})
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
