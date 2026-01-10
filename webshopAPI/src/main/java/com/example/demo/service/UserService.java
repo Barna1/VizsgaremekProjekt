@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.entity.Basket;
 import com.example.demo.entity.User;
 import com.example.demo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -31,6 +32,27 @@ public class UserService {
                     userRepository.save(searchedUser);
                     return ResponseEntity.ok().build();
                 }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+
+    public ResponseEntity<Object> register(User newUser) {
+        try {
+            if (newUser == null) {
+                return ResponseEntity.status(422).build();
+            }
+
+            if (newUser.getId() != null){
+                return ResponseEntity.status(415).body("invalidObject");
+            } else {
+                newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
+                newUser.setBasket(new Basket());
+                userRepository.save(newUser);
+
+                return ResponseEntity.ok().build();
             }
         } catch (Exception e) {
             e.printStackTrace();
