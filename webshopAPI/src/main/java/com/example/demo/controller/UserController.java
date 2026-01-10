@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.User;
 import com.example.demo.service.UserService;
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.RequiredArgsConstructor;
@@ -14,5 +15,10 @@ public class UserController {
     @PostMapping("/login")
     private ResponseEntity<Object> login(@RequestBody JsonNode requestBody) {
         return userService.login(requestBody.get("username").asText(null), requestBody.get("password").asText(null));
+    }
+    
+    @PostMapping("/register")
+    private ResponseEntity<Object> register(@RequestBody User newUser) {
+        return userService.register(newUser);
     }
 }
