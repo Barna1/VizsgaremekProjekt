@@ -45,7 +45,7 @@ public class UserService {
                 return ResponseEntity.status(422).build();
             }
 
-            if (newUser.getId() != null){
+            if (newUser.getId() != null) {
                 return ResponseEntity.status(415).body("invalidObject");
             } else {
                 newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
@@ -54,6 +54,22 @@ public class UserService {
 
                 return ResponseEntity.ok().build();
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+
+    public ResponseEntity<Object> update(Integer id, String username) {
+        try {
+            if (id == null || username == null) {
+                return ResponseEntity.status(422).build();
+            }
+            User searchedUser = userRepository.getUserById(id).orElse(null);
+            if (searchedUser == null || searchedUser.getIsDeleted()) {
+                return ResponseEntity.notFound().build();
+            }
+            return ResponseEntity.ok().build();
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.internalServerError().build();
