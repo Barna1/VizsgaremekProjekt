@@ -75,4 +75,21 @@ public class UserService {
             return ResponseEntity.internalServerError().build();
         }
     }
+    public ResponseEntity<Object> delete(Integer id) {
+        try {
+            if (id == null) {
+                return ResponseEntity.status(422).build();
+            }
+            User searchedUser = userRepository.getUserById(id).orElse(null);
+            if (searchedUser == null || searchedUser.getIsDeleted()) {
+                return ResponseEntity.notFound().build();
+            } else {
+                userRepository.deleteUserById(id);
+                return ResponseEntity.ok().build();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().build();
+        }
+    }
 }
