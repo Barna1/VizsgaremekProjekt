@@ -4,10 +4,7 @@ import com.example.demo.entity.User;
 import com.example.demo.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 import tools.jackson.databind.JsonNode;
 
 @RequiredArgsConstructor
@@ -27,5 +24,9 @@ public class UserController {
     @PatchMapping("/{id}")
     private ResponseEntity<Object> update(@RequestBody tools.jackson.databind.JsonNode requestBody, @PathVariable("id") Integer id) {
         return userService.update(id, requestBody.get("username").asText(null));
+    }
+    @DeleteMapping("/{id}")
+    private ResponseEntity<Object> delete(@PathVariable("id") Integer id) {
+        return userService.delete(id);
     }
 }
