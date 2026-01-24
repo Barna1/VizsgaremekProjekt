@@ -104,4 +104,32 @@ public class UserService {
         }
         return EMAIL_PATTERN.matcher(email).matches();
     }
+    public Boolean isPasswordValid(String password) {
+        if (password.length() < 8 || password.length() > 16) {
+            return false;
+        }
+
+        String specialCharacters = "\"!@#$%^&*()-_=+[]{};:,.?/\"";
+        String numbersText = "1234567890";
+        boolean specialChecker = false;
+        boolean upperCaseChecker = false;
+        boolean lowerCaseChecker = false;
+        boolean initChecker = false;
+
+        for (int i = 0; i < password.trim().length(); i++) {
+            String selectedChar = String.valueOf(password.charAt(i));
+
+            if (numbersText.contains(selectedChar)) {
+                initChecker = true;
+            } else if (specialCharacters.contains(selectedChar)) {
+                specialChecker = true;
+            } else if (selectedChar.equals(selectedChar.toUpperCase())) {
+                upperCaseChecker = true;
+            } else if (selectedChar.equals(selectedChar.toLowerCase())) {
+                lowerCaseChecker = true;
+            }
+        }
+
+        return specialChecker && upperCaseChecker && lowerCaseChecker && initChecker;
+    }
 }
