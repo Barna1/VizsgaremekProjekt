@@ -37,4 +37,8 @@ public class UserController {
     private ResponseEntity<Object> checkVerificationCode(@RequestBody JsonNode requestBody) {
         return userService.checkVerificationCode(requestBody.get("vCode").asText(null), requestBody.get("email").asText(null));
     }
+    @PatchMapping("/password")
+    private ResponseEntity<Object> changePassword(@RequestBody JsonNode requestBody) {
+        return userService.changePassword(requestBody.get("email").asText(null), requestBody.get("newPassword").asText(null));
+    }
 }
