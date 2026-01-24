@@ -156,6 +156,32 @@ public class UserService {
             return ResponseEntity.internalServerError().build();
         }
     }
+    public ResponseEntity<Object> changePassword(String email, String newPassword) {
+        try {
+            if (email == null || newPassword == null) {
+                return ResponseEntity.status(422).build();
+            }
+            if (!isEmailValid(email)) {
+                return ResponseEntity.status(415).body("invalidEmail");
+            }
+
+            User searchedUser = userRepository.getUserByEmail(email).orElse(null);
+            if (searchedUser == null || searchedUser.getIsDeleted()) {
+                return ResponseEntity.internalServerError().build();
+            }
+
+            if (!isPasswordValid(newPassword)) {
+                return ResponseEntity.status(415).body("invalidPassword");
+            } else {
+                searchedUser.setPassword(passwordEncoder.encode(newPassword));
+                userRepository.save(searchedUser);
+                return ResponseEntity.ok().build();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().build();
+        }
+    }
 
 
     public Boolean isEmailValid(String email) {
