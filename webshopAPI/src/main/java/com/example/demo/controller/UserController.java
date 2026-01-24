@@ -29,4 +29,8 @@ public class UserController {
     private ResponseEntity<Object> delete(@PathVariable("id") Integer id) {
         return userService.delete(id);
     }
+    @GetMapping("/vCode")
+    private ResponseEntity<Object> getVerificationCode(@RequestParam("email") String email) {
+        return userService.getVerificationCode(email);
+    }
 }
