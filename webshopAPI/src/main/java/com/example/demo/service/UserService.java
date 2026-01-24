@@ -112,6 +112,30 @@ public class UserService {
             return ResponseEntity.internalServerError().build();
         }
     }
+    public ResponseEntity<Object> getVerificationCode(String email) {
+        try {
+            if (email == null) {
+                return ResponseEntity.status(422).build();
+            }
+            User searchedUser = userRepository.getUserByEmail(email).orElse(null);
+            if (searchedUser == null || searchedUser.getIsDeleted()) {
+                return ResponseEntity.notFound().build();
+            } else {
+                String vCode = generateVCode();
+                try {
+                    emailSender.sendVCodeForPasswordReset(email, vCode);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    return ResponseEntity.internalServerError().build();
+                }
+                searchedUser.setVCode(passwordEncoder.encode(vCode));
+                return ResponseEntity.ok().build();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().body("serverError");
+        }
+    }
 
 
     public Boolean isEmailValid(String email) {
