@@ -10,6 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.Random;
 import java.util.regex.Pattern;
 
 @Service
@@ -131,5 +132,14 @@ public class UserService {
         }
 
         return specialChecker && upperCaseChecker && lowerCaseChecker && initChecker;
+    }
+    public String generateVCode() {
+        String characters = "!@#$%&*()-+={}[]|\\/:;'\"<>,.?~" + "ABCDEFGHIJKLMNOPQRSTUVWXYZÁÉÜŰÚÖÓŐÍ" + "0123456789" + "abcdefghijklmnopqrstuvxyzéáíúöőüű";
+        String vCode = "";
+        while (vCode.length() != 10) {
+            vCode += String.valueOf(characters.charAt(new Random().nextInt(0, characters.length())));
+        }
+
+        return vCode;
     }
 }
