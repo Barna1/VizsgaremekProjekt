@@ -15,4 +15,8 @@ public class OtherController {
     public ResponseEntity<Object> getAllPaymentMethod() {
         return otherService.getAllPaymentMethod();
     }
+    @GetMapping("/addressType")
+    public ResponseEntity<Object> getAllAddressType() {
+        return otherService.getAllAddressType();
+    }
 }
