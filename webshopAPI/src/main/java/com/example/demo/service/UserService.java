@@ -74,16 +74,22 @@ public class UserService {
         }
     }
 
-    public ResponseEntity<Object> update(Integer id, String username) {
+    public ResponseEntity<Object> update(Integer id, String username, String email) {
         try {
-            if (id == null || username == null) {
+            if (id == null || username == null || email == null) {
                 return ResponseEntity.status(422).build();
             }
             User searchedUser = userRepository.getUserById(id).orElse(null);
             if (searchedUser == null || searchedUser.getIsDeleted()) {
                 return ResponseEntity.notFound().build();
             }
-            return ResponseEntity.ok().build();
+            if (!isEmailValid(email)){
+                return ResponseEntity.status(415).body("invalidEmail");
+            } else {
+                searchedUser.setUsername(username.trim());
+                searchedUser.setEmail(email.trim());
+                return ResponseEntity.ok().body(userRepository.save(searchedUser));
+            }
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.internalServerError().build();

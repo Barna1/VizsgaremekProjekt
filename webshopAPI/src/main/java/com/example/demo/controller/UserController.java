@@ -15,15 +15,15 @@ public class UserController {
     private ResponseEntity<Object> login(@RequestBody JsonNode requestBody) {
         return userService.login(requestBody.get("username").asText(null), requestBody.get("password").asText(null));
     }
-    
+
     @PostMapping("/register")
     private ResponseEntity<Object> register(@RequestBody User newUser) {
         return userService.register(newUser);
     }
 
     @PatchMapping("/{id}")
-    private ResponseEntity<Object> update(@RequestBody tools.jackson.databind.JsonNode requestBody, @PathVariable("id") Integer id) {
-        return userService.update(id, requestBody.get("username").asText(null));
+    private ResponseEntity<Object> update(@RequestBody JsonNode requestBody, @PathVariable("id") Integer id) {
+        return userService.update(id, requestBody.get("username").asText(null), requestBody.get("email").asText(null));
     }
     @DeleteMapping("/{id}")
     private ResponseEntity<Object> delete(@PathVariable("id") Integer id) {
