@@ -33,4 +33,8 @@ public class UserController {
     private ResponseEntity<Object> getVerificationCode(@RequestParam("email") String email) {
         return userService.getVerificationCode(email);
     }
+    @PostMapping("/check")
+    private ResponseEntity<Object> checkVerificationCode(@RequestBody JsonNode requestBody) {
+        return userService.checkVerificationCode(requestBody.get("vCode").asText(null), requestBody.get("email").asText(null));
+    }
 }
