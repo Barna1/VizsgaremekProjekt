@@ -26,15 +26,14 @@ public class UserService {
                 return ResponseEntity.status(422).build();
             }
             User searchedUser = userRepository.getUserByUsername(username).orElse(null);
-            if (searchedUser == null) {
+            if (searchedUser == null || searchedUser.getIsDeleted()) {
                 return ResponseEntity.notFound().build();
             } else {
                 if (!passwordEncoder.matches(password, searchedUser.getPassword())) {
                     return ResponseEntity.notFound().build();
                 } else {
                     searchedUser.setLastLogin(new Date());
-                    userRepository.save(searchedUser);
-                    return ResponseEntity.ok().build();
+                    return ResponseEntity.ok().body(userRepository.save(searchedUser));
                 }
             }
         } catch (Exception e) {
