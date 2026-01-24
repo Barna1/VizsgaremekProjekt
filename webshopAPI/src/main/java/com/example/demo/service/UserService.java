@@ -48,12 +48,23 @@ public class UserService {
                 return ResponseEntity.status(422).build();
             }
 
-            if (newUser.getId() != null) {
+            if (newUser.getId() != null){
                 return ResponseEntity.status(415).body("invalidObject");
+            } else if (!isEmailValid(newUser.getEmail())) {
+                return ResponseEntity.status(415).body("invalidEmail");
+            } else if (!isPasswordValid(newUser.getPassword())) {
+                return ResponseEntity.status(415).body("invalidPassword");
             } else {
                 newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
                 newUser.setBasket(new Basket());
                 userRepository.save(newUser);
+
+                try {
+                     emailSender.sendEmailAboutRegistration(newUser.getEmail());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    return ResponseEntity.internalServerError().build();
+                }
 
                 return ResponseEntity.ok().build();
             }
