@@ -1,19 +1,31 @@
 package com.example.demo.service;
 
+import com.example.demo.entity.Author;
 import com.example.demo.entity.Book;
+import com.example.demo.repository.AuthorRepository;
 import com.example.demo.repository.BookRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.validation.ConstraintViolationException;
+import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(noRollbackFor = {DataIntegrityViolationException.class, ConstraintViolationException.class, SQLIntegrityConstraintViolationException.class, SQLException.class})
 public class BookService {
     private final BookRepository bookRepository;
+    private final AuthorRepository authorRepository;
+    
     public ResponseEntity<Object> getBooks(Pageable pageable) {
         try {
             Page<Book> returnList = bookRepository.findByIsDeleted(false, pageable);
@@ -39,6 +51,24 @@ public class BookService {
                 return ResponseEntity.ok().body(searchedBook);
             }
 
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+    public ResponseEntity<Object> getBookByAuthor(Integer authorId) {
+        try {
+            if (authorId == null) {
+                return ResponseEntity.status(422).build();
+            }
+
+            Author searchedAuthor = authorRepository.getAuthorById(authorId).orElse(null);
+            if (searchedAuthor == null || searchedAuthor.getIsDeleted()) {
+                return ResponseEntity.notFound().build();
+            } else {
+                List<Integer> bookIds = bookRepository.getAllBookIdByAuthor(authorId);
+                return ResponseEntity.ok().body(bookRepository.findAllById(bookIds));
+            }
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.internalServerError().build();
