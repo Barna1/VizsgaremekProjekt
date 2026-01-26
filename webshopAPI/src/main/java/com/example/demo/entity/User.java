@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -76,9 +77,11 @@ public class User {
 
 
     @OneToOne(mappedBy = "basketUser", cascade = {CascadeType.ALL})
+    @JsonIgnoreProperties({"basketUser", "productList"})
     private Basket basket;
 
     @OneToMany(mappedBy = "author", cascade = {})
+    @JsonIgnore
     private List<Review> writtenReviews;
 
     @JsonIgnore

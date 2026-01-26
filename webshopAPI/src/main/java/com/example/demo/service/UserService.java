@@ -5,16 +5,22 @@ import com.example.demo.entity.Basket;
 import com.example.demo.entity.User;
 import com.example.demo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import javax.validation.ConstraintViolationException;
+import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Date;
 import java.util.Random;
 import java.util.regex.Pattern;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(noRollbackFor = {DataIntegrityViolationException.class, ConstraintViolationException.class, SQLIntegrityConstraintViolationException.class, SQLException.class})
 public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;

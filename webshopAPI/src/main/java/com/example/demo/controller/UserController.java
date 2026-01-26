@@ -7,7 +7,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tools.jackson.databind.JsonNode;
 
+@RestController
 @RequiredArgsConstructor
+@RequestMapping("/user")
 public class UserController {
     private final UserService userService;
 
