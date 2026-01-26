@@ -26,4 +26,22 @@ public class BookService {
             return ResponseEntity.internalServerError().build();
         }
     }
+    public ResponseEntity<Object> getBookById(Integer id) {
+        try {
+            if (id == null) {
+                return ResponseEntity.status(422).build();
+            }
+
+            Book searchedBook = bookRepository.getBookById(id).orElse(null);
+            if (searchedBook == null) {
+                return ResponseEntity.notFound().build();
+            } else {
+                return ResponseEntity.ok().body(searchedBook);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().build();
+        }
+    }
 }
