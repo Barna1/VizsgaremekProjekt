@@ -74,4 +74,16 @@ public class BookService {
             return ResponseEntity.internalServerError().build();
         }
     }
+    public ResponseEntity<Object> getBookByGenres(Integer genreId) {
+        try {
+            if (genreId == null) {
+                return ResponseEntity.status(422).build();
+            }
+
+            return null;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().build();
+        }
+    }
 }
