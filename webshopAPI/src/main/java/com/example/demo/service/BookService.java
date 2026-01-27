@@ -2,8 +2,10 @@ package com.example.demo.service;
 
 import com.example.demo.entity.Author;
 import com.example.demo.entity.Book;
+import com.example.demo.entity.Publisher;
 import com.example.demo.repository.AuthorRepository;
 import com.example.demo.repository.BookRepository;
+import com.example.demo.repository.PublisherRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
@@ -25,6 +27,7 @@ import java.util.List;
 public class BookService {
     private final BookRepository bookRepository;
     private final AuthorRepository authorRepository;
+    private final PublisherRepository publisherRepository;
     
     public ResponseEntity<Object> getBooks(Pageable pageable) {
         try {
@@ -81,6 +84,21 @@ public class BookService {
             }
 
             return null;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+    public ResponseEntity<Object> getBookByPublisher(Integer publisherId) {
+        try {
+            if (publisherId == null) {
+                return ResponseEntity.status(422).build();
+            }
+            Publisher searchedPublisher = publisherRepository.getPublisherById(publisherId).orElse(null);
+            if (searchedPublisher == null || searchedPublisher.getIsDeleted()) {
+                return ResponseEntity.notFound().build();
+            }
+            return ResponseEntity.ok().body(searchedPublisher.getBookList().stream().filter(book -> !book.getIsDeleted()).toList());
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.internalServerError().build();
