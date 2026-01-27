@@ -29,4 +29,8 @@ public class BookController {
     private ResponseEntity<Object> getBookByGenres(@PathVariable("id") Integer genreId) {
         return bookService.getBookByGenres(genreId);
     }
+    @GetMapping("/publisher/{id}")
+    private ResponseEntity<Object> getBookByPublisher(@PathVariable("id") Integer publisherId) {
+        return bookService.getBookByPublisher(publisherId);
+    }
 }
