@@ -2,9 +2,11 @@ package com.example.demo.service;
 
 import com.example.demo.entity.Author;
 import com.example.demo.entity.Book;
+import com.example.demo.entity.Genre;
 import com.example.demo.entity.Publisher;
 import com.example.demo.repository.AuthorRepository;
 import com.example.demo.repository.BookRepository;
+import com.example.demo.repository.GenreRepository;
 import com.example.demo.repository.PublisherRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -29,6 +31,7 @@ public class BookService {
     private final BookRepository bookRepository;
     private final AuthorRepository authorRepository;
     private final PublisherRepository publisherRepository;
+    private final GenreRepository genreRepository;
     
     public ResponseEntity<Object> getBooks(Pageable pageable) {
         try {
@@ -105,8 +108,44 @@ public class BookService {
             return ResponseEntity.internalServerError().build();
         }
     }
+    public ResponseEntity<Object> addBook(Book newBook) {
+        try {
+            if (newBook == null) {
+                return ResponseEntity.status(422).build();
+            }
 
-    
+            Publisher searchedPublisher = publisherRepository.getPublisherById(newBook.getPublisher().getId()).orElse(null);
+
+            if (newBook.getId() != null) {
+                return ResponseEntity.status(415).body("invalidObject");
+            } else if (searchedPublisher == null || searchedPublisher.getIsDeleted()) {
+                return ResponseEntity.status(404).body("publisherNotFound");
+            } else if (!isIsbnValid(newBook.getISBN(), searchedPublisher.getIsbnSign())) {
+                return ResponseEntity.status(415).body("invalidIsbnNumber");
+            }
+
+            for (Author author : newBook.getAuthors()) {
+                Author searchedAuthor = authorRepository.getAuthorById(author.getId()).orElse(null);
+                if (searchedAuthor == null || searchedAuthor.getIsDeleted()) {
+                    return ResponseEntity.status(404).body("authorNotFound");
+                }
+            }
+
+            for (Genre genre : newBook.getGenreList()) {
+                Genre searchedGenre = genreRepository.getGenreById(genre.getId()).orElse(null);
+                if (searchedGenre == null || searchedGenre.getIsDeleted()) {
+                    return ResponseEntity.status(404).body("genreNotFound");
+                }
+            }
+
+            return ResponseEntity.ok().body(bookRepository.save(newBook));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+
+
     public Boolean isIsbnValid(String isbnNumber, Integer publisherIsbnSign) {
         List<String> partsOfIsbnNumber = Arrays.stream(isbnNumber.split("-")).toList();
         if (partsOfIsbnNumber.size() != 5) {
