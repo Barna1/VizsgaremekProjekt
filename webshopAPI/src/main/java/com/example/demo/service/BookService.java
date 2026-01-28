@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.validation.ConstraintViolationException;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -103,5 +104,19 @@ public class BookService {
             e.printStackTrace();
             return ResponseEntity.internalServerError().build();
         }
+    }
+
+    
+    public Boolean isIsbnValid(String isbnNumber, Integer publisherIsbnSign) {
+        List<String> partsOfIsbnNumber = Arrays.stream(isbnNumber.split("-")).toList();
+        if (partsOfIsbnNumber.size() != 5) {
+            return false;
+        } else if (!partsOfIsbnNumber.get(0).equals("978")) {
+            return false;
+        } else if (!partsOfIsbnNumber.get(3).equals(partsOfIsbnNumber.toString())) {
+            return false;
+        }
+
+        return true;
     }
 }
