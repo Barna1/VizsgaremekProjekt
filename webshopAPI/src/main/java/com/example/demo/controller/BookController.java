@@ -1,12 +1,11 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.Book;
 import com.example.demo.service.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -32,5 +31,10 @@ public class BookController {
     @GetMapping("/publisher/{id}")
     private ResponseEntity<Object> getBookByPublisher(@PathVariable("id") Integer publisherId) {
         return bookService.getBookByPublisher(publisherId);
+    }
+
+    @PostMapping("")
+    private ResponseEntity<Object> addBook(@RequestBody Book newBook) {
+        return bookService.addBook(newBook);
     }
 }
