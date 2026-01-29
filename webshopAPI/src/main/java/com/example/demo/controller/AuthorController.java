@@ -1,11 +1,10 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.Author;
 import com.example.demo.service.AuthorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/author")
@@ -16,5 +15,9 @@ public class AuthorController {
     @GetMapping("")
     private ResponseEntity<Object> getAllAuthor() {
         return authorService.getAllAuthor();
+    }
+    @PostMapping("")
+    private ResponseEntity<Object> addAuthor(@RequestBody Author newAuthor) {
+        return authorService.addAuthor(newAuthor);
     }
 }
