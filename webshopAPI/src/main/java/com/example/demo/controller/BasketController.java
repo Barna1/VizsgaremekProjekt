@@ -3,10 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.service.BasketService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
@@ -17,5 +14,9 @@ public class BasketController {
     @GetMapping("/user/{id}")
     private ResponseEntity<Object> getBasketByUserId(@PathVariable("id") Integer userId) {
         return basketService.getBasketByUserId(userId);
+    }
+    @DeleteMapping("/book")
+    private ResponseEntity<Object> deleteProductFromBasket(@RequestParam("basketProductId") Integer basketProductId, @RequestParam("basketId") Integer basketId) {
+        return basketService.deleteProductFromBasket(basketProductId, basketId);
     }
 }
