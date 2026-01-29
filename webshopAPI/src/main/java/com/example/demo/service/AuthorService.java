@@ -43,4 +43,17 @@ public class AuthorService {
             return ResponseEntity.internalServerError().build();
         }
     }
+    public ResponseEntity<Object> deleteAuthor(Integer id) {
+        try {
+            if (id == null) {
+                return ResponseEntity.status(422).build();
+            }
+
+            authorRepository.deleteAuthor(id);
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().build();
+        }
+    }
 }
