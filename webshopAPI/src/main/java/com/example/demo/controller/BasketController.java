@@ -24,4 +24,8 @@ public class BasketController {
     private ResponseEntity<Object> changeAmountOfProduct(@RequestBody JsonNode requestBody, @PathVariable("id") Integer basketId) {
         return basketService.changeAmountOfProduct(basketId, requestBody.get("productId").asInt(0), requestBody.get("newAmount").asInt(-1));
     }
+    @PostMapping("/{id}")
+    private ResponseEntity<Object> addProductToBasket(@RequestBody JsonNode requestBody, @PathVariable("id") Integer basketId) {
+        return basketService.addProductToBasket(requestBody.get("productId").asInt(0), requestBody.get("amount").asInt(-1), basketId);
+    }
 }
