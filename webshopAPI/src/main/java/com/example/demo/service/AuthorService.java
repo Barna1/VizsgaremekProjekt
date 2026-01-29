@@ -56,4 +56,20 @@ public class AuthorService {
             return ResponseEntity.internalServerError().build();
         }
     }
+    public ResponseEntity<Object> updateAuthor(Author updatedAuthor) {
+        try {
+            if (updatedAuthor == null) {
+                return ResponseEntity.status(422).build();
+            }
+
+            if (updatedAuthor.getId() == null) {
+                return ResponseEntity.status(415).build();
+            } else {
+                return ResponseEntity.ok().body(authorRepository.save(updatedAuthor));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().build();
+        }
+    }
 }
