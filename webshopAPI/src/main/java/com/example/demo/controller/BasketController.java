@@ -28,4 +28,8 @@ public class BasketController {
     private ResponseEntity<Object> addProductToBasket(@RequestBody JsonNode requestBody, @PathVariable("id") Integer basketId) {
         return basketService.addProductToBasket(requestBody.get("productId").asInt(0), requestBody.get("amount").asInt(-1), basketId);
     }
+    @DeleteMapping("/{id}/clear")
+    private ResponseEntity<Object> clearBasket(@PathVariable("id") Integer basketId) {
+        return basketService.clearBasket(basketId);
+    }
 }
