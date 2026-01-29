@@ -129,4 +129,21 @@ public class BasketService {
             return ResponseEntity.internalServerError().build();
         }
     }
+    public ResponseEntity<Object> clearBasket(Integer basketId) {
+        try {
+            if (basketId == null) {
+                return ResponseEntity.status(422).build();
+            }
+            Basket searchedBasket = basketRepository.getBasketById(basketId).orElse(null);
+            if (searchedBasket == null) {
+                return ResponseEntity.notFound().build();
+            }
+
+            basketRepository.clearBasket(basketId);
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().build();
+        }
+    }
 }
