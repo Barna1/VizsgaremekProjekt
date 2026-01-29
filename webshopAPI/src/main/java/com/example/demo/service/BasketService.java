@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.entity.Basket;
 import com.example.demo.entity.BasketProduct;
+import com.example.demo.entity.Book;
 import com.example.demo.entity.User;
 import com.example.demo.repository.BasketProductRepository;
 import com.example.demo.repository.BasketRepository;
@@ -94,6 +95,34 @@ public class BasketService {
                 basketProductRepository.save(searchedBasketProduct);
             }
 
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+    public ResponseEntity<Object> addProductToBasket(Integer productId, Integer amount, Integer basketId) {
+        try {
+            if (productId == 0 || basketId == null || amount == -1) {
+                return ResponseEntity.status(422).build();
+            }
+
+            Basket searchedBasket = basketRepository.getBasketById(basketId).orElse(null);
+            if (searchedBasket == null || searchedBasket.getIsDeleted()) {
+                return ResponseEntity.notFound().build();
+            }
+
+            Book searchedBook = bookRepository.getBookById(productId).orElse(null);
+            if (searchedBook == null || searchedBook.getIsDeleted()) {
+                return ResponseEntity.notFound().build();
+            }
+
+            if (amount > searchedBook.getStockQuantity()) {
+                return ResponseEntity.status(415).body("");
+            }
+
+            searchedBasket.getProductList().add(new BasketProduct(amount, searchedBook));
+            basketRepository.save(searchedBasket);
             return ResponseEntity.ok().build();
         } catch (Exception e) {
             e.printStackTrace();
