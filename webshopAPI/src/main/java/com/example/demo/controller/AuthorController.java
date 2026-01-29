@@ -20,4 +20,8 @@ public class AuthorController {
     private ResponseEntity<Object> addAuthor(@RequestBody Author newAuthor) {
         return authorService.addAuthor(newAuthor);
     }
+    @DeleteMapping("/{id}")
+    private ResponseEntity<Object> deleteAuthor(@PathVariable("id") Integer id) {
+        return authorService.deleteAuthor(id);
+    }
 }
