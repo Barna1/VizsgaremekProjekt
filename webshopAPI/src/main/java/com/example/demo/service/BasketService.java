@@ -70,4 +70,34 @@ public class BasketService {
             return ResponseEntity.internalServerError().build();
         }
     }
+    public ResponseEntity<Object> changeAmountOfProduct(Integer basketId, Integer productId, Integer newAmount) {
+        try {
+            if (basketId == null || productId == 0 || newAmount == -1) {
+                return ResponseEntity.status(422).build();
+            }
+
+            Basket searchedBasket = basketRepository.getBasketById(basketId).orElse(null);
+            BasketProduct searchedBasketProduct = basketProductRepository.getBasketProductById(productId).orElse(null);
+
+            if (searchedBasket == null || searchedBasket.getIsDeleted()) {
+                return ResponseEntity.status(404).body("basketNotFound");
+            } else if (searchedBasketProduct == null || searchedBasketProduct.getIsDeleted()) {
+                return ResponseEntity.status(404).body("bookNotFound");
+            } else if (newAmount > searchedBasketProduct.getBasketBook().getStockQuantity() || newAmount < 0) {
+                return ResponseEntity.status(415).body("invalidAmount");
+            } else if (newAmount == 0) {
+                basketProductRepository.deleteProductFromBasket(searchedBasketProduct.getId());
+                searchedBasketProduct.getBasketBook().setStockQuantity(searchedBasketProduct.getBasketBook().getStockQuantity() + searchedBasketProduct.getAmount());
+                bookRepository.save(searchedBasketProduct.getBasketBook());
+            } else {
+                searchedBasketProduct.setAmount(newAmount);
+                basketProductRepository.save(searchedBasketProduct);
+            }
+
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().build();
+        }
+    }
 }
