@@ -20,4 +20,8 @@ public class GenreController {
     private ResponseEntity<Object> addGenre(@RequestBody Genre newGenre) {
         return genreService.addGenre(newGenre);
     }
+    @PutMapping("")
+    private ResponseEntity<Object> updateGenre(@RequestBody Genre updatedGenre) {
+        return genreService.updateGenre(updatedGenre);
+    }
 }
