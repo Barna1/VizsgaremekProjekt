@@ -1,11 +1,10 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.Genre;
 import com.example.demo.service.GenreService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -16,5 +15,9 @@ public class GenreController {
     @GetMapping("")
     private ResponseEntity<Object> getAllGenre() {
         return genreService.getAllGenre();
+    }
+    @PostMapping("")
+    private ResponseEntity<Object> addGenre(@RequestBody Genre newGenre) {
+        return genreService.addGenre(newGenre);
     }
 }
