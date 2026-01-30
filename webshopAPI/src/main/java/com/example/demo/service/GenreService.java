@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.entity.Genre;
 import com.example.demo.repository.GenreRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -20,6 +21,22 @@ public class GenreService {
     public ResponseEntity<Object> getAllGenre() {
         try {
             return ResponseEntity.ok().body(genreRepository.getAllGenre());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+    public ResponseEntity<Object> addGenre(Genre newGenre) {
+        try {
+            if (newGenre == null) {
+                return ResponseEntity.status(422).build();
+            }
+
+            if (newGenre.getId() != null) {
+                return ResponseEntity.status(415).body("invalidObject");
+            } else {
+                return ResponseEntity.ok().body(genreRepository.save(newGenre));
+            }
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.internalServerError().build();
