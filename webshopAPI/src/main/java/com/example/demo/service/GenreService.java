@@ -42,4 +42,20 @@ public class GenreService {
             return ResponseEntity.internalServerError().build();
         }
     }
+    public ResponseEntity<Object> updateGenre(Genre updatedGenre) {
+        try {
+            if (updatedGenre == null) {
+                return ResponseEntity.status(422).build();
+            }
+
+            if (updatedGenre.getId() == null) {
+                return ResponseEntity.status(415).build();
+            } else {
+                return ResponseEntity.ok().body(genreRepository.save(updatedGenre));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().build();
+        }
+    }
 }
