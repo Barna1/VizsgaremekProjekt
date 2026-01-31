@@ -1,12 +1,10 @@
 package com.example.demo.controller;
 
 import com.example.demo.service.OrderService;
+import com.fasterxml.jackson.databind.JsonNode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -18,5 +16,9 @@ public class OrderController {
     @GetMapping("/user/{id}")
     public ResponseEntity<Object> getOrderHistoryByUserId(@PathVariable("id") Integer userId) {
         return orderService.getOrderHistoryByUserId(userId);
+    }
+    @DeleteMapping("/cancel/{id}")
+    public ResponseEntity<Object> cancelOrder(@PathVariable("id") Integer orderId, @RequestBody JsonNode requestBody) {
+        return orderService.cancelOrder(orderId, requestBody.get("cancelerUserId").asInt());
     }
 }
