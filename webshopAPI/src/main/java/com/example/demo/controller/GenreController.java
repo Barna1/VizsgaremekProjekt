@@ -24,4 +24,8 @@ public class GenreController {
     private ResponseEntity<Object> updateGenre(@RequestBody Genre updatedGenre) {
         return genreService.updateGenre(updatedGenre);
     }
+    @DeleteMapping("/{id}")
+    private ResponseEntity<Object> deleteGenre(@PathVariable("id") Integer id) {
+        return genreService.deleteGenre(id);
+    }
 }
