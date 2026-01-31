@@ -58,4 +58,17 @@ public class GenreService {
             return ResponseEntity.internalServerError().build();
         }
     }
+    public ResponseEntity<Object> deleteGenre(Integer id) {
+        try {
+            if (id == null) {
+                return ResponseEntity.status(422).build();
+            }
+
+            genreRepository.deleteGenre(id);
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().build();
+        }
+    }
 }
