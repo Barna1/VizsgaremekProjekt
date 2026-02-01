@@ -25,4 +25,8 @@ public class OrderController {
     public ResponseEntity<Object> getOrderHistoryByVCode(@RequestParam("email") String email, @RequestParam("vCode") String vCode) {
         return orderService.getOrderHistoryByVCode(email, vCode);
     }
+    @GetMapping("")
+    public ResponseEntity<Object> getAllOrder() {
+        return orderService.getAllOrder();
+    }
 }
