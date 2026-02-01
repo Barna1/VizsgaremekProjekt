@@ -98,4 +98,12 @@ public class OrderService {
             return ResponseEntity.internalServerError().build();
         }
     }
+    public ResponseEntity<Object> getAllOrder() {
+        try {
+            return ResponseEntity.ok().body(orderHistoryRepository.findAll());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().build();
+        }
+    }
 }
