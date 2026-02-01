@@ -15,6 +15,7 @@ import java.io.File;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.*;
+import java.util.regex.Pattern;
 
 @Service
 @RequiredArgsConstructor
@@ -239,5 +240,12 @@ public class OrderService {
             return false;
         }
         return true;
+    }
+    public Boolean isEmailValid(String email) {
+        Pattern EMAIL_PATTERN = Pattern.compile("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$");
+        if (email == null || email.length() > 100) {
+            return false;
+        }
+        return EMAIL_PATTERN.matcher(email).matches();
     }
 }
