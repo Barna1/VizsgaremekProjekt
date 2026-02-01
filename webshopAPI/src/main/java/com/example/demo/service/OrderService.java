@@ -2,10 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.config.email.EmailSender;
 import com.example.demo.entity.*;
-import com.example.demo.repository.BookRepository;
-import com.example.demo.repository.OrderHistoryRepository;
-import com.example.demo.repository.StatusRepository;
-import com.example.demo.repository.UserRepository;
+import com.example.demo.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
@@ -30,6 +27,7 @@ public class OrderService {
     private final EmailSender emailSender;
     private final PasswordEncoder passwordEncoder;
     private final BookRepository bookRepository;
+    private final AddressTypeRepository addressTypeRepository;
 
     public ResponseEntity<Object> getOrderHistoryByUserId(Integer userId) {
         try {
@@ -172,5 +170,25 @@ public class OrderService {
             e.printStackTrace();
             return ResponseEntity.internalServerError().build();
         }
+    }
+
+
+    public Boolean isBillingDetailValid(BillingDetail billingDetail) {
+        if (billingDetail.getId() != null) {
+            return false;
+        }
+        AddressType searchedAddressType = addressTypeRepository.getAddressTypeById(billingDetail.getBillingDetailsAddressType().getId()).orElse(null);
+        if (searchedAddressType == null) {
+            return false;
+        } else if (!isValidAddress(billingDetail.getPostCode(), billingDetail.getTown())) {
+            return false;
+        }
+        if (billingDetail.getCompanyTaxNumber() != null) {
+            if (!isValidTaxNumber(billingDetail.getCompanyTaxNumber())) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
