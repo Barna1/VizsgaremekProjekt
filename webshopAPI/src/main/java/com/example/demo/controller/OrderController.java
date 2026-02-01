@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.OrderHistory;
 import com.example.demo.service.OrderService;
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.RequiredArgsConstructor;
@@ -28,5 +29,9 @@ public class OrderController {
     @GetMapping("")
     public ResponseEntity<Object> getAllOrder() {
         return orderService.getAllOrder();
+    }
+    @PostMapping("/basket/{id}")
+    public ResponseEntity<Object> sendOrder(@RequestBody OrderHistory newOrder, @PathVariable("id") Integer basketId) {
+        return orderService.sendOrder(newOrder, basketId);
     }
 }
