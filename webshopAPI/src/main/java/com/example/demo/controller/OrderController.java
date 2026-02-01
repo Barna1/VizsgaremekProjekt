@@ -21,4 +21,8 @@ public class OrderController {
     public ResponseEntity<Object> cancelOrder(@PathVariable("id") Integer orderId, @RequestBody JsonNode requestBody) {
         return orderService.cancelOrder(orderId, requestBody.get("cancelerUserId").asInt());
     }
+    @GetMapping("/search")
+    public ResponseEntity<Object> getOrderHistoryByVCode(@RequestParam("email") String email, @RequestParam("vCode") String vCode) {
+        return orderService.getOrderHistoryByVCode(email, vCode);
+    }
 }
