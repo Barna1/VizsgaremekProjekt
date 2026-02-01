@@ -9,6 +9,7 @@ import com.example.demo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,6 +17,7 @@ import javax.validation.ConstraintViolationException;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Date;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -25,6 +27,7 @@ public class OrderService {
     private final UserRepository userRepository;
     private final StatusRepository statusRepository;
     private final EmailSender emailSender;
+    private final PasswordEncoder passwordEncoder;
 
     public ResponseEntity<Object> getOrderHistoryByUserId(Integer userId) {
         try {
@@ -72,6 +75,24 @@ public class OrderService {
             searchedOrderHistory.setIsCanceled(true);
             orderHistoryRepository.save(searchedOrderHistory);
             return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+    public ResponseEntity<Object> getOrderHistoryByVCode(String email, String vCode) {
+        try {
+            if (email == null || vCode == null) {
+                return ResponseEntity.status(422).build();
+            }
+
+            List<OrderHistory> histories = orderHistoryRepository.getOrderHistoriesByEmail(email);
+            for (int i = 0; i < histories.size(); i++) {
+                if (passwordEncoder.matches(vCode, histories.get(i).getCancelerVCode())) {
+                    return ResponseEntity.ok().body(histories.get(i));
+                }
+            }
+            return ResponseEntity.notFound().build();
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.internalServerError().build();
