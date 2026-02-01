@@ -227,4 +227,17 @@ public class OrderService {
 
         return false;
     }
+    public Boolean isValidTaxNumber(String taxNumber) {
+        ArrayList<String> taxNumbersOfArea = new ArrayList<>(Arrays.asList("02", "22", "03", "23", "04", "24", "05", "25", "06", "26", "07", "27", "08", "28", "09", "29", "10", "30", "11", "31", "12", "32", "13", "33", "14", "34", "15", "35", "16", "36", "17", "37", "18", "38", "19", "39", "20", "40", "41", "42", "43", "44", "51"));
+        ArrayList<String> typeOfTaxes = new ArrayList<>(Arrays.asList("1", "2", "3", "4", "5"));
+
+        if (taxNumber.length() != 11) {
+            return false;
+        } else if (!typeOfTaxes.contains(String.valueOf(taxNumber.charAt(10)))) {
+            return false;
+        } else if (!taxNumbersOfArea.contains(taxNumber.substring(11))) {
+            return false;
+        }
+        return true;
+    }
 }
