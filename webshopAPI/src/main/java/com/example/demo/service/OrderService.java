@@ -11,11 +11,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.validation.ConstraintViolationException;
+import java.io.File;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -28,6 +27,8 @@ public class OrderService {
     private final PasswordEncoder passwordEncoder;
     private final BookRepository bookRepository;
     private final AddressTypeRepository addressTypeRepository;
+    private final PaymentMethodRepository paymentMethodRepository;
+    private final BasketRepository basketRepository;
 
     public ResponseEntity<Object> getOrderHistoryByUserId(Integer userId) {
         try {
@@ -202,5 +203,28 @@ public class OrderService {
             return false;
         }
         return true;
+    }
+    public Boolean isValidAddress(Integer postCode, String town) {
+        ArrayList<List<String>> townList = new ArrayList<>();
+
+        try {
+            File txt = new File("src/main/java/com/example/demo/service/telepulesek.txt");
+            Scanner reader = new Scanner(txt);
+
+            while (reader.hasNextLine()) {
+                townList.add(Arrays.stream(reader.nextLine().split("\t")).toList().subList(0, 2));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+
+        for (List<String> i : townList) {
+            if (i.get(0).equals(postCode.toString()) && i.get(1).toLowerCase().equals(town.toLowerCase())) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
