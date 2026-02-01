@@ -252,4 +252,13 @@ public class OrderService {
         ArrayList<String> phoneServiceCodes = new ArrayList<String>(Arrays.asList("30", "20", "70", "50", "31"));
         return phoneServiceCodes.contains(phoneNumber.substring(0, 2)) && phoneNumber.length() == 9;
     }
+    public String generateVCode() {
+        String characters = "!@#$%&*()-+={}[]|\\/:;'\"<>,.?~" + "ABCDEFGHIJKLMNOPQRSTUVWXYZÁÉÜŰÚÖÓŐÍ" + "0123456789" + "abcdefghijklmnopqrstuvxyzéáíúöőüű";
+        String vCode = "";
+        while (vCode.length() != 10) {
+            vCode += String.valueOf(characters.charAt(new Random().nextInt(0, characters.length())));
+        }
+
+        return vCode;
+    }
 }
