@@ -248,4 +248,8 @@ public class OrderService {
         }
         return EMAIL_PATTERN.matcher(email).matches();
     }
+    public Boolean isPhoneValid(String phoneNumber) {
+        ArrayList<String> phoneServiceCodes = new ArrayList<String>(Arrays.asList("30", "20", "70", "50", "31"));
+        return phoneServiceCodes.contains(phoneNumber.substring(0, 2)) && phoneNumber.length() == 9;
+    }
 }
