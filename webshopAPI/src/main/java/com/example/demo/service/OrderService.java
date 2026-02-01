@@ -191,4 +191,16 @@ public class OrderService {
 
         return true;
     }
+    public Boolean isTransportDetailValid(TransportDetail transportDetail) {
+        if (transportDetail.getId() != null) {
+            return false;
+        }
+        AddressType searchedAddressType = addressTypeRepository.getAddressTypeById(transportDetail.getTransportDetailAddressType().getId()).orElse(null);
+        if (searchedAddressType == null) {
+            return false;
+        } else if (!isValidAddress(transportDetail.getPostCode(), transportDetail.getTown())) {
+            return false;
+        }
+        return true;
+    }
 }
