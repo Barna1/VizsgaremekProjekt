@@ -22,4 +22,8 @@ public class ReviewController {
     private ResponseEntity<Object> updateReview(@RequestBody JsonNode updatedReview) {
         return reviewService.updateReview(updatedReview.get("id").asInt(0), updatedReview.get("reviewText").asText(null));
     }
+    @DeleteMapping("/{id}")
+    private ResponseEntity<Object> deleteReview(@PathVariable("id") Integer id) {
+        return reviewService.deleteReview(id);
+    }
 }
