@@ -51,4 +51,22 @@ public class ReviewService {
             return ResponseEntity.internalServerError().build();
         }
     }
+    public ResponseEntity<Object> updateReview(Integer reviewId, String updatedText) {
+        try {
+            if (reviewId == 0 || updatedText == null) {
+                return ResponseEntity.status(422).build();
+            }
+
+            Review searchedReview = reviewRepository.getReviewById(reviewId).orElse(null);
+            if (searchedReview == null || searchedReview.getIsDeleted()) {
+                return ResponseEntity.notFound().build();
+            }
+            searchedReview.setReviewText(updatedText.trim());
+
+            return ResponseEntity.ok().body(reviewRepository.save(searchedReview));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().build();
+        }
+    }
 }
