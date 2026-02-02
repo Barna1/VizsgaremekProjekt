@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.entity.Publisher;
 import com.example.demo.repository.PublisherRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -19,6 +20,24 @@ public class PublisherService {
     public ResponseEntity<Object> getAllPublisher() {
         try {
             return ResponseEntity.ok().body(publisherRepository.getAllPublisher());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+    public ResponseEntity<Object> deletePublisherById(Integer id) {
+        try {
+            if (id == null) {
+                return ResponseEntity.status(422).build();
+            }
+            Publisher searchedPublisher = publisherRepository.getPublisherById(id).orElse(null);
+            if (searchedPublisher == null || searchedPublisher.getIsDeleted()) {
+                return ResponseEntity.notFound().build();
+            } else {
+                publisherRepository.deletePublisher(id);
+                return ResponseEntity.ok().build();
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.internalServerError().build();
