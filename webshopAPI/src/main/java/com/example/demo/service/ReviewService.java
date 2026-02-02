@@ -69,4 +69,21 @@ public class ReviewService {
             return ResponseEntity.internalServerError().build();
         }
     }
+    public ResponseEntity<Object> deleteReview(Integer id) {
+        try {
+            if (id == null) {
+                return ResponseEntity.status(422).build();
+            }
+            Review searchedReview = reviewRepository.getReviewById(id).orElse(null);
+            if (searchedReview == null || searchedReview.getIsDeleted()) {
+                return ResponseEntity.notFound().build();
+            }
+
+            reviewRepository.deleteReviewById(id);
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().build();
+        }
+    }
 }
