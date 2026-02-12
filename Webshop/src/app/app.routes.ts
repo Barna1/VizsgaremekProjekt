@@ -23,9 +23,8 @@ export const routes: Routes = [{ path: "homePage", component: HomePage, },
   { path: "login", component: Login },
   { path: "register", component: Register },
   { path: "passwordReset", component: PasswordReset },
-  //{ path: "userPage", component: UserPage, canMatch: [AuthenticationGuard] },
-  //{ path: "adminPage", component: AdminPage, canMatch: [AdminAuthGuard] },
-  //{ path: "orderHistory", component: OrderHistoryPage, canMatch: [AdminAuthGuard] },
+  { path: "userPage", component: UserPage, canMatch: [] },
+  { path: "adminPage", component: AdminPage, canMatch: [] },
   {
     path: "orderPage", component: OrderPage, canMatch: [], children: [
       
