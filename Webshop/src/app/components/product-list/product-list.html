@@ -1,1 +1,17 @@
-<p>product-list works!</p>
+<div class="container-fluid my-5" style="min-height: 100vh;">
+  @for (rows of getRows(); track $index) {
+    <div class="row my-5">
+      @for (book of rows; track $index) {
+        <div class="col-lg-4">
+          <app-product-card [productDetail]="book" />
+        </div>
+      }
+    </div>
+  }
+
+  <div class="row">
+    <div class="col-lg-12">
+      
+    </div>
+  </div>
+</div>
