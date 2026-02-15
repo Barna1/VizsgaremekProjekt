@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-order-page',
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './order-page.html',
   styleUrl: './order-page.css',
 })
