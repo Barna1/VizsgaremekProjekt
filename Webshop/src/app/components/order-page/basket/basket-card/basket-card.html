@@ -1,1 +1,35 @@
-<p>basket-card works!</p>
+<div class="container-fluid my-5">
+  <div class="row">
+    <div class="col-lg-2 d-flex justify-content-center align-items-center">
+      <img src="assets/heroImg.jpg" alt="">
+    </div>
+    <div class="col-lg-7 d-flex flex-column justify-content-center align-items-start">
+      <h2 class="m-0">{{book().basketBook.title}}</h2>
+      <h4 class="m-0">Rövid leírás</h4>
+    </div>
+    <div class="col-lg-3">
+      <div class="container-fluid d-flex flex-column align-items-end justify-content-center">
+        <div class="row mb-2">
+          <div class="col-lg-12 d-flex justify-content-center align-items-center">
+            <button class="iconButton" (click)="changeAmountOfProduct(-1)">
+              <span class="material-symbols-outlined">remove</span>
+            </button>
+            <span id="amountSpan" class="mx-3">{{book().amount}} db</span>
+            <button class="iconButton" (click)="changeAmountOfProduct(1)">
+              <span class="material-symbols-outlined">add</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mt-1">
+          <div class="col-lg-12 d-flex">
+            <button id="watchButton" class="mx-3">Megtekintés</button>
+            <button class="iconButton">
+              <span class="material-symbols-outlined">delete</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
