@@ -1,1 +1,22 @@
-<p>basket works!</p>
+<div class="container-fluid" id="mainContainer">
+  <div class="row h-100">
+    <div class="col-lg-12 h-100 d-flex justify-content-center align-items-center">
+      <div class="container-fluid" id="secondContainer">
+        <div class="row">
+          <div class="col-lg-12 px-5">
+            <h1 class="text-center text-white mt-3">Kosaram:</h1>
+            @for (book of basket.productList; track $index) {
+              <app-basket-card [book]="book" [basketId]="basket.id!" (delete)="deleteProductFromBasket($event)"/>
+            }
+            <h1 class="text-white">Végösszeg:</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 px-5 d-flex justify-content-end">
+            <button id="continueButton" routerLink="/orderPage/transportDetails">Tovább</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
