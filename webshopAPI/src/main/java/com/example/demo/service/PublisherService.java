@@ -43,4 +43,17 @@ public class PublisherService {
             return ResponseEntity.internalServerError().build();
         }
     }
+    public ResponseEntity<Object> getPublisherById(Integer id) {
+        try {
+            Publisher searchedPublisher = publisherRepository.findById(id).orElse(null);
+            if (searchedPublisher == null || searchedPublisher.getIsDeleted()) {
+                return ResponseEntity.notFound().build();
+            } else {
+                return ResponseEntity.ok(searchedPublisher);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().build();
+        }
+    }
 }

@@ -20,4 +20,8 @@ public class PublisherController {
     private ResponseEntity<Object> deletePublisherById(@PathVariable("id") Integer id) {
         return publisherService.deletePublisherById(id);
     }
+    @GetMapping("/{id}")
+    private ResponseEntity<Object> getPublisherById(@PathVariable("id") Integer id) {
+        return publisherService.getPublisherById(id);
+    }
 }
