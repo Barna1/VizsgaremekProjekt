@@ -30,3 +30,5 @@ export class BasketPage implements OnInit {
 
   }
 }
+
+export { Basket };
