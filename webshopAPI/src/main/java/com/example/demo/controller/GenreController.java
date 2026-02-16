@@ -28,4 +28,8 @@ public class GenreController {
     private ResponseEntity<Object> deleteGenre(@PathVariable("id") Integer id) {
         return genreService.deleteGenre(id);
     }
+    @GetMapping("/{id}")
+    private ResponseEntity<Object> getGenreById(@PathVariable("id") Integer id) {
+        return genreService.getGenreById(id);
+    }
 }

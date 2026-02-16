@@ -71,4 +71,17 @@ public class GenreService {
             return ResponseEntity.internalServerError().build();
         }
     }
+    public ResponseEntity<Object> getGenreById(Integer id) {
+        try {
+            Genre searchedGenre = genreRepository.findById(id).orElse(null);
+            if (searchedGenre == null || searchedGenre.getIsDeleted()) {
+                return ResponseEntity.notFound().build();
+            } else {
+                return ResponseEntity.ok(searchedGenre);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().build();
+        }
+    }
 }
