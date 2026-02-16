@@ -1,1 +1,87 @@
-<p>order-history-details-pop-up works!</p>
+<div class="container-fluid" id="mainContainer">
+  <div class="row h-100">
+    <div class="col-lg-12 h-100 d-flex justify-content-center align-items-center">
+      <div class="container-fluid" id="secondContainer">
+        <div class="row">
+          <div class="col-lg-5">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-lg-12">
+                  <h1 class="text-center">Adatok</h1>
+                  <ul>
+                    <li>Név:</li>
+                    <li>E-mail:</li>
+                    <li>Telefonszám:</li>
+                    <li>
+                      Szállitási adatok:
+                      <ul>
+                        <li>Cím:</li>
+                        <li>Megjegyzés:</li>
+                      </ul>
+                    </li>
+                    <li>
+                      Számlázási adatok:
+                      <ul>
+                        <li>Cim:</li>
+                        <li>Megjegyzés:</li>
+                        @if (historyDetail().historyBillingDetail.companyName != null) {
+                          <li>Cég:</li>
+                          <li>Adó szám:</li>
+                        }
+                      </ul>
+                    </li>
+                    <li>Rendelve ekkor: </li>
+                    @if (historyDetail().isCanceled) {
+                      <li>Lemondva ekkor:</li>
+                    }
+                  </ul>
+                  <button [disabled]="historyDetail().isCanceled">Rendelés lemondva</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-7">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-lg-12">
+                  <h1 class="text-center">Rendelt termékek</h1>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-12">
+                  @for (orderedProduct of historyDetail().orderHistoryProductList; track $index) {
+                    <div class="container-fluid orderedProductCard h-100">
+                      <div class="row">
+                        <div class="col-lg-2 d-flex justify-content-center align-items-center">
+                          <img src="assets/heroImg.jpg" alt="">
+                        </div>
+                        <div class="col-lg-10">
+                          <div class="container-fluid">
+                            <div class="row">
+                              <div class="col-lg-8">
+                                <h2>{{orderedProduct.orderHistoryBook.title}}</h2>
+                                <h5>Rovid leiras</h5>
+                              </div>
+                              <div class="col-lg-4">
+                                <h2>{{orderedProduct.amount}} db</h2>
+                                <h2>{{orderedProduct.amount * orderedProduct.orderHistoryBook.price}} Ft</h2>
+                                <button>Megtekintés</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
