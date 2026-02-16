@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
+import { PublisherService } from '../../services/publisher-service';
+import { Publisher } from '../../models/publisher.model';
 
 @Component({
   selector: 'app-publisher-list',
@@ -6,6 +8,14 @@ import { Component } from '@angular/core';
   templateUrl: './publisher-list.html',
   styleUrl: './publisher-list.css',
 })
-export class PublisherList {
+export class PublisherList implements OnInit{
+  publisherService = inject(PublisherService)
+  publishers: Publisher[] = []
+
+  ngOnInit(): void {
+    this.publisherService.getAllPublisher().subscribe({
+      next: response => this.publishers = response
+    })
+  }
 
 }
