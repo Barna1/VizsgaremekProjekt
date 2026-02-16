@@ -1,1 +1,24 @@
-<p>order-history-card works!</p>
+<div class="container-fluid my-4 cardContainer d-flex flex-column justify-content-between">
+  <div class="row mt-3">
+    <div class="col-lg-12">
+      <h3 class="text-start text-white number mb-0">#{{historyDetails().id}}</h3>
+    </div>
+  </div>
+
+  <div class="row mb-4">
+    <div class="col-lg-12">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-8 d-flex flex-column justify-content-end align-items-start">
+            <h4 class="mb-0 text-white text">{{historyDetails().firstName}} {{historyDetails().lastName}}</h4>
+            <h6 class="mb-0 text-white number">{{historyDetails().orderedAt | date}}</h6>
+          </div>
+          <div class="col-lg-4 d-flex flex-column justify-content-end align-items-end">
+            <h5 class="number text-white">{{sumPrice}} Ft</h5>
+            <button (click)="showDetails.emit(historyDetails())">Részletek</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
