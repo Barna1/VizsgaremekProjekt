@@ -1,0 +1,12 @@
+button {
+  background-color: #B0A695;
+  border: none;
+  border-radius: 8px;
+  height: 60px;
+}
+
+app-popup {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
