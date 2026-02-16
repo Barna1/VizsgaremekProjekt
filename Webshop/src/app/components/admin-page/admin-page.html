@@ -1,1 +1,23 @@
-<p>admin-page works!</p>
+<div class="container-fluid d-flex flex-column justify-content-center align-items-center" style="height: 100vh;">
+  <div class="row w-100">
+    <div class="col-lg-12">
+      <button class="w-100 text-white my-2" routerLink="/orderHistory">Rendelések megtekintése</button>
+    </div>
+  </div>
+
+  <div class="row w-100">
+    <div class="col-lg-4 my-2">
+      <button class="w-100 text-white" (click)="showPopup('genre')">Műfajok kezelése</button>
+    </div>
+    <div class="col-lg-4 my-2">
+      <button class="w-100 text-white" (click)="showPopup('publisher')">Kiadók kezelése</button>
+    </div>
+    <div class="col-lg-4 my-2">
+      <button class="w-100 text-white" (click)="showPopup('book')">Termékek kezelése</button>
+    </div>
+  </div>
+</div>
+
+@if (isShowPopUp) {
+ <!-- <app-popup [selectedType]="selectedType" (close)="isShowPopUp = false"/>-->
+}
