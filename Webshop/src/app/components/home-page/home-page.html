@@ -13,7 +13,7 @@
                 <div class="row">
                     @for (book of successfullyBooks; track $index) {
                         <div class="col-lg-4">
-                            <app-product-card []="book" />
+                            <app-product-card [productDetail]="book" />
                         </div>
                     }
                 </div>

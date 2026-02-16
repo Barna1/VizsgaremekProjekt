@@ -5,7 +5,7 @@ import { Review } from '../../../models/review.model';
   selector: 'app-review-card',
   imports: [],
   templateUrl: './review-card.html',
-  styleUrl: './review-card.scss',
+  styleUrl: './review-card.css',
 })
 export class ReviewCard {
   reviewDetail = input.required<Review>()
