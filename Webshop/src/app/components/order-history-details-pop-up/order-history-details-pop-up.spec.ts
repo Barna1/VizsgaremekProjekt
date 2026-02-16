@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OrderHistoryPopUp } from './order-history-pop-up';
+import { OrderHistoryDetailsPopUp } from './order-history-details-pop-up';
 
-describe('OrderHistoryPopUp', () => {
-  let component: OrderHistoryPopUp;
-  let fixture: ComponentFixture<OrderHistoryPopUp>;
+describe('OrderHistoryDetailsPopUp', () => {
+  let component: OrderHistoryDetailsPopUp;
+  let fixture: ComponentFixture<OrderHistoryDetailsPopUp>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [OrderHistoryPopUp]
+      imports: [OrderHistoryDetailsPopUp]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(OrderHistoryPopUp);
+    fixture = TestBed.createComponent(OrderHistoryDetailsPopUp);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });
