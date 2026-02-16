@@ -82,24 +82,6 @@ public class OrderService {
             return ResponseEntity.internalServerError().build();
         }
     }
-    public ResponseEntity<Object> getOrderHistoryByVCode(String email, String vCode) {
-        try {
-            if (email == null || vCode == null) {
-                return ResponseEntity.status(422).build();
-            }
-
-            List<OrderHistory> histories = orderHistoryRepository.getOrderHistoriesByEmail(email);
-            for (int i = 0; i < histories.size(); i++) {
-                if (passwordEncoder.matches(vCode, histories.get(i).getCancelerVCode())) {
-                    return ResponseEntity.ok().body(histories.get(i));
-                }
-            }
-            return ResponseEntity.notFound().build();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.internalServerError().build();
-        }
-    }
     public ResponseEntity<Object> getAllOrder() {
         try {
             return ResponseEntity.ok().body(orderHistoryRepository.findAll());
