@@ -1,1 +1,14 @@
-<p>order-history-page works!</p>
+<div class="container-fluid" style="height: 100vh;">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="text-center">Rendelések</h1>
+      @for (orderHistory of orderHistories; track $index) {
+        <app-order-history-card [historyDetails]="orderHistory" (showDetails)="selectedOrderHistory = $event"/>
+      }
+    </div>
+  </div>
+</div>
+
+@if (selectedOrderHistory != null) {
+  <app-order-history-details-pop-up [historyDetail]="selectedOrderHistory!"/>
+}
