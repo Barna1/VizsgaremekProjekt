@@ -8,6 +8,7 @@ import { Genre } from '../models/genre.model';
 })
 export class GenreService {
   private http = inject(HttpClient)
+  getGenreById: any;
 
   getAllGenre(): Observable<Genre[]> {
     return this.http.get<Genre[]>("")

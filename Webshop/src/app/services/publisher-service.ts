@@ -8,6 +8,9 @@ import { Publisher } from "../models/publisher.model";
 })
 
 export class PublisherService {
+    getPublisherById(arg0: number) {
+      throw new Error('Method not implemented.');
+    }
     baseUrl ="http://localhost:8080/publisher"
     http = inject(HttpClient)
 
