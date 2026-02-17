@@ -17,4 +17,9 @@ export class PublisherService {
     getAllPublisher(): Observable<Publisher[]> {
         return this.http.get<Publisher[]>(this.baseUrl)
     }
+
+    deletePublisher(id: number) {
+    return this.http.delete(`${this.baseUrl}/${id}`)
+  
+    }
 }
