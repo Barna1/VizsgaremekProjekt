@@ -43,7 +43,7 @@ export class ObjectEditor implements OnInit{
       })
     } else if (this.selectedType() == "genre") {
       this.genreService.getGenreById(this.id()).subscribe({
-        next: (response: Genre | Book | Publisher) => {
+        next: (response: Book | Publisher | Genre) => {
           this.selectedObject = response
         },
         complete: () => {

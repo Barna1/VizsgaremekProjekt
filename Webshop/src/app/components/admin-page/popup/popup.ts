@@ -12,7 +12,7 @@ import { ListCard } from './list-card/list-card';
   selector: 'app-popup',
   imports: [ObjectEditor, ListCard],
   templateUrl: './popup.html',
-  styleUrl: './popup.scss',
+  styleUrl: './popup.css',
 })
 
 export class Popup implements OnInit {

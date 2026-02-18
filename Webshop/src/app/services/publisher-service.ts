@@ -1,25 +1,24 @@
-import { HttpClient } from "@angular/common/http";
-import { inject, Injectable } from "@angular/core";
-import { Observable } from "rxjs";
-import { Publisher } from "../models/publisher.model";
+import { HttpClient } from '@angular/common/http';
+import { inject, Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Publisher } from '../models/publisher.model';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class PublisherService {
-    getPublisherById(arg0: number) {
-      throw new Error('Method not implemented.');
-    }
-    baseUrl ="http://localhost:8080/publisher"
-    http = inject(HttpClient)
+  http = inject(HttpClient)
+  baseUrl = "http://localhost:8080/publisher"
 
-    getAllPublisher(): Observable<Publisher[]> {
-        return this.http.get<Publisher[]>(this.baseUrl)
-    }
+  getAllPublisher(): Observable<Publisher[]> {
+    return this.http.get<Publisher[]>(this.baseUrl)
+  }
 
-    deletePublisher(id: number) {
+  getPublisherById(id: number): Observable<Publisher> {
+    return this.http.get<Publisher>(`${this.baseUrl}/${id}`)
+  }
+
+  deletePublisher(id: number) {
     return this.http.delete(`${this.baseUrl}/${id}`)
-  
-    }
+  }
 }
