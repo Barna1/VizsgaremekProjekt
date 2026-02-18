@@ -14,8 +14,13 @@ import { PublisherList } from './components/publisher-list/publisher-list';
 import { Register } from './components/register/register';
 import { Unauthorized } from './components/unauthorized/unauthorized';
 import { UserPage } from './components/user-page/user-page';
+import { BasketPage } from './components/order-page/basket/basket';
+import { OrderHistoryPage } from './components/admin-page/order-history-page/order-history-page';
+import { AdminAuthGuard } from './routeGuards/admin-auth-guard';
+import { AuthenticationGuard } from './routeGuards/auth-guard';
 
-export const routes: Routes = [{ path: "homePage", component: HomePage, },
+export const routes: Routes = [
+  { path: "homePage", component: HomePage, },
   { path: "", pathMatch: "full", redirectTo: "homePage" },
   { path: "productDetail/:id", component: ProductDetail },
   { path: "productList", component: ProductList },
@@ -23,15 +28,17 @@ export const routes: Routes = [{ path: "homePage", component: HomePage, },
   { path: "login", component: Login },
   { path: "register", component: Register },
   { path: "passwordReset", component: PasswordReset },
-  { path: "userPage", component: UserPage, canMatch: [] },
-  { path: "adminPage", component: AdminPage, canMatch: [] },
+  { path: "userPage", component: UserPage, canMatch: [AuthenticationGuard] },
+  { path: "adminPage", component: AdminPage, canMatch: [AdminAuthGuard] },
+  { path: "orderHistory", component: OrderHistoryPage, canMatch: [AdminAuthGuard] },
   {
-    path: "orderPage", component: OrderPage, canMatch: [], children: [
-      
+    path: "orderPage", component: OrderPage, canMatch: [AuthenticationGuard], children: [
+      { path: "basket", component: BasketPage },
       { path: "transportDetails", component: TransportDetailsPage },
       { path: "billingDetails", component: BillingDetailsPage },
       { path: "summary", component: OrderSummaryPage }
     ]
   },
   { path: "unauthorized", component: Unauthorized },
-  { path: "**", component: NotFound }];
+  { path: "**", component: NotFound }
+];

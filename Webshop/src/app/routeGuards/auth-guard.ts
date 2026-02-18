@@ -6,7 +6,7 @@ import { CanMatch, RedirectCommand, Route, Router, UrlSegment } from "@angular/r
     providedIn: "root"
 })
 
-export class AuthGuard implements CanMatch {
+export class AuthenticationGuard implements CanMatch {
     userService = inject(UserService)
     router = inject(Router)
 
