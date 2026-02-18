@@ -10,8 +10,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.ConstraintViolationException;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Date;
@@ -63,6 +66,7 @@ public class UserService {
             } else {
                 newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
                 newUser.setBasket(new Basket());
+                newUser.setPfpPath("http://localhost:8080/pfp/standardpfp.png");
                 userRepository.save(newUser);
 
                 try {
@@ -182,6 +186,37 @@ public class UserService {
                 searchedUser.setPassword(passwordEncoder.encode(newPassword));
                 userRepository.save(searchedUser);
                 return ResponseEntity.ok().build();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+
+    public ResponseEntity<Object> changePfp(MultipartFile newPfpImage, Integer id) {
+        try {
+            if (id == null || newPfpImage == null) {
+                return ResponseEntity.status(422).build();
+            }
+
+            User searchedUser = userRepository.getUserById(id).orElse(null);
+
+            if (searchedUser == null || searchedUser.getIsDeleted()) {
+                return ResponseEntity.notFound().build();
+            } else {
+                String filePath = "images/pfp" + File.separator + searchedUser.getId() + newPfpImage.getOriginalFilename();
+
+                try {
+                    FileOutputStream fout = new FileOutputStream(filePath);
+                    fout.write(newPfpImage.getBytes());
+                    fout.close();
+
+                    searchedUser.setPfpPath("http://localhost:8080/pfp/" + searchedUser.getId() + newPfpImage.getOriginalFilename());
+                } catch (Exception e) {
+                    return ResponseEntity.internalServerError().body("fileUploadError");
+                }
+
+                return ResponseEntity.ok().body(userRepository.save(searchedUser));
             }
         } catch (Exception e) {
             e.printStackTrace();

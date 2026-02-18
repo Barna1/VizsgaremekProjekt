@@ -5,6 +5,7 @@ import com.example.demo.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import tools.jackson.databind.JsonNode;
 
 @RestController
@@ -42,5 +43,9 @@ public class UserController {
     @PatchMapping("/password")
     private ResponseEntity<Object> changePassword(@RequestBody JsonNode requestBody) {
         return userService.changePassword(requestBody.get("email").asText(null), requestBody.get("newPassword").asText(null));
+    }
+    @PatchMapping("/pfp/{id}")
+    private ResponseEntity<Object> changePfp(@RequestParam("pfpFile") MultipartFile newPfpImage, @PathVariable("id") Integer id) {
+        return userService.changePfp(newPfpImage, id);
     }
 }
