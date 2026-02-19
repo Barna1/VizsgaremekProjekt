@@ -7,8 +7,9 @@ import { OrderHistory } from '../models/order-history.model';
   providedIn: 'root',
 })
 export class OrderService {
-  private baseUrl = 'http://localhost:8080/order';
-  private http = inject(HttpClient);
+  baseUrl = 'http://localhost:8080/order'
+  http = inject(HttpClient)
+  actualOrder: OrderHistory = new OrderHistory() 
 
   getOrderHistoryById(userId: number): Observable<OrderHistory[]> {
     return this.http.get<OrderHistory[]>(`${this.baseUrl}/user/${userId}`);

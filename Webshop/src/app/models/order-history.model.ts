@@ -7,19 +7,19 @@ import { User } from "./user.model";
 
 export class OrderHistory {
   constructor(
-    public id: number,
-    public firstName: string,
-    public lastName: string,
-    public phone: string,
-    public email: string,
-    public orderedAt: Date,
-    public isCanceled: Boolean,
-    public historyBillingDetail: BillingDetail,
-    public historyTransportDetail: TransportDetail,
-    public ordererUser: User | null,
-    public paymentMethod: PaymentMethod,
-    public status: Status,
-    public cancelerUser: User | null,
-    public orderHistoryProductList: OrderHistoryProduct[]
+    public id: number | null = null,
+    public firstName?: string,
+    public lastName?: string,
+    public phone?: string,
+    public email?: string,
+    public orderedAt?: Date,
+    public isCanceled?: Boolean,
+    public historyBillingDetail?: BillingDetail,
+    public historyTransportDetail?: TransportDetail,
+    public ordererUser?: User,
+    public paymentMethod?: PaymentMethod,
+    public status?: Status,
+    public cancelerUser?: User | null,
+    public orderHistoryProductList?: OrderHistoryProduct[]
   ) { }
 }
