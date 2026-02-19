@@ -1,0 +1,17 @@
+.container-fluid {
+  background-color: #B0A695;
+  height: 75px;
+  border-radius: 8px;
+}
+
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 35px;
+  width: 35px;
+  border: none;
+  background-color: #776B5D;
+  color: white;
+  border-radius: 5px;
+}
