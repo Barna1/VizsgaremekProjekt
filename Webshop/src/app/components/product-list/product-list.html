@@ -10,8 +10,20 @@
   }
 
   <div class="row">
-    <div class="col-lg-12">
-      
+    <div class="col-lg-12 d-flex justify-content-center align-items-center">
+      <button class="iconButton" (click)="changePageWithArrows(false)">
+        <span class="material-symbols-outlined">keyboard_arrow_left</span>
+      </button>
+      <select #pageSelect (change)="pageNumber = +pageSelect.value; getBookPage()">
+        @for (page of availablePages; track $index) {
+          <option [value]="$index" [selected]="$index == pageNumber">{{page}}</option>
+        } @empty {
+          <option value="0">1</option>
+        }
+      </select>
+      <button class="iconButton" (click)="changePageWithArrows(true)">
+        <span class="material-symbols-outlined">keyboard_arrow_right</span>
+      </button>
     </div>
   </div>
 </div>

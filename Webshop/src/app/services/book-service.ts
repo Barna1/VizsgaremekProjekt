@@ -26,9 +26,9 @@ export class BookService {
     return this.http.get<Book[]>(`${this.baseUrl}/successfully`);
   }
 
-  getBooksPage(page: number, sortType: string, isAsc: boolean): Observable<Book[]> {
-    return this.http.get<Book[]>(
-      `${this.baseUrl}?page=${page}&size=9&sort=${sortType},${isAsc ? 'asc' : 'desc'}`,
+  getBooksPage(page: number, sortType: string, isAsc: boolean) {
+    return this.http.get(
+      `${this.baseUrl}?page=${page}&size=9&sort=${sortType},${isAsc ? 'asc' : 'desc'}`, {observe: "response"}
     );
   }
 

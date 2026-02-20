@@ -16,6 +16,7 @@ export class ProductList implements OnInit{
   isAsc: boolean = false
   sortType: string = "id"
   isError: boolean = false
+  availablePages: number[] = []
 
   ngOnInit(): void {
     this.getBookPage()
@@ -23,7 +24,11 @@ export class ProductList implements OnInit{
 
   getBookPage() {
     this.bookService.getBooksPage(this.pageNumber, this.sortType, this.isAsc).subscribe({
-      next: response => this.bookList = response,
+      next: response => {
+        this.bookList = response.body as Book[]
+        const pageNumber: number = +response.headers.get("totalpage")!
+        this.availablePages = Array(pageNumber).fill(1).map((x,i)=>i+1)
+      },
       error: error => this.isError = true
     })
   }
@@ -41,5 +46,12 @@ export class ProductList implements OnInit{
     }
 
     return rows;
+  }
+
+  changePageWithArrows(isForward: boolean) {
+    if ((this.pageNumber - 1 >= 0 && !isForward) || (this.pageNumber + 1 < this.availablePages.length && isForward)) {
+      this.pageNumber += isForward ? 1 : -1;
+      this.getBookPage()
+    }
   }
 }
