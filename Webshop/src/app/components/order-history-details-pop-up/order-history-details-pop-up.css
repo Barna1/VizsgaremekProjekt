@@ -13,11 +13,30 @@
 
 .orderedProductCard {
   background-color: #B0A695;
-  height: 150px;
+  height: 150px !important;
   border-radius: 8px;
 }
 
 img {
   height: 100px;
   width: 100px;
+}
+
+.textLi {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.iconButton {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-color: #776B5D;
+  color: white;
+  border-radius: 5px;
 }
