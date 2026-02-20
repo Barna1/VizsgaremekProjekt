@@ -1,0 +1,10 @@
+#mainContainer {
+  height: 100vh;
+}
+
+#secondContainer {
+  height: 750px;
+  width: 800px;
+  background-color: #B0A695;
+  border-radius: 12px;
+}

@@ -12,6 +12,7 @@ export class BasketService {
     private baseUrl = "http://localhost:8080/basket"
     private http = inject(HttpClient)
     offlineBasket: Basket = new Basket(null, 0, [])
+    usersBasket!: Basket
 
     getBasketByUserId(userId: number): Observable<Basket> {
         return this.http.get<Basket>(`${this.baseUrl}/user/${userId}`)
