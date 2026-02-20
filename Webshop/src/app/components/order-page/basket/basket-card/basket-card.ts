@@ -1,8 +1,8 @@
 import { Component, inject, input, output } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { Book } from '../../../../models/book.model';
 import { BasketService } from '../../../../services/basket-service';
 import { BasketProduct } from '../../../../models/basket-product.model';
+import { UserService } from '../../../../services/user-service';
 
 @Component({
   selector: 'app-basket-card',
@@ -12,23 +12,26 @@ import { BasketProduct } from '../../../../models/basket-product.model';
 })
 export class BasketCard {
   book = input.required<BasketProduct>()
-  basketId = input.required<number>()
   basketService = inject(BasketService)
-  delete = output<number>()
+  userService = inject(UserService)
   changeAmount = output<number>()
 
   changeAmountOfProduct(plusValue: 1 | -1) {
-    this.basketService.changeAmountOfProduct(this.basketId(), {productId: this.book().id, amount: this.book().amount + plusValue}).subscribe({
+    this.basketService.changeAmountOfProduct(this.userService.loggedUser?.id!, {productId: this.book().id, amount: this.book().amount + plusValue}).subscribe({
       next: response => {
-        this.changeAmount.emit(this.book().amount + plusValue)
+        if (this.book().amount + plusValue === 0) {
+          this.basketService.usersBasket.productList = this.basketService.usersBasket.productList?.filter((bp) => bp.id != this.book().id)
+        } else {
+          this.changeAmount.emit(this.book().amount + plusValue)
+        }
       }
     })
   }
 
-  deleteProductFromBasket(id: number) {
-    this.basketService.deleteProduct(id, this.basketId()).subscribe({
+  deleteProductFromBasket() {
+    this.basketService.deleteProduct(this.book().id, this.userService.loggedUser?.id!).subscribe({
       next: response => {
-        this.delete.emit(id)
+        this.basketService.usersBasket.productList = this.basketService.usersBasket.productList?.filter((bp) => bp.id != this.book().id)
       }
     })
   }

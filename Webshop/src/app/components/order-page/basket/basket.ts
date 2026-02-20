@@ -18,17 +18,19 @@ export class BasketPage implements OnInit {
 
   ngOnInit(): void {
     this.basketService.getBasketByUserId(11).subscribe({
-      next: response => this.basket = response,
+      next: response => {
+        this.basketService.usersBasket = response
+      },
     })
   }
 
-  changeAmount(newAmount: number) {
-
+  changeAmount(newAmount: number, index: number) {
+    const searchedProduct = this.basketService.usersBasket.productList![index]
+    searchedProduct.amount = newAmount
+    this.basketService.usersBasket.productList![index] = searchedProduct
   }
 
-  deleteProductFromBasket(id: number) {
+  clearBasket() {
 
   }
 }
-
-export { Basket };
