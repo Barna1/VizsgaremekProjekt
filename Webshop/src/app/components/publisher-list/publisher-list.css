@@ -1,0 +1,13 @@
+.itemCard {
+  height: 150px;
+  width: 1200px;
+  background-color: #776B5D;
+  border-radius: 12px;
+}
+
+#publisherContainer {
+  width: 1700px;
+  height: 800px;
+  background-color: #B0A695;
+  border-radius: 12px;
+}
