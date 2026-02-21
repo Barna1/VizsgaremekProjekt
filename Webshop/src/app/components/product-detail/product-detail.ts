@@ -44,5 +44,4 @@ export class ProductDetail implements OnInit{
 
   }
 
-
 }
