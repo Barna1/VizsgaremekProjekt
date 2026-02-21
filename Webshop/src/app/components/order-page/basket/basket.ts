@@ -14,7 +14,6 @@ import { RouterModule } from '@angular/router';
 export class BasketPage implements OnInit {
   basketService = inject(BasketService)
   userService = inject(UserService)
-  basket!: Basket
 
   ngOnInit(): void {
     this.basketService.getBasketByUserId(11).subscribe({
