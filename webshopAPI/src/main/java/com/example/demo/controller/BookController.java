@@ -37,4 +37,8 @@ public class BookController {
     private ResponseEntity<Object> addBook(@RequestBody Book newBook) {
         return bookService.addBook(newBook);
     }
+    @GetMapping("/successfully")
+    private ResponseEntity<Object> getMostSuccessfullyBooks() {
+        return bookService.getMostSuccessfullyBooks();
+    }
 }

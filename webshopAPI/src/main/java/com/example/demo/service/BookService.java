@@ -144,6 +144,14 @@ public class BookService {
             return ResponseEntity.internalServerError().build();
         }
     }
+    public ResponseEntity<Object> getMostSuccessfullyBooks() {
+        try {
+            return ResponseEntity.ok().body(bookRepository.getMostSuccessfullyBooks());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().build();
+        }
+    }
 
 
     public Boolean isIsbnValid(String isbnNumber, Integer publisherIsbnSign) {
