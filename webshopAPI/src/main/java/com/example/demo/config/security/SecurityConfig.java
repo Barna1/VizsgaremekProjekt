@@ -87,7 +87,7 @@ public class SecurityConfig {
                         .requestMatchers("/user/login", "/user/register").permitAll()
                         .requestMatchers(HttpMethod.PUT, "/user/*").authenticated()
                         .requestMatchers(HttpMethod.DELETE, "/user/*").authenticated()
-                        .requestMatchers("user/pfp/*").authenticated()
+                        .requestMatchers("/user/pfp/*").authenticated()
                         .requestMatchers("/user/vCode", "/user/check", "/password").permitAll()
                 )
                 .addFilterAfter(jwtGeneratorFilter, BasicAuthenticationFilter.class)

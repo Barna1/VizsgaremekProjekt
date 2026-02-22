@@ -116,13 +116,14 @@ public class OrderService {
                 return ResponseEntity.status(415).body("invalidObject");
             } else if (!isEmailValid(newOrder.getEmail().trim())) {
                 return ResponseEntity.status(415).body("invalidEmail");
-            } else if (!isPhoneValid(newOrder.getPhone())) {
-                return ResponseEntity.status(415).body("invalidPhone");
-            } else if (!isBillingDetailValid(newOrder.getHistoryBillingDetail())) {
-                return ResponseEntity.status(415).body("invalidBillingDetails");
-            } else if (!isTransportDetailValid(newOrder.getHistoryTransportDetail())) {
-                return ResponseEntity.status(415).body("invalidBillingDetails");
             }
+            //else if (!isPhoneValid(newOrder.getPhone())) {
+            //    return ResponseEntity.status(415).body("invalidPhone");
+            //} else if (!isBillingDetailValid(newOrder.getHistoryBillingDetail())) {
+            //    return ResponseEntity.status(415).body("invalidBillingDetails");
+            //} else if (!isTransportDetailValid(newOrder.getHistoryTransportDetail())) {
+            //    return ResponseEntity.status(415).body("invalidBillingDetails");
+            //}
 
             int sumPrice = 0;
             List<OrderHistoryProduct> orderedProductList = new ArrayList<>();
