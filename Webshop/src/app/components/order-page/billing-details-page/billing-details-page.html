@@ -20,9 +20,9 @@
         <div class="row">
           <div class="col-lg-3 my-2">
             <select class="form-select" formControlName="addressType">
-              <option value="" selected disabled>Közúti tipus kiválasztása</option>
+              <option value="null" selected disabled>Közúti tipus kiválasztása</option>
               @for (addressType of addressTypes; track $index) {
-                <option value="">{{addressType.name}}</option>
+                <option [value]="addressType.id">{{addressType.name}}</option>
               }
             </select>
           </div>
@@ -30,7 +30,7 @@
             <input type="text" class="form-control" placeholder="Cím" formControlName="address">
           </div>
           <div class="col-lg-3 my-2">
-            <input type="text" class="form-control" placeholder="Házszám" formControlName="houseNumbers">
+            <input type="text" class="form-control" placeholder="Házszám" formControlName="houseNumber">
           </div>
         </div>
 
@@ -38,7 +38,7 @@
           <div class="col-lg-12 my-2">
             <textarea class="form-control" style="height: 100px;" placeholder="Egyéb" formControlName="other"></textarea>
             <div class="my-2">
-              <input class="mx-1 form-check-input" type="checkbox" name="isCompany" id="isCompany" (change)="isCompany = !isCompany">
+              <input class="mx-1 form-check-input" type="checkbox" name="isCompany" id="isCompany" (change)="handleCompany()">
               <label for="isCompany">Cégként vásárolok</label>
             </div>
           </div>
@@ -68,7 +68,7 @@
           <div class="col-lg-12 d-flex justify-content-center align-items-center">
             @for (paymentMethod of paymentMethods; track $index) {
               <div class="mx-2">
-                <input type="radio" name="paymentMethod" [id]="paymentMethod.name" class="mx-1 form-check-input">
+                <input [checked]="paymentMethod.id === form.controls['paymentMethod'].value" type="radio" name="paymentMethod" [id]="paymentMethod.name" class="mx-1 form-check-input" (click)="setPaymentMethod(paymentMethod.id)">
                 <label [for]="paymentMethod.name">{{paymentMethod.name}}</label>
               </div>
             }

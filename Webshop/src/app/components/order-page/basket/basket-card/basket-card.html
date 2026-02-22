@@ -1,7 +1,7 @@
-<div class="container-fluid my-5">
+<div class="container-fluid mb-5">
   <div class="row">
     <div class="col-lg-2 d-flex justify-content-center align-items-center">
-      <img src="assets/heroImg.jpg" alt="">
+      <img src="" alt="">
     </div>
     <div class="col-lg-7 d-flex flex-column justify-content-center align-items-start">
       <h2 class="m-0">{{book().basketBook.title}}</h2>
@@ -23,8 +23,8 @@
 
         <div class="row mt-1">
           <div class="col-lg-12 d-flex">
-            <button id="watchButton" class="mx-3">Megtekintés</button>
-            <button class="iconButton">
+            <button id="watchButton" class="mx-3" routerLink="/productDetail/{{book().basketBook.id}}">Megtekintés</button>
+            <button class="iconButton" (click)="deleteProductFromBasket()">
               <span class="material-symbols-outlined">delete</span>
             </button>
           </div>

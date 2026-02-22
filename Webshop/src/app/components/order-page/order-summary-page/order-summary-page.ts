@@ -1,6 +1,9 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { OrderService } from '../../../services/order-service';
 import { BasketService } from '../../../services/basket-service';
+import { UserService } from '../../../services/user-service';
+import { Router } from '@angular/router';
+import { OrderHistory } from '../../../models/order-history.model';
 
 @Component({
   selector: 'app-order-summary-page',
@@ -11,6 +14,8 @@ import { BasketService } from '../../../services/basket-service';
 export class OrderSummaryPage implements OnInit{
   orderService = inject(OrderService)
   basketService = inject(BasketService)
+  userService = inject(UserService)
+  private router = inject(Router)
   transportAddress: string = ""
   billingAddress: string = ""
 
@@ -20,6 +25,12 @@ export class OrderSummaryPage implements OnInit{
   }
 
   sendOrder() {
-
+    this.orderService.actualOrder.ordererUser = this.userService.loggedUser!
+    this.orderService.sendOrder(this.basketService.usersBasket.id!).subscribe({
+      next: response => {
+        this.orderService.actualOrder = new OrderHistory()
+        this.router.navigate(["/homePage"])
+      }
+    })
   }
 }

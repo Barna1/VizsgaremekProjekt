@@ -22,7 +22,7 @@ export class BasketService {
         return this.http.delete(`${this.baseUrl}/book?basketProductId=${basketProductId}&basketId=${basketId}`)
     }
 
-    changeAmountOfProduct(basketId:number, body: {productId:number, amount:number}): Observable<BasketProduct> {
+    changeAmountOfProduct(basketId:number, body: {productId:number, newAmount:number}): Observable<BasketProduct> {
     return this.http.patch<BasketProduct>(`${this.baseUrl}/${basketId}`, body)
   }
 

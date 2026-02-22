@@ -27,7 +27,7 @@ export class OrderService {
     return this.http.get<OrderHistory[]>(`${this.baseUrl}`);
   }
 
-  sendOrder(newOrder: OrderHistory, basketId: number) {
-    return this.http.post('', newOrder);
+  sendOrder(basketId: number) {
+    return this.http.post(`${this.baseUrl}/${basketId}`, this.actualOrder)
   }
 }

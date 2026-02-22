@@ -11,23 +11,23 @@ import { BasketService } from '../../services/basket-service';
   styleUrl: './login.css',
 })
 export class Login implements OnInit {
-  router = inject(Router);
-  userService = inject(UserService);
-  basketService = inject(BasketService);
-  showError: boolean = false;
+  router = inject(Router)
+  userService = inject(UserService)
+  basketService = inject(BasketService)
+  showError: boolean = false
   loginForm!: FormGroup;
 
   ngOnInit(): void {
-      this.loginForm = new FormGroup({
-        username: new FormControl(" ", [Validators.required]),
-        password: new FormControl(" ", [Validators.required])
-      })
+    this.loginForm = new FormGroup({
+      username: new FormControl("", [Validators.required]),
+      password: new FormControl("", [Validators.required])
+    })
   }
 
   sendLoging() {
     this.userService.login(this.loginForm.controls["username"].value, this.loginForm.controls["password"].value).subscribe({
-      next: (response: any) => this.userService.loggedUser = response,
-      error: (error: any) => console.log(error),
+      next: response => this.userService.loggedUser = response,
+      error: error => console.log(error),
       complete: () => {
         this.router.navigate(["/homePage"])
       }
