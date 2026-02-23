@@ -33,6 +33,7 @@ button {
 
 input {
   height: 45px;
+  border-radius: 5px;
 }
 
 button:disabled {
