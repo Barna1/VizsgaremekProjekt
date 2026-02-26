@@ -13,7 +13,7 @@ export class Navbar {
   userService = inject(UserService)
 
   navigateUserButton() {
-    if(this.userService.loggedUser == null) {
+    if (this.userService.loggedUser == null) {
       this.router.navigate(["/login"])
     } else {
       this.router.navigate(["/userPage"])

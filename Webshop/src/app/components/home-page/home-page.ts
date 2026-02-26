@@ -13,13 +13,12 @@ export class HomePage implements OnInit {
   bookService = inject(BookService)
   successfullyBooks: Book[] = []
 
-
   ngOnInit(): void {
-      this.bookService.getMostSuccessFullyBooks().subscribe({
-        next: response => {
-          console.log(response);
-          this.successfullyBooks = response
-        }
-      })
+    this.bookService.getMostSuccessFullyBooks().subscribe({
+      next: response => {
+        console.log(response)
+        this.successfullyBooks = response
+      }
+    })
   }
 }

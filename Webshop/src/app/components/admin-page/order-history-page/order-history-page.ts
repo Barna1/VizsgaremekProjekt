@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { OrderService } from '../../../services/order-service';
-import { OrderHistory } from '../../../models/order-history.model';
 import { OrderHistoryDetailsPopUp } from '../../order-history-details-pop-up/order-history-details-pop-up';
+import { OrderHistory } from '../../../models/order-history.model';
 import { OrderHistoryCard } from '../../order-history-card/order-history-card';
 
 @Component({

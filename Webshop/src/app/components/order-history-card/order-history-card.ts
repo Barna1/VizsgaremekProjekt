@@ -14,10 +14,8 @@ export class OrderHistoryCard implements OnInit{
   showDetails = output<OrderHistory>()
 
   ngOnInit(): void {
-  const productList = this.historyDetails().orderHistoryProductList ?? [];
-
-  for (const product of productList) {
-    this.sumPrice += product.orderHistoryBook.price * product.amount;
+    for (let i: number = 0; i <this.historyDetails().orderHistoryProductList!.length; i++) {
+      this.sumPrice += (this.historyDetails().orderHistoryProductList![i].orderHistoryBook.price * this.historyDetails().orderHistoryProductList![i].amount)
+    }
   }
-}
 }
