@@ -1,6 +1,9 @@
 <form class="container-fluid" [formGroup]="editorForm">
   @if (selectedType() == "book") {
-
+    <div class="row">
+      <label for="genreName">Műfaj neve:</label>
+      <input type="text" class="form-control" placeholder="Műfaj neve">
+    </div>
   } @else if (selectedType() == "publisher") {
 
   } @else if (selectedType() == "genre") {
