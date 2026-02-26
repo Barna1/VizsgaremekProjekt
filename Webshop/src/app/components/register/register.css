@@ -39,3 +39,13 @@ input {
 button:disabled {
   opacity: 0.5;
 }
+
+.error-input {
+  border: 2px solid #dc3545;
+  outline: none;
+}
+
+.error-text {
+  color: #dc3545;
+  font-size: 0.9rem;
+}

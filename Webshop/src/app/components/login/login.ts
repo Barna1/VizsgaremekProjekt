@@ -3,10 +3,11 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Router, RouterModule } from '@angular/router';
 import { UserService } from '../../services/user-service';
 import { BasketService } from '../../services/basket-service';
+import { CommonModule, NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule, RouterModule],
+  imports: [ReactiveFormsModule, RouterModule, CommonModule],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })

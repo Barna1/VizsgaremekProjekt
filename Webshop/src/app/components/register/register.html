@@ -5,7 +5,7 @@
 
         <div class="row mt-4">
           <div class="col-lg-12">
-            <h2 class="text-lg-center">Bejelentkezés</h2>
+            <h2 class="text-lg-center">Regisztráció</h2>
           </div>
         </div>
 
@@ -15,25 +15,55 @@
               <div class="row">
                 <div class="col-lg-12">
                   <label class="fw-bold" for="username">Felhasználó név</label><br>
-                  <input id="username" formControlName="username" type="text" placeholder="Irja be a felhasználónevét" class="w-100">
+                  <input id="username" formControlName="username" type="text" placeholder="Írja be a felhasználónevét"
+                    class="w-100" [ngClass]="{
+                      'error-input': registerForm.get('username')?.invalid && registerForm.get('username')?.touched
+                       }">
+
+                  <small class="error-text"
+                    *ngIf="registerForm.get('username')?.invalid && registerForm.get('username')?.touched">
+                    A felhasználónév megadása kötelező.
+                  </small>
                 </div>
               </div>
               <div class="row">
                 <div class="col-lg-12">
-                  <label class="fw-bold" for="username">E-mail cím</label><br>
-                  <input id="username" formControlName="email" type="text" placeholder="Irja be a email címjét" class="w-100">
+                  <label class="fw-bold" for="email">E-mail cím</label><br>
+                  <input id="email" formControlName="email" type="text" placeholder="Írja be az E-mail címát"
+                    class="w-100" [ngClass]="{
+                      'error-input': registerForm.get('email')?.invalid && registerForm.get('email')?.touched
+                       }">
+
+                  <small class="error-text"
+                    *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+                    Érvénytelen E-mail formátum
+                  </small>
                 </div>
               </div>
               <div class="row mt-3">
                 <div class="col-lg-12">
                   <label class="fw-bold" for="password">Jelszó</label><br>
-                  <input id="password" formControlName="password" type="text" placeholder="Irja be a jelszavát" class="w-100">
+                  <input id="password" formControlName="password" type="password" placeholder="Írjon be a jelszavat"
+                    class="w-100" [ngClass]="{
+                          'error-input': registerForm.get('password')?.invalid && registerForm.get('password')?.touched
+                        }">
+
+                  <small class="error-text" *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+                    A jelszó megadása kötelező.
+                  </small>
                 </div>
               </div>
               <div class="row mt-3">
                 <div class="col-lg-12">
-                  <label class="fw-bold" for="password">Jelszó újra</label><br>
-                  <input id="password" formControlName="passwordAgain" type="text" placeholder="Irja be a jelszavát mégegyszer" class="w-100">
+                  <label class="fw-bold" for="password">Jelszó</label><br>
+                  <input id="passwordAgain" formControlName="passwordAgain" type="password" placeholder="Írja be mégegyszer a jelszavat"
+                    class="w-100" [ngClass]="{
+                          'error-input': registerForm.get('passwordAgain')?.invalid && registerForm.get('passwordAgain')?.touched
+                        }">
+
+                  <small class="error-text" *ngIf="registerForm.get('passwordAgain')?.invalid && registerForm.get('passwordAgain')?.touched">
+                    A két jelszó nem egyezzik
+                  </small>
                 </div>
               </div>
             </form>
@@ -43,9 +73,11 @@
 
         <div class="row mb-4">
           <div class="col-lg-12">
-            <p class="text-center mb-2">Van fiókod? <a routerLink="/login" class="fw-bold text-decoration-none" style="cursor: pointer;">Jelentkezz be!</a></p>
+            <p class="text-center mb-2">Van fiókod? <a routerLink="/login" class="fw-bold text-decoration-none"
+                style="cursor: pointer;">Jelentkezz be!</a></p>
             <div class="d-flex justify-content-center">
-               <button class="text-white" (click)="sendRegister()" [disabled]="registerForm.invalid">Regisztráció</button>
+              <button class="text-white" (click)="sendRegister()"
+                [disabled]="registerForm.invalid">Regisztráció</button>
             </div>
           </div>
         </div>

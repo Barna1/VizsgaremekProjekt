@@ -35,3 +35,13 @@ button {
 input {
   height: 45px;
 }
+
+.error-input {
+  border: 2px solid #dc3545;
+  outline: none;
+}
+
+.error-text {
+  color: #dc3545;
+  font-size: 0.9rem;
+}

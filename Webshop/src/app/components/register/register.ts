@@ -3,6 +3,7 @@ import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, Validator
 import { UserService } from '../../services/user-service';
 import { User } from '../../models/user.model';
 import { Router, RouterModule } from '@angular/router';
+import { CommonModule, NgClass } from '@angular/common';
 
 function validatePassword(control: AbstractControl): { [key: string]: any } | null {
   const password: string = control.value
@@ -32,7 +33,7 @@ function validatePassword(control: AbstractControl): { [key: string]: any } | nu
 
 @Component({
   selector: 'app-register',
-  imports: [ReactiveFormsModule, RouterModule],
+  imports: [ReactiveFormsModule, RouterModule, NgClass, CommonModule],
   templateUrl: './register.html',
   styleUrl: './register.css',
 })
