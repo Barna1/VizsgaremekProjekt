@@ -8,3 +8,14 @@
   background-color: #B0A695;
   border-radius: 12px;
 }
+
+button {
+  height: 45px;
+  width: 215px;
+  background-color: #EBE3D5;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 20px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
