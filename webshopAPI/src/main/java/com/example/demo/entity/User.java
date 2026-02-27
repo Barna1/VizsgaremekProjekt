@@ -85,20 +85,14 @@ public class User {
     private List<Review> writtenReviews;
 
     @JsonIgnore
-    @OneToMany(
-            mappedBy = "ordererUser",
-            cascade = {}
-    )
+    @OneToMany(mappedBy = "ordererUser")
     private List<OrderHistory> orderHistoryList;
 
     @JsonIgnore
-    @OneToMany(
-            mappedBy = "cancelerUser",
-            cascade = {}
-    )
+    @OneToMany(mappedBy = "cancelerUser")
     private List<OrderHistory> canceledOrderHistoryList;
 
-    @ManyToOne(cascade = {})
+    @ManyToOne
     @JoinColumn(name = "role_id")
     private Role role;
 }

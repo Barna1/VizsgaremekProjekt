@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,7 +30,7 @@ public class Review {
     @NotNull
     private Float rating;
 
-    @Column(name="is_anonymous")
+    @Column(name="is_anonymus")
     @NotNull
     private Boolean isAnonymous;
 
@@ -44,9 +45,10 @@ public class Review {
 
     @ManyToOne(cascade = {})
     @JoinColumn(name = "product_id")
+    @JsonIgnore
     private Book reviewedBook;
 
-    @ManyToOne(cascade = {})
+    @ManyToOne()
     @JoinColumn(name = "user_id")
     private User author;
 }

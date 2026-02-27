@@ -1,16 +1,16 @@
 package com.example.demo.controller;
 
 import com.example.demo.service.BasketService;
-import com.fasterxml.jackson.databind.JsonNode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import tools.jackson.databind.JsonNode;
 
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/basket")
 public class BasketController {
-    private final BasketService basketService;
+    private final com.example.demo.service.BasketService basketService;
 
     @GetMapping("/user/{id}")
     private ResponseEntity<Object> getBasketByUserId(@PathVariable("id") Integer userId) {

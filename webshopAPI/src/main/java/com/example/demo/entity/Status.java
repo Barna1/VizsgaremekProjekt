@@ -27,9 +27,6 @@ public class Status {
 
 
     @JsonIgnore
-    @OneToMany(
-            mappedBy = "status",
-            cascade = {}
-    )
+    @OneToMany(mappedBy = "status")
     private List<OrderHistory> orderHistoryList;
 }

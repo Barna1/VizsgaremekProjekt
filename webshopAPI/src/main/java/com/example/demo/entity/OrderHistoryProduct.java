@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,11 +25,12 @@ public class OrderHistoryProduct {
     private Integer amount;
 
 
-    @ManyToOne(cascade = {})
+    @ManyToOne
     @JoinColumn(name = "order_history_id")
+    @JsonIgnore
     private OrderHistory history;
 
-    @ManyToOne(cascade = {})
+    @ManyToOne
     @JoinColumn(name = "product_id")
     private Book orderHistoryBook;
 

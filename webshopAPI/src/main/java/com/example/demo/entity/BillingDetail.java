@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -55,5 +56,6 @@ public class BillingDetail {
     private AddressType billingDetailsAddressType;
 
     @OneToOne(mappedBy = "historyBillingDetail")
+    @JsonIgnore
     private OrderHistory history;
 }

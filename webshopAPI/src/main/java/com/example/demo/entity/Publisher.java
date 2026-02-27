@@ -49,10 +49,7 @@ public class Publisher {
     @JsonIgnore
     private Date deletedAt;
 
-
-    @OneToMany(
-            mappedBy = "publisher",
-            cascade = {}
-    )
+    @OneToMany(mappedBy = "publisher")
+    @JsonIgnore
     private List<Book> bookList;
 }

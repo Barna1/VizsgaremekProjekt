@@ -27,9 +27,6 @@ public class PaymentMethod {
 
 
     @JsonIgnore
-    @OneToMany(
-            mappedBy = "paymentMethod",
-            cascade = {}
-    )
+    @OneToMany(mappedBy = "paymentMethod")
     private List<OrderHistory> orderHistoryList;
 }

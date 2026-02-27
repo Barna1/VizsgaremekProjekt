@@ -65,14 +65,11 @@ public class Book {
     private Date deletedAt;
 
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = {}, mappedBy = "writtenBooks")
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "writtenBooks")
     private List<Author> authors;
 
     @JsonIgnore
-    @OneToMany(
-            mappedBy = "basketBook",
-            fetch = FetchType.LAZY,
-            cascade = {}
+    @OneToMany(mappedBy = "basketBook", fetch = FetchType.LAZY
     )
     private List<BasketProduct> basketProducts;
 
@@ -81,15 +78,13 @@ public class Book {
     private Publisher publisher;
 
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = {}, mappedBy = "bookList")
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "bookList")
     private List<Genre> genreList;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = {}, mappedBy = "reviewedBook")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "reviewedBook")
     private List<Review> reviewList;
 
-    @OneToMany(
-            mappedBy = "orderHistoryBook",
-            cascade = {}
-    )
+    @OneToMany(mappedBy = "orderHistoryBook")
+    @JsonIgnore
     private List<OrderHistoryProduct> orderHistoryProductList;
 }
