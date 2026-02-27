@@ -8,10 +8,14 @@ import { Genre } from '../models/genre.model';
 })
 export class GenreService {
   private http = inject(HttpClient)
-  getGenreById: any;
+  baseUrl: string = "http://localhost:8080/genre"
 
   getAllGenre(): Observable<Genre[]> {
     return this.http.get<Genre[]>("")
+  }
+
+  getGenreById(id: number): Observable<Genre> {
+    return this.http.get<Genre>(`${this.baseUrl}/${id}`)
   }
 
   addGenre(newGenre: Genre) {

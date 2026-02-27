@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { Popup } from './popup/popup';
 
 @Component({
   selector: 'app-admin-page',
-  imports: [RouterModule, ],
+  imports: [RouterModule, Popup],
   templateUrl: './admin-page.html',
   styleUrl: './admin-page.css',
 })

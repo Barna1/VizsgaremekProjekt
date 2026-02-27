@@ -8,6 +8,6 @@ import { Component, input, output } from '@angular/core';
 })
 export class ListCard {
   card = input.required<{id: number, name: string}>()
-  edit = output()
-  delete = output()
+  edit = output<number>()
+  delete = output<number>()
 }

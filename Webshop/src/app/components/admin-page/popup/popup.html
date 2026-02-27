@@ -19,21 +19,21 @@
         </div>
 
         <div class="row">
-          <div class="col-lg-12">
+          <div class="col-lg-12" style="overflow-y: auto; height: 480px;">
             @if (!showDelete && !showForm) {
               @for (card of cardList; track $index) {
-                <app-list-card [card]="{id: card.id, name: card.name}" (delete)="showDelete = true" (edit)="showForm = true"/>
+                <app-list-card [card]="{id: card.id, name: card.name}" (delete)="selectedIdForDelete = $event" (edit)="selectedIdForEdit = $event; showForm = true"/>
               }
             } @else if (showForm) {
-              <app-object-editor [id]="1" [selectedType]="selectedType()" />
-            } @else if (showDelete) {
+              <app-object-editor [id]="selectedIdForEdit" [selectedType]="selectedType()" />
+            } @else if (selectedIdForDelete != null) {
               <div class="container-fluid">
                 <div class="row">
                   <div class="col-lg-12">
                     <h4 class="text-center">Biztosan törölni szeretnéd a(z) </h4>
                     <div class="w-100 d-flex justify-content-center align-items-center">
-                      <button class="eventButton deleteButton mx-2 text-white">Igen</button>
-                      <button class="eventButton deleteButton mx-2 text-white">Nem</button>
+                      <button class="eventButton deleteButton mx-2 text-white" (click)="deleteObject()">Igen</button>
+                      <button class="eventButton deleteButton mx-2 text-white" (click)="selectedIdForDelete = null">Nem</button>
                     </div>
                   </div>
                 </div>
@@ -44,7 +44,7 @@
 
         <div class="row">
           <div class="col-lg-12 mb-3">
-            <button class="w-100 text-white eventButton">
+            <button class="w-100 text-white eventButton" (click)="selectedIdForEdit = null; showForm = true">
               Valami hozzáadása
             </button>
           </div>

@@ -43,4 +43,8 @@ export class BookService {
   deleteBook(id: number) {
     return this.http.delete("")
   }
+
+  getBooksWithoutPaginator(): Observable<Book[]> {
+    return this.http.get<Book[]>(this.baseUrl)
+  }
 }

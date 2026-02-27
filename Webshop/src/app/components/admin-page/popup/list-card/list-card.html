@@ -4,10 +4,10 @@
       <p class="m-0">{{card().name}}</p>
 
       <div class="d-flex justify-content-center align-items-center">
-        <button class="mx-1" (click)="edit.emit()">
+        <button class="mx-1" (click)="edit.emit(card().id)">
           <span class="material-symbols-outlined">edit</span>
         </button>
-        <button class="mx-1" (click)="delete.emit()">
+        <button class="mx-1" (click)="delete.emit(card().id)">
           <span class="material-symbols-outlined">delete</span>
         </button>
       </div>
