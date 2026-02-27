@@ -20,12 +20,12 @@ import java.sql.SQLIntegrityConstraintViolationException;
 
 @Service
 @RequiredArgsConstructor
-@Transactional(noRollbackFor = {DataIntegrityViolationException.class, ConstraintViolationException.class, SQLIntegrityConstraintViolationException.class, SQLException.class})
+@Transactional
 public class BasketService {
-    private final UserRepository userRepository;
     private final BasketRepository basketRepository;
-    private final BasketProductRepository basketProductRepository;
     private final BookRepository bookRepository;
+    private final UserRepository userRepository;
+    private final BasketProductRepository basketProductRepository;
 
     public ResponseEntity<Object> getBasketByUserId(Integer userId) {
         try {
@@ -52,7 +52,7 @@ public class BasketService {
                 return ResponseEntity.status(422).build();
             }
 
-            Basket searchedBasket = basketRepository.getBasketById(basketId).orElse(null);
+            Basket searchedBasket = basketRepository.getBasketByUserId(basketId).orElse(null);
             if (searchedBasket == null) {
                 return ResponseEntity.status(404).body("basketNotFound");
             }
@@ -71,13 +71,13 @@ public class BasketService {
             return ResponseEntity.internalServerError().build();
         }
     }
-    public ResponseEntity<Object> changeAmountOfProduct(Integer basketId, Integer productId, Integer newAmount) {
+    public ResponseEntity<Object> changeAmountOfProduct(Integer userId, Integer productId, Integer newAmount) {
         try {
-            if (basketId == null || productId == 0 || newAmount == -1) {
+            if (userId == null || productId == 0 || newAmount == -1) {
                 return ResponseEntity.status(422).build();
             }
 
-            Basket searchedBasket = basketRepository.getBasketById(basketId).orElse(null);
+            Basket searchedBasket = basketRepository.getBasketByUserId(userId).orElse(null);
             BasketProduct searchedBasketProduct = basketProductRepository.getBasketProductById(productId).orElse(null);
 
             if (searchedBasket == null || searchedBasket.getIsDeleted()) {
@@ -101,14 +101,31 @@ public class BasketService {
             return ResponseEntity.internalServerError().build();
         }
     }
-    public ResponseEntity<Object> addProductToBasket(Integer productId, Integer amount, Integer basketId) {
+
+    public ResponseEntity<Object> clearBasket(Integer basketId) {
         try {
-            if (productId == 0 || basketId == null || amount == -1) {
+            if (basketId == null) {
                 return ResponseEntity.status(422).build();
             }
-
             Basket searchedBasket = basketRepository.getBasketById(basketId).orElse(null);
-            if (searchedBasket == null || searchedBasket.getIsDeleted()) {
+            if (searchedBasket == null) {
+                return ResponseEntity.notFound().build();
+            }
+
+            basketRepository.clearBasket(basketId);
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().build();
+        }
+    }
+    public ResponseEntity<Object> addProductToBasket(Integer productId, Integer amount, Integer userId) {
+        try {
+            if (productId == 0 || userId == null || amount == -1) {
+                return ResponseEntity.status(422).build();
+            }
+            Basket searchedBasket = basketRepository.getBasketByUserId(userId).orElse(null);
+            if (searchedBasket == null) {
                 return ResponseEntity.notFound().build();
             }
 
@@ -121,25 +138,8 @@ public class BasketService {
                 return ResponseEntity.status(415).body("");
             }
 
-            searchedBasket.getProductList().add(new BasketProduct(amount, searchedBook));
+            basketProductRepository.save(new BasketProduct(amount, searchedBook, searchedBasket));
             basketRepository.save(searchedBasket);
-            return ResponseEntity.ok().build();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.internalServerError().build();
-        }
-    }
-    public ResponseEntity<Object> clearBasket(Integer basketId) {
-        try {
-            if (basketId == null) {
-                return ResponseEntity.status(422).build();
-            }
-            Basket searchedBasket = basketRepository.getBasketById(basketId).orElse(null);
-            if (searchedBasket == null) {
-                return ResponseEntity.notFound().build();
-            }
-
-            basketRepository.clearBasket(basketId);
             return ResponseEntity.ok().build();
         } catch (Exception e) {
             e.printStackTrace();
