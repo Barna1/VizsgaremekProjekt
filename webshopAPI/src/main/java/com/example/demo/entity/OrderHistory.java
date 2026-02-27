@@ -18,6 +18,19 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @ToString
+@NamedStoredProcedureQueries({
+        @NamedStoredProcedureQuery(name = "getOrderHistoryByUserId", procedureName = "getOrderHistoryByUserId", parameters = {
+                @StoredProcedureParameter(name = "userIdIN", type = Integer.class, mode = ParameterMode.IN)
+        }, resultClasses = OrderHistory.class),
+
+        @NamedStoredProcedureQuery(name = "getOrderHistoriesByEmail", procedureName = "getOrderHistoriesByEmail", parameters = {
+                @StoredProcedureParameter(name = "emailIN", type = String.class, mode = ParameterMode.IN)
+        }, resultClasses = OrderHistory.class),
+
+        @NamedStoredProcedureQuery(name = "getOrderHistoryById", procedureName = "getOrderHistoryById", parameters = {
+                @StoredProcedureParameter(name = "idIN", type = String.class, mode = ParameterMode.IN)
+        }, resultClasses = OrderHistory.class),
+})
 public class OrderHistory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,10 +52,6 @@ public class OrderHistory {
     @Column(name = "email")
     @NotNull
     private String email;
-
-    @Column(name = "is_deleted")
-    @NotNull
-    private Boolean isDeleted;
 
     @Column(name = "ordered_at")
     @NotNull
@@ -76,19 +85,20 @@ public class OrderHistory {
     @JoinColumn(name = "transport_detail_id")
     private TransportDetail historyTransportDetail;
 
-    @ManyToOne(cascade = {})
+    @ManyToOne
     @JoinColumn(name = "user_id")
+    @Null
     private User ordererUser;
 
-    @ManyToOne(cascade = {})
+    @ManyToOne
     @JoinColumn(name = "payment_method_id")
     private PaymentMethod paymentMethod;
 
-    @ManyToOne(cascade = {})
+    @ManyToOne
     @JoinColumn(name = "status_id")
     private Status status;
 
-    @ManyToOne(cascade = {})
+    @ManyToOne
     @JoinColumn(name = "canceler_user_id")
     @Null
     private User cancelerUser;

@@ -17,6 +17,19 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @ToString
+@NamedStoredProcedureQueries({
+        @NamedStoredProcedureQuery(name = "getBasketByUserId", procedureName = "getBasketByUserId", parameters = {
+                @StoredProcedureParameter(name = "userIdIN", mode = ParameterMode.IN, type = Integer.class)
+        }, resultClasses = Basket.class),
+
+        @NamedStoredProcedureQuery(name = "getBasketById", procedureName = "getBasketByUserId", parameters = {
+                @StoredProcedureParameter(name = "idIN", mode = ParameterMode.IN, type = Integer.class)
+        }, resultClasses = Basket.class),
+
+        @NamedStoredProcedureQuery(name = "clearBasket", procedureName = "clearBasket", parameters = {
+                @StoredProcedureParameter(name = "idIN", mode = ParameterMode.IN, type = Integer.class)
+        })
+})
 public class Basket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,10 +39,6 @@ public class Basket {
     @Column(name = "last_modified")
     @NotNull
     private String lastModified;
-
-    @Column(name = "total_price")
-    @NotNull
-    private String totalPrice;
 
     @Column(name = "is_deleted")
     @NotNull
@@ -42,9 +51,9 @@ public class Basket {
 
     @OneToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "user_id")
+    @JsonIgnore
     private User basketUser;
 
-    @JsonIgnore
     @OneToMany(
             mappedBy = "basket",
             fetch = FetchType.LAZY,

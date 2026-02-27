@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,6 +16,15 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor
 @ToString
+@NamedStoredProcedureQueries({
+        @NamedStoredProcedureQuery(name = "getBasketProductById", procedureName = "getBasketProductById", parameters = {
+                @StoredProcedureParameter(name = "idIN", mode = ParameterMode.IN, type = Integer.class)
+        }, resultClasses = BasketProduct.class),
+
+        @NamedStoredProcedureQuery(name = "deleteProductFromBasket", procedureName = "deleteProductFromBasket", parameters = {
+                @StoredProcedureParameter(name = "idIN", mode = ParameterMode.IN, type = Integer.class)
+        })
+})
 public class BasketProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,15 +50,18 @@ public class BasketProduct {
 
     @ManyToOne(cascade = {})
     @JoinColumn(name = "basket_id")
+    @JsonIgnore
     private Basket basket;
 
     @ManyToOne(cascade = {})
     @JoinColumn(name = "product_id")
     private Book basketBook;
 
-    public BasketProduct(Integer amount, Book book) {
+    public BasketProduct(Integer amount, Book book, Basket basket) {
         this.amount = amount;
         this.basketBook = book;
+        this.basket = basket;
         this.addedAt = new Date();
+        this.isDeleted = false;
     }
 }
