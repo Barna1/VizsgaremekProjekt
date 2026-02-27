@@ -1,12 +1,100 @@
 <form class="container-fluid" [formGroup]="editorForm">
   @if (selectedType() == "book") {
     <div class="row">
-      <label for="genreName">Műfaj neve:</label>
-      <input type="text" class="form-control" placeholder="Műfaj neve">
+      <div class="col-lg-12">
+        <label for=""></label><input type="text" class="form-control"></div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <label for=""></label>
+        <input type="text" class="form-control">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <label for=""></label>
+        <input type="text" class="form-control">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <label for=""></label>
+        <input type="text" class="form-control">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <label for=""></label>
+        <input type="text" class="form-control">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <label for=""></label>
+        <input type="text" class="form-control">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <label for=""></label>
+        <input type="text" class="form-control">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <label for=""></label>
+        <input type="text" class="form-control">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <label for=""></label>
+        <input type="text" class="form-control">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <label for=""></label>
+        <input type="text" class="form-control">
+      </div>
     </div>
   } @else if (selectedType() == "publisher") {
-
+    <div class="row">
+      <div class="col-lg-12">
+        <label for="name">Kiadó neve</label>
+        <input type="text" class="form-control" id="name" formControlName="name"/>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <label for="email">E-mail</label>
+        <input type="text" class="form-control" id="email" formControlName="email" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <label for="phone">Telefonszám</label>
+        <input type="text" class="form-control" id="phone" formControlName="phone" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <label for="isbnSign">ISBN jel</label>
+        <input type="text" class="form-control" id="isbnSign" formControlName="isbnSign"/>
+      </div>
+    </div>
   } @else if (selectedType() == "genre") {
-
+    <div class="row">
+      <div class="col-lg-12">
+        <label for="genreName">Műfaj neve:</label>
+        <input
+          id="genreName"
+          type="text"
+          class="form-control"
+          placeholder="A műfaj neve"
+          formControlName="name"
+        />
+      </div>
+    </div>
   }
 </form>

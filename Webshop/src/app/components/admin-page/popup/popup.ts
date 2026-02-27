@@ -1,11 +1,8 @@
 import { Component, inject, input, OnInit, output } from '@angular/core';
-import { GenreService } from '../../../services/genre-service';
 import { BookService } from '../../../services/book-service';
+import { GenreService } from '../../../services/genre-service';
 import { PublisherService } from '../../../services/publisher-service';
 import { ObjectEditor } from '../object-editor/object-editor';
-import { Genre } from '../../../models/genre.model';
-import { Publisher } from '../../../models/publisher.model';
-import { Book } from '../../../models/book.model';
 import { ListCard } from './list-card/list-card';
 
 @Component({
@@ -24,6 +21,8 @@ export class Popup implements OnInit {
   showForm: boolean = false
   showDelete: boolean = false
   cardList: {id: number, name: string}[] = []
+  selectedIdForDelete: number | null = null;
+  selectedIdForEdit: number | null = null
 
   ngOnInit(): void {
     if (this.selectedType() == "genre") {
@@ -35,32 +34,59 @@ export class Popup implements OnInit {
         }
       })
     } else if (this.selectedType() == "book") {
-
+      this.bookService.getBooksWithoutPaginator().subscribe({
+        next: response => {
+          this.cardList = response.map((b) => {
+            return {id: b.id, name: b.title}
+          })
+        }
+      })
     } else if (this.selectedType() == "publisher") {
-
+      this.publisherService.getAllPublisher().subscribe({
+        next: response => {
+          this.cardList = response.map((p) => {
+            return {id: p.id, name: p.name}
+          })
+        }
+      })
     }
   }
 
-  deleteGenre(id: number) {
-    this.genreService.deleteGenre(id).subscribe({
-      next: response => {
+  deleteObject() {
+    if (this.selectedType() == "genre") {
+      this.deleteGenre
+    }
+  }
 
+  deleteGenre() {
+    this.genreService.deleteGenre(this.selectedIdForDelete!).subscribe({
+      next: response => {
+        this.cardList = this.cardList.filter(c => c.id != this.selectedIdForDelete!)
+      },
+      complete: () => {
+        this.selectedIdForDelete = null
       }
     })
   }
 
-  deleteBook(id: number) {
-    this.bookService.deleteBook(id).subscribe({
+  deleteBook() {
+    this.bookService.deleteBook(this.selectedIdForDelete!).subscribe({
       next: response => {
-
+        this.cardList = this.cardList.filter(c => c.id != this.selectedIdForDelete!)
+      },
+      complete: () => {
+        this.selectedIdForDelete = null
       }
     })
   }
 
-  deletePublisher(id: number) {
-    this.publisherService.deletePublisher(id).subscribe({
+  deletePublisher() {
+    this.publisherService.deletePublisher(this.selectedIdForDelete!).subscribe({
       next: response => {
-        
+        this.cardList = this.cardList.filter(c => c.id != this.selectedIdForDelete!)
+      },
+      complete: () => {
+        this.selectedIdForDelete = null
       }
     })
   }
