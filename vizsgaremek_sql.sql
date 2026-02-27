@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: localhost:3306
--- Létrehozás ideje: 2026. Feb 22. 17:44
+-- Létrehozás ideje: 2026. Feb 27. 10:35
 -- Kiszolgáló verziója: 5.7.24
 -- PHP verzió: 8.3.1
 
@@ -694,10 +694,47 @@ CREATE TABLE `basket_product` (
 
 INSERT INTO `basket_product` (`id`, `product_id`, `basket_id`, `amount`, `added_at`, `is_deleted`, `deleted_at`) VALUES
 (9, 17, 4, 1, '2026-02-08 16:41:19', 1, '2026-02-15 08:25:45'),
-(10, 17, 4, 1, '2026-02-15 10:11:31', 0, NULL),
+(10, 17, 4, 1, '2026-02-15 10:11:31', 1, '2026-02-27 10:52:27'),
 (11, 16, 4, 1, '2026-02-15 10:11:34', 1, '2026-02-16 17:44:42'),
-(12, 15, 4, 1, '2026-02-15 10:14:21', 0, NULL),
-(13, 14, 4, 1, '2026-02-15 10:14:25', 0, NULL);
+(12, 15, 4, 1, '2026-02-15 10:14:21', 1, '2026-02-27 10:52:07'),
+(13, 14, 4, 1, '2026-02-15 10:14:25', 1, '2026-02-27 10:52:06'),
+(14, 17, 4, 1, '2026-02-27 09:10:27', 1, '2026-02-27 10:52:06'),
+(15, 17, 4, 1, '2026-02-27 09:10:28', 1, '2026-02-27 10:52:06'),
+(16, 2, 4, 1, '2026-02-27 09:10:33', 1, '2026-02-27 10:52:05'),
+(17, 2, 4, 1, '2026-02-27 09:10:34', 1, '2026-02-27 10:52:05'),
+(18, 2, 4, 1, '2026-02-27 09:10:36', 1, '2026-02-27 10:52:05'),
+(19, 2, 4, 1, '2026-02-27 09:10:36', 1, '2026-02-27 10:52:05'),
+(20, 1, 4, 1, '2026-02-27 10:46:36', 1, '2026-02-27 10:51:59'),
+(21, 1, 4, 1, '2026-02-27 10:46:37', 1, '2026-02-27 10:52:00'),
+(22, 1, 4, 1, '2026-02-27 10:46:37', 1, '2026-02-27 10:52:00'),
+(23, 2, 4, 1, '2026-02-27 10:51:39', 1, '2026-02-27 10:52:01'),
+(24, 2, 4, 1, '2026-02-27 10:51:41', 1, '2026-02-27 10:52:01'),
+(25, 2, 4, 1, '2026-02-27 10:51:42', 1, '2026-02-27 10:52:01'),
+(26, 2, 4, 1, '2026-02-27 10:51:42', 1, '2026-02-27 10:52:01'),
+(27, 2, 4, 1, '2026-02-27 10:51:43', 1, '2026-02-27 10:52:02'),
+(28, 2, 4, 1, '2026-02-27 10:51:45', 1, '2026-02-27 10:52:02'),
+(29, 2, 4, 1, '2026-02-27 10:51:46', 1, '2026-02-27 10:52:02'),
+(30, 2, 4, 1, '2026-02-27 10:51:47', 1, '2026-02-27 10:52:02'),
+(31, 2, 4, 1, '2026-02-27 10:51:47', 1, '2026-02-27 10:52:03'),
+(32, 2, 4, 1, '2026-02-27 10:51:47', 1, '2026-02-27 10:52:03'),
+(33, 2, 4, 1, '2026-02-27 10:51:47', 1, '2026-02-27 10:52:03'),
+(34, 2, 4, 1, '2026-02-27 10:51:47', 1, '2026-02-27 10:52:03'),
+(35, 2, 4, 1, '2026-02-27 10:51:48', 1, '2026-02-27 10:52:04'),
+(36, 2, 4, 1, '2026-02-27 10:51:48', 1, '2026-02-27 10:52:04'),
+(37, 2, 4, 1, '2026-02-27 10:51:48', 1, '2026-02-27 10:52:04'),
+(38, 2, 4, 1, '2026-02-27 10:51:48', 1, '2026-02-27 10:52:04'),
+(39, 2, 4, 1, '2026-02-27 10:52:32', 1, '2026-02-27 10:52:50'),
+(40, 2, 4, 39, '2026-02-27 10:52:33', 1, '2026-02-27 10:53:07'),
+(41, 2, 4, 1, '2026-02-27 10:52:40', 1, '2026-02-27 10:52:51'),
+(42, 2, 4, 1, '2026-02-27 10:52:41', 1, '2026-02-27 10:52:52'),
+(43, 2, 4, 1, '2026-02-27 10:52:41', 1, '2026-02-27 10:52:53'),
+(44, 16, 4, 1, '2026-02-27 10:53:16', 0, NULL),
+(45, 16, 4, 1, '2026-02-27 10:53:17', 0, NULL),
+(46, 10, 4, 1, '2026-02-27 10:53:44', 0, NULL),
+(47, 10, 4, 1, '2026-02-27 10:53:45', 0, NULL),
+(48, 10, 4, 1, '2026-02-27 10:53:45', 0, NULL),
+(49, 1, 4, 1, '2026-02-27 11:30:37', 0, NULL),
+(50, 1, 4, 1, '2026-02-27 11:30:38', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -752,12 +789,12 @@ CREATE TABLE `book` (
 --
 
 INSERT INTO `book` (`id`, `title`, `description`, `ISBN`, `publishing_year`, `cover_image_path`, `stock_quantity`, `publisher_id`, `price`, `is_deleted`, `deleted_at`, `created_at`) VALUES
-(1, 'Harry Potter and the Sorcerer\'s Storm', 'Harry korai éveit követi a Hogwartsban, amikor egy titokzatos mágikus vihar kezd terjedni. Furcsa események történnek az iskolában, és Harrynek barátaival fel kell tárnia a vihar forrását. Ha nem sikerül, a varázsló- és a mugli világ egyaránt veszélybe kerülhet.', 'ISBN123456', 2002, 'http://localhost:8080/coverImg/hp1.jpg', 15, 1, 3500, 0, NULL, '2026-01-22 21:02:28'),
-(2, 'Harry Potter and the Chamber of Secrets', 'Harry visszatér a Hogwartsba a második évére, ahol egy rejtélyes erő támadja a diákokat és kővé változtatja őket. Harry nyomokat talál egy rejtett kamráról és egy sötét titokról. Az iskola múltja veszélybe kerül, miközben a félelem nő.', 'ISBN987654', 1998, 'http://localhost:8080/coverImg/hp2.jpg', 15, 2, 4200, 0, NULL, '2026-01-22 21:02:28'),
+(1, 'Harry Potter and the Sorcerer\'s Storm', 'Harry korai éveit követi a Hogwartsban, amikor egy titokzatos mágikus vihar kezd terjedni. Furcsa események történnek az iskolában, és Harrynek barátaival fel kell tárnia a vihar forrását. Ha nem sikerül, a varázsló- és a mugli világ egyaránt veszélybe kerülhet.', 'ISBN123456', 2002, 'http://localhost:8080/coverImg/hp1.jpg', 18, 1, 3500, 0, NULL, '2026-01-22 21:02:28'),
+(2, 'Harry Potter and the Chamber of Secrets', 'Harry visszatér a Hogwartsba a második évére, ahol egy rejtélyes erő támadja a diákokat és kővé változtatja őket. Harry nyomokat talál egy rejtett kamráról és egy sötét titokról. Az iskola múltja veszélybe kerül, miközben a félelem nő.', 'ISBN987654', 1998, 'http://localhost:8080/coverImg/hp2.jpg', 78, 2, 4200, 0, NULL, '2026-01-22 21:02:28'),
 (3, 'Harry Potter and the Prisoner of Azkaban', 'Harry harmadik évében megtudja, hogy Sirius Black, egy veszélyes fogoly megszökött az Azkabánból, és talán őt keresi. Ahogy múltbéli titkok kerülnek felszínre, Harry felfedezi az igazságot az árulásról, barátságról és saját történetéről.', 'ISBN123001', 1999, 'http://localhost:8080/coverImg/hp3.jpg', 15, 3, 3990, 0, NULL, '2026-01-22 21:02:28'),
 (4, 'Harry Potter and the Goblet of Fire', 'Harry negyedik évében váratlanul kiválasztják a veszélyes Tűz Serlege Tornára. Halálos kihívásokkal néz szembe, miközben egy sötétebb fenyegetés kezd emelkedni. A kaland sokkoló és életre szóló összecsapáshoz vezet.', 'ISBN123002', 2000, 'http://localhost:8080/coverImg/hp4.jpg', 15, 5, 4490, 0, NULL, '2026-01-22 21:02:28'),
 (5, 'Harry Potter and the Order of the Phoenix', 'Harry ötödik évében Voldemort visszatérését sokan nem hiszik el, miközben egy szigorú új hatalom veszi át az iskola irányítását. A feszültség nő, és Harry titkos csoportot hoz létre. Céljuk felkészülni a veszélyekre és szembenézni a terjedő sötétséggel.', 'ISBN123003', 2003, 'http://localhost:8080/coverImg/hp5.jpg', 15, 2, 4290, 0, NULL, '2026-01-22 21:02:28'),
-(6, 'Harry Potter and the Half-Blood Prince', 'Harry hatodik évében felfedez egy régi bájitalkönyvet, amelyet a titokzatos „Félvér Herceg” jelöl. Többet tud meg Voldemort múltjáról, és Dumbledore-ral együtt felkészülnek a közelgő végső harcra.', 'ISBN123004', 2005, 'http://localhost:8080/coverImg/hp6..jpg', 15, 6, 4990, 0, NULL, '2026-01-22 21:02:28'),
+(6, 'Harry Potter and the Half-Blood Prince', 'Harry hatodik évében felfedez egy régi bájitalkönyvet, amelyet a titokzatos „Félvér Herceg” jelöl. Többet tud meg Voldemort múltjáról, és Dumbledore-ral együtt felkészülnek a közelgő végső harcra.', 'ISBN123004', 2005, 'http://localhost:8080/coverImg/hp6.jpg', 15, 6, 4990, 0, NULL, '2026-01-22 21:02:28'),
 (7, 'Harry Potter and the Deathly Hallows', 'Harry elhagyja a Hogwartsot Ronnal és Hermionéval, hogy megsemmisítse Voldemort Horcruxait. A varázslóvilág a sötétségbe süllyed, miközben Harry végső harcot vív a gonosz ellen. Barátság, bátorság és áldozat formálja sorsukat.', 'ISBN123005', 2007, 'http://localhost:8080/coverImg/hp7.jpg', 15, 1, 3890, 0, NULL, '2026-01-22 21:02:28'),
 (8, 'Dune', 'Arrakis sivatagos bolygóján Paul Atreides családja a drága fűszer, a melange birtoklásáért küzd. Árulás, politikai játszmák és konfliktusok közepette Paulnak el kell fogadnia sorsát. A bolygó és népe jövője forog kockán.', 'ISBN123006', 1965, 'http://localhost:8080/coverImg/dune.jpg', 15, 7, 4190, 0, NULL, '2026-01-22 21:02:28'),
 (9, 'Children of Dune', 'Paul Atreides örökösei próbálják fenntartani hatalmukat Arrakison, miközben politikai összeesküvések és ökológiai kihívások fenyegetnek. Misztikus látomások és új képességek alakítják a bolygó és lakói sorsát.', 'ISBN123007', 1976, 'http://localhost:8080/coverImg/dune2.jpg', 15, 4, 4690, 0, NULL, '2026-01-22 21:02:28'),
@@ -765,10 +802,10 @@ INSERT INTO `book` (`id`, `title`, `description`, `ISBN`, `publishing_year`, `co
 (11, 'God Emperor of Dune', 'Évezredekkel Dune Messiah után Leto II szinte halhatatlan lényként uralja a galaxist. Kemény uralma az emberiség távoli jövőjét célozza, miközben az irányítás, a próféták és az áldozatok egyensúlyát keresi.', 'ISBN123009', 1981, 'http://localhost:8080/coverImg/dune4.jpg', 15, 5, 3490, 0, NULL, '2026-01-22 21:02:28'),
 (12, 'The Great Gatsby', 'A Roaring Twenties idején Jay Gatsby, egy gazdag és titokzatos férfi, a házas Daisy Buchanan után vágyakozik. A történet a szerelemről, ambícióról és az amerikai álomról szól. A fényűzés és erkölcsi romlás hátterében bontakozik ki a cselekmény.', 'ISBN123010', 1925, 'http://localhost:8080/coverImg/gatsby.jpg', 15, 2, 4090, 0, NULL, '2026-01-22 21:02:28'),
 (13, 'The Hobbit', 'Bilbo Baggins, egy békés hobbit, egy kalandos küldetésre indul, hogy segítse a törpéket, akik vissza akarják szerezni hazájukat Smaug sárkánytól. Útja során trollokkal, goblinokkal és varázslatos lényekkel találkozik, ami örökre megváltoztatja életét.', 'ISBN123011', 1937, 'http://localhost:8080/coverImg/hobbit.jpg', 15, 6, 3890, 0, NULL, '2026-01-22 21:02:28'),
-(14, 'The Lord of the Rings', 'Frodo Baggins veszélyes küldetésre indul, hogy megsemmisítse az Egy Gyűrűt és legyőzze Sauront. A Társaság tagjaival epikus csatákkal, veszélyes tájakkal és bátorságpróbákkal szembesül. Középfölde sorsa forog kockán.', 'ISBN123012', 1955, 'http://localhost:8080/coverImg/lord1.jpg', 14, 1, 3690, 0, NULL, '2026-01-22 21:02:28'),
-(15, 'The Return of the King', 'A The Lord of the Rings utolsó része a Középfölde végső csatáit követi. Frodo küzdelme az Egy Gyűrű megsemmisítéséért, a bátorság, barátság és áldozat története formálja a királyságok sorsát. A sötétség feletti végső győzelem bontakozik ki.', 'ISBN123013', 1955, 'http://localhost:8080/coverImg/lord2.jpg', 14, 7, 3590, 0, NULL, '2026-01-22 21:02:28'),
+(14, 'The Lord of the Rings', 'Frodo Baggins veszélyes küldetésre indul, hogy megsemmisítse az Egy Gyűrűt és legyőzze Sauront. A Társaság tagjaival epikus csatákkal, veszélyes tájakkal és bátorságpróbákkal szembesül. Középfölde sorsa forog kockán.', 'ISBN123012', 1955, 'http://localhost:8080/coverImg/lord1.jpg', 15, 1, 3690, 0, NULL, '2026-01-22 21:02:28'),
+(15, 'The Return of the King', 'A The Lord of the Rings utolsó része a Középfölde végső csatáit követi. Frodo küzdelme az Egy Gyűrű megsemmisítéséért, a bátorság, barátság és áldozat története formálja a királyságok sorsát. A sötétség feletti végső győzelem bontakozik ki.', 'ISBN123013', 1955, 'http://localhost:8080/coverImg/lord2.jpg', 15, 7, 3590, 0, NULL, '2026-01-22 21:02:28'),
 (16, 'A Dance with Dragons', 'Westeros világában rivális frakciók harcolnak a hatalomért. Jon Snow a Fal védelméért küzd, míg Daenerys Targaryen próbálja irányítani Meereent. Politikailag intrikák, árulások és háborúk formálják a Hét Királyság sorsát.', 'ISBN123014', 2011, 'http://localhost:8080/coverImg/dance.jpg', 15, 4, 3290, 0, NULL, '2026-01-22 21:02:28'),
-(17, 'A Game of Thrones', 'A Hét Királyság nemesi családjai a Vastrónért küzdenek, miközben a Falon túl sötét erők gyülekeznek. Politikailag intrikák, árulások és háborúk közepette a döntések halálos következményekkel járhatnak. A hatalmi harcok alakítják a birodalom sorsát.', 'ISBN123015', 1996, 'http://localhost:8080/coverImg/thrones1.jpg', 16, 2, 3390, 0, NULL, '2026-01-22 21:02:28');
+(17, 'A Game of Thrones', 'A Hét Királyság nemesi családjai a Vastrónért küzdenek, miközben a Falon túl sötét erők gyülekeznek. Politikailag intrikák, árulások és háborúk közepette a döntések halálos következményekkel járhatnak. A hatalmi harcok alakítják a birodalom sorsát.', 'ISBN123015', 1996, 'http://localhost:8080/coverImg/thrones1.jpg', 19, 2, 3390, 0, NULL, '2026-01-22 21:02:28');
 
 -- --------------------------------------------------------
 
@@ -1070,7 +1107,7 @@ INSERT INTO `user` (`id`, `username`, `email`, `password`, `role_id`, `last_logi
 (6, 'emma_johnson', 'emma.johnson@example.com', 'hashed_pw_6', 2, NULL, '2026-01-08 09:36:36', 0, NULL, 'asd', ''),
 (7, 'michael_brown', 'michael.brown@example.com', 'hashed_pw_7', 2, NULL, '2026-01-08 09:36:36', 0, NULL, 'asd', ''),
 (9, 'olivia_wilson', 'olivia.wilson@example.com', 'hashed_pw_8', 2, NULL, '2026-01-08 09:39:01', 0, NULL, 'asd', ''),
-(11, 'testElek', 'asd@gmail.com', '$argon2id$v=19$m=4096,t=3,p=1$xevbL65AfAo3cPoTOnNecA$m96Mv15eQLkKHmFwDuxAVYkC6kVKLoaE/b84iArXrn0', 1, '2026-02-22 16:14:29', '2026-02-08 17:08:10', 0, NULL, 'default', NULL);
+(11, 'testElek', 'asd@gmail.com', '$argon2id$v=19$m=4096,t=3,p=1$xevbL65AfAo3cPoTOnNecA$m96Mv15eQLkKHmFwDuxAVYkC6kVKLoaE/b84iArXrn0', 1, '2026-02-27 11:30:32', '2026-02-08 17:08:10', 0, NULL, 'default', NULL);
 
 --
 -- Indexek a kiírt táblákhoz
@@ -1231,7 +1268,7 @@ ALTER TABLE `basket`
 -- AUTO_INCREMENT a táblához `basket_product`
 --
 ALTER TABLE `basket_product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT a táblához `billing_detail`
