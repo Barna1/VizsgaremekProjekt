@@ -1,4 +1,4 @@
-import { Component, inject, input, OnInit } from '@angular/core';
+import { Component, inject, input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Book } from '../../../models/book.model';
 import { Publisher } from '../../../models/publisher.model';
 import { Genre } from '../../../models/genre.model';
@@ -8,6 +8,7 @@ import { PublisherService } from '../../../services/publisher-service';
 import { GenreService } from '../../../services/genre-service';
 import { Author } from '../../../models/author.model';
 import { AuthorService } from '../../../services/author-service';
+import { AdminService } from '../../../services/admin-service';
 
 @Component({
   selector: 'app-object-editor',
@@ -15,7 +16,7 @@ import { AuthorService } from '../../../services/author-service';
   templateUrl: './object-editor.html',
   styleUrl: './object-editor.css',
 })
-export class ObjectEditor implements OnInit {
+export class ObjectEditor implements OnChanges {
   selectedType = input.required<"book" | "publisher" | "genre">()
   id = input.required<number | null>()
   selectedObject!: Book | Publisher | Genre
@@ -23,13 +24,13 @@ export class ObjectEditor implements OnInit {
   publisherService = inject(PublisherService)
   genreService = inject(GenreService)
   authorService = inject(AuthorService)
-  editorForm!: FormGroup
+  adminService = inject(AdminService)
 
   publishers: Publisher[] = []
   genres: Genre[] = []
   authors: Author[] = []
 
-  ngOnInit(): void {
+  ngOnChanges(changes: SimpleChanges): void {
     if (this.id() != null) {
       if (this.selectedType() == "book") {
         this.bookService.getBookById(this.id()!).subscribe({
@@ -37,7 +38,7 @@ export class ObjectEditor implements OnInit {
             this.selectedObject = response
           },
           complete: () => {
-            this.editorForm = new FormGroup({
+            this.adminService.editorForm = new FormGroup({
               title: new FormControl("", [Validators.required]),
               description: new FormControl("", [Validators.required]),
               coverImg: new FormControl("", [Validators.required]),
@@ -57,7 +58,7 @@ export class ObjectEditor implements OnInit {
             this.selectedObject = response
           },
           complete: () => {
-            this.editorForm = new FormGroup({
+            this.adminService.editorForm = new FormGroup({
               name: new FormControl((this.selectedObject as Publisher).name, [Validators.required]),
               email: new FormControl((this.selectedObject as Publisher).email, [Validators.required, Validators.email]),
               phone: new FormControl((this.selectedObject as Publisher).phone, [Validators.required]),
@@ -71,7 +72,7 @@ export class ObjectEditor implements OnInit {
             this.selectedObject = response
           },
           complete: () => {
-            this.editorForm = new FormGroup({
+            this.adminService.editorForm = new FormGroup({
               name: new FormControl((this.selectedObject as Genre).name, [Validators.required])
             })
           }
@@ -79,7 +80,7 @@ export class ObjectEditor implements OnInit {
       }
     } else {
       if (this.selectedType() == "book") {
-        this.editorForm = new FormGroup({
+        this.adminService.editorForm = new FormGroup({
           title: new FormControl("", [Validators.required]),
           description: new FormControl("", [Validators.required]),
           coverImg: new FormControl("", [Validators.required]),
@@ -92,14 +93,14 @@ export class ObjectEditor implements OnInit {
           authors: new FormControl("", [Validators.required])
         })
       } else if (this.selectedType() == "publisher") {
-        this.editorForm = new FormGroup({
+        this.adminService.editorForm = new FormGroup({
           name: new FormControl("", [Validators.required]),
           email: new FormControl("", [Validators.required, Validators.email]),
           phone: new FormControl("", [Validators.required]),
           isbnSign: new FormControl("", [Validators.required]),
         })
       } else if (this.selectedType() == "genre") {
-        this.editorForm = new FormGroup({
+        this.adminService.editorForm = new FormGroup({
           name: new FormControl("", [Validators.required])
         })
       }

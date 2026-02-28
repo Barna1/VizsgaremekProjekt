@@ -1,61 +1,78 @@
-<form class="container-fluid" [formGroup]="editorForm">
+<form class="container-fluid" [formGroup]="this.adminService.editorForm">
   @if (selectedType() == "book") {
     <div class="row">
       <div class="col-lg-12">
-        <label for=""></label><input type="text" class="form-control"></div>
-    </div>
-    <div class="row">
-      <div class="col-lg-12">
-        <label for=""></label>
-        <input type="text" class="form-control">
+        <label for="title">Cím:</label>
+        <input type="text" class="form-control" id="title" formControlName="title">
       </div>
     </div>
     <div class="row">
       <div class="col-lg-12">
-        <label for=""></label>
-        <input type="text" class="form-control">
+        <label for="description">Leírás</label>
+        <textarea type="text" class="form-control" id="description" formControlName="description"></textarea>
       </div>
     </div>
     <div class="row">
       <div class="col-lg-12">
-        <label for=""></label>
-        <input type="text" class="form-control">
+        <label for="coverImg">Boritókép</label>
+        <input type="file" class="form-control" id="coverImg" formControlName="coverImg">
       </div>
     </div>
     <div class="row">
       <div class="col-lg-12">
-        <label for=""></label>
-        <input type="text" class="form-control">
+        <label for="publishingYear">Kiadási év</label>
+        <input type="text" class="form-control" id="publishingYear" formControlName="publishingYear">
       </div>
     </div>
     <div class="row">
       <div class="col-lg-12">
-        <label for=""></label>
-        <input type="text" class="form-control">
+        <label for="ISBN">ISBN szám</label>
+        <input type="text" class="form-control" id="ISBN" formControlName="ISBN">
       </div>
     </div>
     <div class="row">
       <div class="col-lg-12">
-        <label for=""></label>
-        <input type="text" class="form-control">
+        <label for="price">Ar</label>
+        <input type="number" class="form-control" id="price" formControlName="price">
       </div>
     </div>
     <div class="row">
       <div class="col-lg-12">
-        <label for=""></label>
-        <input type="text" class="form-control">
+        <label for="stockQuantity">Raktár mennyiség</label>
+        <input type="text" class="form-control" id="stockQuantity" formControlName="stockQuantity">
       </div>
     </div>
     <div class="row">
       <div class="col-lg-12">
-        <label for=""></label>
-        <input type="text" class="form-control">
+        <label for="publisher">Kiadó</label>
+        <select id="publisher" class="form-select" formControlName="publisher">
+          <option selected disabled>Válaszd ki a kiadót</option>
+          @for (publisher of publishers; track $index) {
+            <option [value]="publisher.id">{{publisher.name}}</option>
+          }
+        </select>
       </div>
     </div>
     <div class="row">
       <div class="col-lg-12">
-        <label for=""></label>
-        <input type="text" class="form-control">
+        <label for="genre">Műfaj kiválasztása</label>
+        <select id="genre" class="form-select" formControlName="genres">
+          <option selected disabled>Válaszd ki a műfajokat</option>
+          @for (genre of genres; track $index) {
+            <option [value]="genre.id">{{genre.name}}</option>
+          }
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <label for="author">Iró(k) kiválasztása</label>
+        <select id="author" class="form-select" formControlName="authors">
+          <option selected disabled>Válaszd ki az irókat</option>
+          @for (author of authors; track $index) {
+            <option [value]="author.id">{{author.firstName}} {{author.middleName}} {{author.lastName}}</option>
+          }
+        </select>
       </div>
     </div>
   } @else if (selectedType() == "publisher") {
