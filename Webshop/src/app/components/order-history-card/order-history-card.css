@@ -34,3 +34,10 @@ button {
   font-weight: 600;
   font-style: normal;
 }
+
+@media screen and (max-width: 1730px) {
+ .cardContainer {
+    width: 100% !important;
+    height: auto;
+  }
+}

@@ -12,3 +12,9 @@ h1 {
   color: #413931;
 }
 
+@media screen and (max-width: 1760) {
+  img {
+    width: 100% !important;
+    height: auto;
+  }
+}

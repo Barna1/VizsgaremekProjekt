@@ -45,3 +45,9 @@ input {
   color: #dc3545;
   font-size: 0.9rem;
 }
+
+@media screen and (max-width: 650px) {
+ #secondContainer {
+    width: 100% !important;
+  }
+}
