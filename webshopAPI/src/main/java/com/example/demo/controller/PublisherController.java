@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.entity.Publisher;
 import com.example.demo.service.PublisherService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +13,7 @@ public class PublisherController {
 
     private final PublisherService publisherService;
 
-    @GetMapping("")
+    @GetMapping
     private ResponseEntity<Object> getAllPublisher() {
         return publisherService.getAllPublisher();
     }
@@ -23,5 +24,10 @@ public class PublisherController {
     @GetMapping("/{id}")
     private ResponseEntity<Object> getPublisherById(@PathVariable("id") Integer id) {
         return publisherService.getPublisherById(id);
+    }
+
+    @PostMapping
+    private ResponseEntity<Object> addPublisher(@RequestBody Publisher newPublisher) {
+        return publisherService.addPublisher(newPublisher);
     }
 }
