@@ -11,23 +11,27 @@ import { RouterModule } from '@angular/router';
   templateUrl: './order-history-details-pop-up.html',
   styleUrl: './order-history-details-pop-up.css',
 })
-export class OrderHistoryDetailsPopUp implements OnInit{
+export class OrderHistoryDetailsPopUp implements OnInit {
   orderService = inject(OrderService)
   userService = inject(UserService)
   historyDetail = input.required<OrderHistory>()
   transportAddress: string = ""
   billingAddress: string = ""
+
+  order!: OrderHistory
   close = output()
 
   ngOnInit(): void {
     this.transportAddress = this.historyDetail().historyTransportDetail?.postCode + " " + this.historyDetail().historyTransportDetail?.town + this.historyDetail().historyTransportDetail?.address + this.historyDetail().historyTransportDetail?.houseNumber
     this.billingAddress = this.historyDetail().historyBillingDetail?.postCode + " " + this.historyDetail().historyBillingDetail?.town + this.historyDetail().historyBillingDetail?.address + this.historyDetail().historyBillingDetail?.houseNumber
+    this.order = this.historyDetail()
   }
 
   cancelAddress() {
     this.orderService.cancelOrder(this.historyDetail().id!, this.userService.loggedUser?.id!).subscribe({
       next: response => {
-
+        console.log(response)
+        this.order = response
       }
     })
   }

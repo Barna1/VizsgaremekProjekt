@@ -17,33 +17,35 @@
                 <div class="col-lg-12">
                   <h1 class="text-center">Adatok</h1>
                   <ul class="list-unstyled">
-                    <li class="textLi"><span class="fw-bold">Név:</span> <span>{{historyDetail().firstName}} {{historyDetail().lastName}} </span></li>
-                    <li class="textLi"><span class="fw-bold">E-mail:</span>{{historyDetail().email}}</li>
-                    <li class="textLi"><span class="fw-bold">Telefonszám:</span>{{historyDetail().phone}}</li>
+                    <li class="textLi"><span class="fw-bold">Név:</span> <span>{{order!.firstName}} {{order!.lastName}} </span></li>
+                    <li class="textLi"><span class="fw-bold">E-mail:</span>{{order!.email}}</li>
+                    <li class="textLi"><span class="fw-bold">Telefonszám:</span>{{order!.phone}}</li>
                     <li>
                       <span class="fw-bold">Szállitási adatok:</span>
                       <ul class="list-unstyled px-3">
                         <li class="textLi"><span class="fw-bold">Cím:</span> {{transportAddress}}</li>
-                        <li class="textLi"><span class="fw-bold">Megjegyzés:</span> {{historyDetail().historyTransportDetail?.other}}</li>
+                        <li class="textLi"><span class="fw-bold">Megjegyzés:</span> {{order!.historyTransportDetail?.other}}</li>
                       </ul>
                     </li>
                     <li>
                       <span class="fw-bold">Számlázási adatok:</span>
                       <ul class="list-unstyled px-3">
                         <li class="textLi"><span class="fw-bold">Cim:</span>{{billingAddress}}</li>
-                        <li class="textLi"><span class="fw-bold">Megjegyzés:</span>{{historyDetail().historyBillingDetail?.other}}</li>
-                        @if (historyDetail().historyBillingDetail!.companyName != null) {
+                        <li class="textLi"><span class="fw-bold">Megjegyzés:</span>{{order!.historyBillingDetail?.other}}</li>
+                        @if (order!.historyBillingDetail!.companyName != null) {
                           <li class="textLi"><span class="fw-bold">Cég:</span></li>
                           <li class="textLi"><span class="fw-bold">Adó szám:</span></li>
                         }
                       </ul>
                     </li>
-                    <li class="textLi"><span class="fw-bold">Rendelve ekkor:</span> {{historyDetail().orderedAt | date: "yyyy-MM-dd"}}</li>
-                    @if (historyDetail().isCanceled) {
+                    <li class="textLi"><span class="fw-bold">Rendelve ekkor:</span> {{order!.orderedAt | date: "yyyy-MM-dd"}}</li>
+                    @if (order!.isCanceled) {
                       <li class="textLi"><span class="fw-bold">Lemondva ekkor:</span></li>
                     }
                   </ul>
-                  <button [disabled]="historyDetail().isCanceled">Rendelés lemondva</button>
+                  <div class="w-100 d-flex justify-content-lg-start justify-content-center">
+                    <button class="cancelerButton" [disabled]="order!.isCanceled" (click)="cancelAddress()">Rendelés lemondása</button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -52,32 +54,34 @@
           <div class="col-lg-7" style="overflow: auto;">
             <div class="container-fluid">
               <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12 my-lg-0 mt-4">
                   <h1 class="text-center">Rendelt termékek</h1>
                 </div>
               </div>
 
               <div class="row">
                 <div class="col-lg-12">
-                  @for (orderedProduct of historyDetail().orderHistoryProductList; track $index) {
-                    <div class="container-fluid orderedProductCard h-100 d-flex justify-content-center align-items-center">
+                  @for (orderedProduct of order!.orderHistoryProductList; track $index) {
+                    <div class="container-fluid orderedProductCard p-4 h-100 d-flex justify-content-center align-items-center">
                       <div class="row w-100">
-                        <div class="col-lg-2 d-flex justify-content-center align-items-center">
+                        <div class="col-lg-2 col-4 d-flex justify-content-center align-items-center">
                           <img src="assets/heroImg.jpg" alt="">
                         </div>
-                        <div class="col-lg-10">
+                        <div class="col-lg-10 col-8">
                           <div class="container-fluid">
                             <div class="row">
                               <div class="col-lg-8">
                                 <h2>{{orderedProduct.orderHistoryBook.title}}</h2>
                                 <h5>Rovid leiras</h5>
                               </div>
-                              <div class="col-lg-4">
+                              <div class="col-lg-4 d-flex flex-column justify-content-end">
                                 <div>
-                                  <span>{{orderedProduct.amount}} db</span>
-                                  <span>{{orderedProduct.amount * orderedProduct.orderHistoryBook.price}} Ft</span>
+                                  <p class="text-end m-0">
+                                    <span>{{orderedProduct.amount}} db</span>
+                                    <span>{{orderedProduct.amount * orderedProduct.orderHistoryBook.price}} Ft</span>
+                                  </p>
                                 </div>
-                                <button routerLink="/productDetail/${{orderedProduct.orderHistoryBook.id}}">Megtekintés</button>
+                                <button class="viewButton" routerLink="/productDetail/${{orderedProduct.orderHistoryBook.id}}">Megtekintés</button>
                               </div>
                             </div>
                           </div>
