@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import java.util.Date;
@@ -25,6 +26,7 @@ public class Genre {
 
     @Column(name="name")
     @NotNull
+    @NotBlank
     private String name;
 
     @Column(name="is_deleted")

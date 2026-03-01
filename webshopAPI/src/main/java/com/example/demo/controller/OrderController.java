@@ -18,11 +18,11 @@ public class OrderController {
     public ResponseEntity<Object> getOrderHistoryByUserId(@PathVariable("id") Integer userId) {
         return orderService.getOrderHistoryByUserId(userId);
     }
-    @DeleteMapping("/cancel/{id}")
-    public ResponseEntity<Object> cancelOrder(@PathVariable("id") Integer orderId, @RequestBody JsonNode requestBody) {
-        return orderService.cancelOrder(orderId, requestBody.get("cancelerUserId").asInt());
+    @DeleteMapping("/cancel")
+    public ResponseEntity<Object> cancelOrder(@RequestParam(name = "orderId") Integer orderId, @RequestParam(name = "userId") Integer userId) {
+        return orderService.cancelOrder(orderId, userId);
     }
-    @GetMapping("")
+    @GetMapping
     public ResponseEntity<Object> getAllOrder() {
         return orderService.getAllOrder();
     }

@@ -26,7 +26,7 @@ public class Publisher {
 
     @Column(name="name")
     @NotNull
-    private String Name;
+    private String name;
 
     @Column(name="email")
     @NotNull
@@ -39,7 +39,7 @@ public class Publisher {
     @Column(name = "isbn_sign")
     @NotNull
     @Size(max=5)
-    private Integer isbnSign;
+    private String isbnSign;
 
     @Column(name = "is_deleted")
     @JsonIgnore

@@ -120,8 +120,6 @@ public class BookService {
                 return ResponseEntity.status(415).body("invalidObject");
             } else if (searchedPublisher == null || searchedPublisher.getIsDeleted()) {
                 return ResponseEntity.status(404).body("publisherNotFound");
-            } else if (!isIsbnValid(newBook.getISBN(), searchedPublisher.getIsbnSign())) {
-                return ResponseEntity.status(415).body("invalidIsbnNumber");
             }
 
             for (Author author : newBook.getAuthors()) {
@@ -154,16 +152,16 @@ public class BookService {
     }
 
 
-    public Boolean isIsbnValid(String isbnNumber, Integer publisherIsbnSign) {
-        List<String> partsOfIsbnNumber = Arrays.stream(isbnNumber.split("-")).toList();
-        if (partsOfIsbnNumber.size() != 5) {
-            return false;
-        } else if (!partsOfIsbnNumber.get(0).equals("978")) {
-            return false;
-        } else if (!partsOfIsbnNumber.get(3).equals(partsOfIsbnNumber.toString())) {
-            return false;
-        }
-
-        return true;
-    }
+//    public Boolean isIsbnValid(String isbnNumber, Integer publisherIsbnSign) {
+//        List<String> partsOfIsbnNumber = Arrays.stream(isbnNumber.split("-")).toList();
+//        if (partsOfIsbnNumber.size() != 5) {
+//            return false;
+//        } else if (!partsOfIsbnNumber.get(0).equals("978")) {
+//            return false;
+//        } else if (!partsOfIsbnNumber.get(3).equals(partsOfIsbnNumber.toString())) {
+//            return false;
+//        }
+//
+//        return true;
+//    }
 }

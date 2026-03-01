@@ -75,8 +75,7 @@ public class OrderService {
             searchedOrderHistory.setStatus(statusRepository.findById(3).get());
             searchedOrderHistory.setCanceled_at(new Date());
             searchedOrderHistory.setIsCanceled(true);
-            orderHistoryRepository.save(searchedOrderHistory);
-            return ResponseEntity.ok().build();
+            return ResponseEntity.ok().body(orderHistoryRepository.save(searchedOrderHistory));
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.internalServerError().build();
@@ -176,6 +175,7 @@ public class OrderService {
 
         return true;
     }
+
     public Boolean isTransportDetailValid(TransportDetail transportDetail) {
         if (transportDetail.getId() != null) {
             return false;

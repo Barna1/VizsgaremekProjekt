@@ -16,7 +16,7 @@ public class UserController {
 
     @PostMapping("/login")
     private ResponseEntity<Object> login(@RequestBody JsonNode requestBody) {
-        return userService.login(requestBody.get("username").asText(null), requestBody.get("password").asText(null));
+        return userService.login(requestBody.get("username").asString(null), requestBody.get("password").asString(null));
     }
 
     @PostMapping("/register")
@@ -26,7 +26,7 @@ public class UserController {
 
     @PatchMapping("/{id}")
     private ResponseEntity<Object> update(@RequestBody JsonNode requestBody, @PathVariable("id") Integer id) {
-        return userService.update(id, requestBody.get("username").asText(null), requestBody.get("email").asText(null));
+        return userService.update(id, requestBody.get("username").asString(null), requestBody.get("email").asString(null));
     }
     @DeleteMapping("/{id}")
     private ResponseEntity<Object> delete(@PathVariable("id") Integer id) {
@@ -38,11 +38,11 @@ public class UserController {
     }
     @PostMapping("/check")
     private ResponseEntity<Object> checkVerificationCode(@RequestBody JsonNode requestBody) {
-        return userService.checkVerificationCode(requestBody.get("vCode").asText(null), requestBody.get("email").asText(null));
+        return userService.checkVerificationCode(requestBody.get("vCode").asString(null), requestBody.get("email").asString(null));
     }
     @PatchMapping("/password")
     private ResponseEntity<Object> changePassword(@RequestBody JsonNode requestBody) {
-        return userService.changePassword(requestBody.get("email").asText(null), requestBody.get("newPassword").asText(null));
+        return userService.changePassword(requestBody.get("email").asString(null), requestBody.get("newPassword").asString(null));
     }
     @PatchMapping("/pfp/{id}")
     private ResponseEntity<Object> changePfp(@RequestParam("pfpFile") MultipartFile newPfpImage, @PathVariable("id") Integer id) {

@@ -14,11 +14,11 @@ public class ReviewController {
 
     private final ReviewService reviewService;
 
-    @PostMapping("")
+    @PostMapping
     private ResponseEntity<Object> addReview(@RequestBody Review newReview) {
         return reviewService.addReview(newReview);
     }
-    @PutMapping("")
+    @PutMapping
     private ResponseEntity<Object> updateReview(@RequestBody JsonNode updatedReview) {
         return reviewService.updateReview(updatedReview.get("id").asInt(0), updatedReview.get("reviewText").asText(null));
     }

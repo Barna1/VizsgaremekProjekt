@@ -63,7 +63,6 @@ public class OrderHistory {
 
     @Column(name = "is_canceled")
     @NotNull
-    @JsonIgnore
     private Boolean isCanceled;
 
     @Column(name = "canceler_email")
