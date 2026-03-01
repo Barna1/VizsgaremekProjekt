@@ -6,6 +6,7 @@ import { UserService } from '../../services/user-service';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { OrderHistory } from '../../models/order-history.model';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-user-page',
@@ -17,6 +18,7 @@ export class UserPage implements OnInit{
   orderService = inject(OrderService)
   userService = inject(UserService)
   router = inject(Router)
+  private cookiseService = inject(CookieService)
   updateForm!: FormGroup
   orderHistoryList: OrderHistory[] = []
   selectedOrderHistory: OrderHistory | null = null
@@ -24,7 +26,7 @@ export class UserPage implements OnInit{
   showInputs: boolean = false
 
   ngOnInit(): void {
-    this.orderService.getOrderHistoryById(this.userService.loggedUser?.id!).subscribe({
+    this.orderService.getOrderHistoryByUserId(this.userService.loggedUser?.id!).subscribe({
       next: response => this.orderHistoryList = response,
     })
 
@@ -38,7 +40,10 @@ export class UserPage implements OnInit{
     this.showInputs = !this.showInputs
     if (!this.showInputs) {
       this.userService.update(this.userService.loggedUser?.id!, {username: this.updateForm.controls["username"].value, email: this.updateForm.controls["email"].value}).subscribe({
-        next: response => this.userService.loggedUser = response
+        next: response => this.userService.loggedUser = response,
+        error: (error) => {
+          console.log(error)
+        }
       })
     }
   }
@@ -50,7 +55,26 @@ export class UserPage implements OnInit{
   deleteProfile() {
     this.userService.deleteUser(this.userService.loggedUser?.id!).subscribe({
       next: response => console.log(response),
-      complete: () => this.router.navigate([""])
+      complete: () => {
+        this.logout()
+      }
     })
+  }
+
+  logout() {
+    localStorage.clear()
+    sessionStorage.clear()
+    this.cookiseService.deleteAll()
+    this.router.navigate([""])
+  }
+
+  handleSave() {
+    if (this.showInputs) {
+      this.updateProfile()
+      this.showInputs = false
+    } else {
+      this.showInputs = true
+    }
+
   }
 }

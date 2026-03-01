@@ -1,32 +1,32 @@
-<div class="container-fluid d-flex flex-column" style="height: 100vh;">
+<div class="container-fluid d-flex flex-column justify-content-center" style="min-height: 100vh;">
   <div class="row h-100 d-flex align-items-center">
-    <div class="col-lg-4 d-flex justify-content-center align-items-center">
+    <div class="col-lg-4 my-lg-0 my-3 d-flex justify-content-center align-items-center">
       <div class="container-fluid d-flex flex-column justify-content-between" id="bioContainer">
         <div class="row">
           <div class="col-lg-12 d-flex justify-content-center align-items-center flex-column">
             <div class="w-100 d-flex justify-content-between align-items-center">
               <div></div>
               <h1 class="text-center my-3 text">Adataim</h1>
-              <button (click)="showInputs = !showInputs" class="iconButton d-flex justify-content-center align-items-center">
-                <span class="material-symbols-outlined">edit</span>
+              <button (click)="handleSave()" class="iconButton d-flex justify-content-center align-items-center">
+                <span class="material-symbols-outlined">{{showInputs ? "check" : "edit"}}</span>
               </button>
             </div>
-            <img src="assets/heroImg.jpg" alt="" class="img-fluid">
+            <img src="" alt="" class="img-fluid">
             <form class="w-100 mt-4" [formGroup]="updateForm">
               <p class="m-0 mb-2 d-flex justify-content-between text">
                 <span>E-mail cím:</span>
                 @if(!showInputs) {
-                  <span>{{userService.loggedUser?.email}}</span>
+                <span>{{userService.loggedUser?.email}}</span>
                 } @else {
-                  <input formControlName="email" type="text">
+                <input formControlName="email" type="text">
                 }
               </p>
               <p class="m-0 mt-2 d-flex justify-content-between text">
                 <span>Felhasználó név:</span>
                 @if(!showInputs) {
-                  <span>{{userService.loggedUser?.username}}</span>
+                <span>{{userService.loggedUser?.username}}</span>
                 } @else {
-                  <input formControlName="username" type="text">
+                <input formControlName="username" type="text">
                 }
               </p>
             </form>
@@ -35,12 +35,12 @@
 
         <div class="row mb-4">
           <div class="col-lg-12 d-flex justify-content-center align-items-center">
-            <button id="logoutButton" class="text-white">Kijelentkezés</button>
+            <button id="logoutButton" class="text-white" (click)="logout()">Kijelentkezés</button>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-lg-8">
+    <div class="col-lg-8 my-lg-0 my-3">
       <div class="container-fluid" id="orderHistoryContainer">
         <div class="row">
           <div class="col-lg-12">
@@ -49,9 +49,9 @@
         </div>
 
         <div class="row">
-          <div class="col-lg-12">
+          <div class="col-lg-12 px-4">
             @for (orderHistory of orderHistoryList; track $index) {
-              <app-order-history-card [historyDetails]="orderHistory" (showDetails)="selectedOrderHistory = $event"/>
+            <app-order-history-card [historyDetails]="orderHistory" (showDetails)="selectedOrderHistory = $event" />
             }
           </div>
         </div>
@@ -68,21 +68,21 @@
 </div>
 
 @if (selectedOrderHistory != null) {
-  <app-order-history-details-pop-up [historyDetail]="selectedOrderHistory!"/>
+<app-order-history-details-pop-up [historyDetail]="selectedOrderHistory!" (close)="selectedOrderHistory = null" />
 }
 
 @if(showDelete) {
-  <div class="container-fluid h-100 w-100" id="deleteContainer">
-    <div class="row h-100">
-      <div class="col-lg-12 h-100 d-flex justify-content-center align-items-center">
-        <div id="delete" class="d-flex flex-column justify-content-between">
-          <h3 class="text-center mt-3 text">Biztosan törölni szeretnéd a fiókodat?</h3>
-          <div class="w-100 d-flex justify-content-center mb-4">
-            <button class="mx-2 text" (click)="deleteProfile()">Igen</button>
-            <button class="mx-2 text" (click)="showDelete = false">Nem</button>
-          </div>
+<div class="container-fluid h-100 w-100" id="deleteContainer">
+  <div class="row h-100">
+    <div class="col-lg-12 h-100 d-flex justify-content-center align-items-center">
+      <div id="delete" class="d-flex flex-column justify-content-between">
+        <h3 class="text-center mt-3 text">Biztosan törölni szeretnéd a fiókodat?</h3>
+        <div class="w-100 d-flex justify-content-center mb-4">
+          <button class="mx-2 text" (click)="deleteProfile()">Igen</button>
+          <button class="mx-2 text" (click)="showDelete = false">Nem</button>
         </div>
       </div>
     </div>
   </div>
+</div>
 }

@@ -9,7 +9,7 @@
 }
 
 #orderHistoryContainer {
-  height: 600px;
+  height: 575px;
   background-color: #B0A695;
   width: 900px;
   border-radius: 8px;
@@ -83,5 +83,11 @@ p {
 
   span {
     color: #EBE3D5;
+  }
+}
+
+@media screen and (max-width: 1730px) {
+ #orderHistoryContainer {
+    width: 100% !important;
   }
 }
