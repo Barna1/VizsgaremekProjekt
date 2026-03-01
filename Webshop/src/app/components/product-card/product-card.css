@@ -37,3 +37,9 @@ button {
   font-style: normal;
   font-size: 20px;
 }
+
+@media screen and (max-width: 400px) {
+ #mainContainer {
+    width: 100% !important;
+  }
+}

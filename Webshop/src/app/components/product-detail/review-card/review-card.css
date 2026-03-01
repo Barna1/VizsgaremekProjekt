@@ -4,3 +4,10 @@
   background-color: #B0A695;
   border-radius: 8px;
 }
+
+@media screen and (max-width: 1500px) {
+  .container-fluid {
+    width: 100% !important;
+    height: auto;
+  }
+}
