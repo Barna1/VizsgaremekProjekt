@@ -3,6 +3,7 @@
 img {
   width: 1720px;
   height: 450px;
+  border-radius: 10px;
 }
 
 h1 {
