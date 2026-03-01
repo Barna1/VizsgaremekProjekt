@@ -30,4 +30,9 @@ public class PublisherController {
     private ResponseEntity<Object> addPublisher(@RequestBody Publisher newPublisher) {
         return publisherService.addPublisher(newPublisher);
     }
+
+    @PutMapping
+    private ResponseEntity<Object> updatePublisher(@RequestBody Publisher updatedPublisher) {
+        return publisherService.updatePublisher(updatedPublisher);
+    }
 }

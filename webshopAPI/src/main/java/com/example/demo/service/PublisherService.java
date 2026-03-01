@@ -70,6 +70,21 @@ public class PublisherService {
             return ResponseEntity.internalServerError().build();
         }
     }
+    public ResponseEntity<Object> updatePublisher(Publisher newPublisher) {
+        try {
+            if (newPublisher.getId() == null) {
+                return ResponseEntity.status(415).body("invalidObject");
+            } else if (!isEmailValid(newPublisher.getEmail())) {
+                return ResponseEntity.status(415).body("invalidEmail");
+            }
+
+            newPublisher.setIsDeleted(false);
+            return ResponseEntity.ok().body(publisherRepository.save(newPublisher));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.internalServerError().build();
+        }
+    }
 
     public Boolean isEmailValid(String email) {
         Pattern EMAIL_PATTERN = Pattern.compile("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$");
