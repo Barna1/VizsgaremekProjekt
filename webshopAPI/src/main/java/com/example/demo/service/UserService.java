@@ -5,83 +5,71 @@ import com.example.demo.entity.Basket;
 import com.example.demo.entity.User;
 import com.example.demo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.validation.ConstraintViolationException;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Date;
 import java.util.Random;
 import java.util.regex.Pattern;
 
 @Service
 @RequiredArgsConstructor
-@Transactional(noRollbackFor = {DataIntegrityViolationException.class, ConstraintViolationException.class, SQLIntegrityConstraintViolationException.class, SQLException.class})
+@Transactional
 public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final EmailSender emailSender;
 
     public ResponseEntity<Object> login(String username, String password) {
-        try {
-            if (username == null || password == null) {
-                return ResponseEntity.status(422).build();
-            }
-            User searchedUser = userRepository.getUserByUsername(username).orElse(null);
-            if (searchedUser == null || searchedUser.getIsDeleted()) {
+        if (username == null || password == null) {
+            return ResponseEntity.status(422).build();
+        }
+        User searchedUser = userRepository.getUserByUsername(username).orElse(null);
+        if (searchedUser == null || searchedUser.getIsDeleted()) {
+            return ResponseEntity.notFound().build();
+        } else {
+            if (!passwordEncoder.matches(password, searchedUser.getPassword())) {
                 return ResponseEntity.notFound().build();
             } else {
-                if (!passwordEncoder.matches(password, searchedUser.getPassword())) {
-                    return ResponseEntity.notFound().build();
-                } else {
-                    searchedUser.setLastLogin(new Date());
-                    return ResponseEntity.ok().body(userRepository.save(searchedUser));
-                }
+                searchedUser.setLastLogin(new Date());
+                return ResponseEntity.ok().body(userRepository.save(searchedUser));
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.internalServerError().build();
         }
     }
 
     public ResponseEntity<Object> register(User newUser) {
-        try {
-            if (newUser == null) {
-                return ResponseEntity.status(422).build();
-            }
 
-            if (newUser.getId() != null){
-                return ResponseEntity.status(415).body("invalidObject");
-            } else if (!isEmailValid(newUser.getEmail())) {
-                return ResponseEntity.status(415).body("invalidEmail");
-            } else if (!isPasswordValid(newUser.getPassword())) {
-                return ResponseEntity.status(415).body("invalidPassword");
-            } else {
-                newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
-                newUser.setBasket(new Basket());
-                newUser.setPfpPath("http://localhost:8080/pfp/standardpfp.png");
-                userRepository.save(newUser);
-
-                try {
-                     emailSender.sendEmailAboutRegistration(newUser.getEmail());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    return ResponseEntity.internalServerError().build();
-                }
-
-                return ResponseEntity.ok().build();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.internalServerError().build();
+        if (newUser == null) {
+            return ResponseEntity.status(422).build();
         }
+
+        if (newUser.getId() != null) {
+            return ResponseEntity.status(415).body("invalidObject");
+        } else if (!isEmailValid(newUser.getEmail())) {
+            return ResponseEntity.status(415).body("invalidEmail");
+        } else if (!isPasswordValid(newUser.getPassword())) {
+            return ResponseEntity.status(415).body("invalidPassword");
+        } else {
+            newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
+            newUser.setBasket(new Basket());
+            newUser.setPfpPath("http://localhost:8080/pfp/standardpfp.png");
+            userRepository.save(newUser);
+
+            try {
+                emailSender.sendEmailAboutRegistration(newUser.getEmail());
+            } catch (Exception e) {
+                e.printStackTrace();
+                return ResponseEntity.internalServerError().build();
+            }
+
+            return ResponseEntity.ok().build();
+        }
+
     }
 
     public ResponseEntity<Object> update(Integer id, String username, String email) {
@@ -93,7 +81,7 @@ public class UserService {
             if (searchedUser == null || searchedUser.getIsDeleted()) {
                 return ResponseEntity.notFound().build();
             }
-            if (!isEmailValid(email)){
+            if (!isEmailValid(email)) {
                 return ResponseEntity.status(415).body("invalidEmail");
             } else {
                 searchedUser.setUsername(username.trim());

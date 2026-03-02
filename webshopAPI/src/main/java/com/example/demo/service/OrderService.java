@@ -19,7 +19,7 @@ import java.util.regex.Pattern;
 
 @Service
 @RequiredArgsConstructor
-@Transactional(noRollbackFor = {DataIntegrityViolationException.class, ConstraintViolationException.class, SQLIntegrityConstraintViolationException.class, SQLException.class})
+@Transactional
 public class OrderService {
     private final OrderHistoryRepository orderHistoryRepository;
     private final UserRepository userRepository;
@@ -116,13 +116,6 @@ public class OrderService {
             } else if (!isEmailValid(newOrder.getEmail().trim())) {
                 return ResponseEntity.status(415).body("invalidEmail");
             }
-            //else if (!isPhoneValid(newOrder.getPhone())) {
-            //    return ResponseEntity.status(415).body("invalidPhone");
-            //} else if (!isBillingDetailValid(newOrder.getHistoryBillingDetail())) {
-            //    return ResponseEntity.status(415).body("invalidBillingDetails");
-            //} else if (!isTransportDetailValid(newOrder.getHistoryTransportDetail())) {
-            //    return ResponseEntity.status(415).body("invalidBillingDetails");
-            //}
 
             int sumPrice = 0;
             List<OrderHistoryProduct> orderedProductList = new ArrayList<>();
@@ -149,6 +142,7 @@ public class OrderService {
             newOrder.setStatus(statusRepository.findById(1).get());
             orderHistoryRepository.save(newOrder);
 
+            basketRepository.clearBasket(basketId);
             return ResponseEntity.ok().build();
         } catch (Exception e) {
             e.printStackTrace();

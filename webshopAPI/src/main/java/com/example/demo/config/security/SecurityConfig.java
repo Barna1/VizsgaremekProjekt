@@ -93,7 +93,7 @@ public class SecurityConfig {
                 .addFilterAfter(jwtGeneratorFilter, BasicAuthenticationFilter.class)
                 .addFilterBefore(jwtValidatorFilter, BasicAuthenticationFilter.class)
                 .authenticationProvider(authProvider())
-                .formLogin(Customizer.withDefaults())
+                .formLogin(f -> f.disable())
                 .csrf(crs -> crs.disable())
                 .httpBasic(Customizer.withDefaults());
 
