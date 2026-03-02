@@ -7,15 +7,15 @@
 
 #mainContainer {
   width: 350px;
-  height: 450px;
+  height: 700px;
   background-color: #B0A695;
   border-radius: 8px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
 img {
-  height: 175px;
-  width: 315px;
+  height: 443px;
+  width: 312px;
   border-radius: 4px;
 }
 
