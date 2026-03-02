@@ -26,7 +26,7 @@ export class PublisherList implements OnInit{
 
   selectPublisher(selectedPublisher: Publisher) {
     this.selectedPublisher = selectedPublisher
-    this.bookService.getBooksByPublisher(selectedPublisher.id).subscribe({
+    this.bookService.getBookByPublisher(selectedPublisher.id!).subscribe({
       next: response => this.bookList = response
     })
   }

@@ -21,4 +21,12 @@ export class PublisherService {
   deletePublisher(id: number) {
     return this.http.delete(`${this.baseUrl}/${id}`)
   }
+
+  addPublisher(newPublisher: Publisher): Observable<Publisher> {
+    return this.http.post<Publisher>(this.baseUrl, newPublisher)
+  }
+
+  updatePublisher(updatedPublisher: Publisher) {
+    return this.http.put<Publisher>(this.baseUrl, updatedPublisher)
+  }
 }
