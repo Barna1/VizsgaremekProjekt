@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.*;
 public class AuthorController {
     private final AuthorService authorService;
 
-    @GetMapping("")
+    @GetMapping
     private ResponseEntity<Object> getAllAuthor() {
         return authorService.getAllAuthor();
     }
-    @PostMapping("")
+    @PostMapping
     private ResponseEntity<Object> addAuthor(@RequestBody Author newAuthor) {
         return authorService.addAuthor(newAuthor);
     }
@@ -24,7 +24,7 @@ public class AuthorController {
     private ResponseEntity<Object> deleteAuthor(@PathVariable("id") Integer id) {
         return authorService.deleteAuthor(id);
     }
-    @PutMapping("")
+    @PutMapping
     private ResponseEntity<Object> updateAuthor(@RequestBody Author updatedAuthor) {
         return authorService.updateAuthor(updatedAuthor);
     }

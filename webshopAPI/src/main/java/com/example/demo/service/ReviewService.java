@@ -18,7 +18,7 @@ import java.sql.SQLIntegrityConstraintViolationException;
 
 @Service
 @RequiredArgsConstructor
-@Transactional(noRollbackFor = {DataIntegrityViolationException.class, ConstraintViolationException.class, SQLIntegrityConstraintViolationException.class, SQLException.class})
+@Transactional
 public class ReviewService {
     private final ReviewRepository reviewRepository;
     private final UserRepository userRepository;

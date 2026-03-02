@@ -26,13 +26,13 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-@Transactional(noRollbackFor = {DataIntegrityViolationException.class, ConstraintViolationException.class, SQLIntegrityConstraintViolationException.class, SQLException.class})
+@Transactional
 public class BookService {
     private final BookRepository bookRepository;
     private final AuthorRepository authorRepository;
     private final PublisherRepository publisherRepository;
     private final GenreRepository genreRepository;
-    
+
     public ResponseEntity<Object> getBooks(Pageable pageable) {
         try {
             Page<Book> returnList = bookRepository.findByIsDeleted(false, pageable);

@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/book")
 public class BookController {
     private final BookService bookService;
-    
-    @GetMapping("")
+
+    @GetMapping
     private ResponseEntity<Object> getBooks(Pageable pageable) {
         return bookService.getBooks(pageable);
     }
@@ -34,7 +34,7 @@ public class BookController {
         return bookService.getBookByPublisher(publisherId);
     }
 
-    @PostMapping("")
+    @PostMapping
     private ResponseEntity<Object> addBook(@RequestBody Book newBook) {
         return bookService.addBook(newBook);
     }

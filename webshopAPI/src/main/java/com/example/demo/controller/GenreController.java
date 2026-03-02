@@ -12,15 +12,15 @@ import org.springframework.web.bind.annotation.*;
 public class GenreController {
     private final GenreService genreService;
 
-    @GetMapping("")
+    @GetMapping
     private ResponseEntity<Object> getAllGenre() {
         return genreService.getAllGenre();
     }
-    @PostMapping("")
+    @PostMapping
     private ResponseEntity<Object> addGenre(@RequestBody Genre newGenre) {
         return genreService.addGenre(newGenre);
     }
-    @PutMapping("")
+    @PutMapping
     private ResponseEntity<Object> updateGenre(@RequestBody Genre updatedGenre) {
         return genreService.updateGenre(updatedGenre);
     }
