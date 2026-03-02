@@ -6,7 +6,7 @@
 
 #secondContainer {
   width: 550px;
-  height: 650px;
+  height: 720px;
   background-color: #EBE3D5;
   border-radius: 12px;
 }
@@ -32,4 +32,8 @@
 
 .deleteButton {
   width: 125px;
+}
+
+button:disabled {
+  opacity: 0.6;
 }
