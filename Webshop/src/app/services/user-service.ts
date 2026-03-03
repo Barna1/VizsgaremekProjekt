@@ -2,6 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { User } from '../models/user.model';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root',
@@ -25,5 +26,14 @@ export class UserService {
 
   deleteUser(id: number) {
     return this.http.delete(`${this.baseUrl}/${id}`)
+  }
+
+  constructor(private cookieService: CookieService) {}
+
+  logout(): void {
+    this.loggedUser = null;
+
+    this.cookieService.delete('jwt', '/');
+    this.cookieService.delete('refreshToken', '/');
   }
 }
