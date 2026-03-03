@@ -62,9 +62,12 @@ export class UserPage implements OnInit{
   }
 
   logout() {
-  this.userService.logout();
-  this.router.navigate(['/']);
-}
+    localStorage.clear()
+    sessionStorage.clear()
+    this.cookiseService.deleteAll()
+    this.router.navigate(["/"])
+  }
+
   handleSave() {
     if (this.showInputs) {
       this.updateProfile()
