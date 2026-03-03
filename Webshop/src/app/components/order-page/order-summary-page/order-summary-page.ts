@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, mergeApplicationConfig } from '@angular/core';
 import { OrderService } from '../../../services/order-service';
 import { BasketService } from '../../../services/basket-service';
 import { UserService } from '../../../services/user-service';
