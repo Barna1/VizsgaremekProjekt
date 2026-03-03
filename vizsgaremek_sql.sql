@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: localhost:3306
--- Létrehozás ideje: 2026. Feb 27. 10:35
+-- Létrehozás ideje: 2026. Már 03. 16:04
 -- Kiszolgáló verziója: 5.7.24
 -- PHP verzió: 8.3.1
 
@@ -734,7 +734,10 @@ INSERT INTO `basket_product` (`id`, `product_id`, `basket_id`, `amount`, `added_
 (47, 10, 4, 1, '2026-02-27 10:53:45', 0, NULL),
 (48, 10, 4, 1, '2026-02-27 10:53:45', 0, NULL),
 (49, 1, 4, 1, '2026-02-27 11:30:37', 0, NULL),
-(50, 1, 4, 1, '2026-02-27 11:30:38', 0, NULL);
+(50, 1, 4, 1, '2026-02-27 11:30:38', 0, NULL),
+(51, 2, 4, 1, '2026-03-01 13:57:32', 0, NULL),
+(52, 2, 4, 1, '2026-03-01 13:57:34', 0, NULL),
+(53, 11, 4, 1, '2026-03-01 15:05:30', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -789,7 +792,7 @@ CREATE TABLE `book` (
 --
 
 INSERT INTO `book` (`id`, `title`, `description`, `ISBN`, `publishing_year`, `cover_image_path`, `stock_quantity`, `publisher_id`, `price`, `is_deleted`, `deleted_at`, `created_at`) VALUES
-(1, 'Harry Potter and the Sorcerer\'s Storm', 'Harry korai éveit követi a Hogwartsban, amikor egy titokzatos mágikus vihar kezd terjedni. Furcsa események történnek az iskolában, és Harrynek barátaival fel kell tárnia a vihar forrását. Ha nem sikerül, a varázsló- és a mugli világ egyaránt veszélybe kerülhet.', 'ISBN123456', 2002, 'http://localhost:8080/coverImg/hp1.jpg', 18, 1, 3500, 0, NULL, '2026-01-22 21:02:28'),
+(1, 'Harry Potter and the Sorcerer\'s Stone', 'Harry korai éveit követi a Hogwartsban, amikor egy titokzatos mágikus vihar kezd terjedni. Furcsa események történnek az iskolában, és Harrynek barátaival fel kell tárnia a vihar forrását. Ha nem sikerül, a varázsló- és a mugli világ egyaránt veszélybe kerülhet.', 'ISBN123456', 2002, 'http://localhost:8080/coverImg/hp1.jpg', 18, 1, 3500, 0, NULL, '2026-01-22 21:02:28'),
 (2, 'Harry Potter and the Chamber of Secrets', 'Harry visszatér a Hogwartsba a második évére, ahol egy rejtélyes erő támadja a diákokat és kővé változtatja őket. Harry nyomokat talál egy rejtett kamráról és egy sötét titokról. Az iskola múltja veszélybe kerül, miközben a félelem nő.', 'ISBN987654', 1998, 'http://localhost:8080/coverImg/hp2.jpg', 78, 2, 4200, 0, NULL, '2026-01-22 21:02:28'),
 (3, 'Harry Potter and the Prisoner of Azkaban', 'Harry harmadik évében megtudja, hogy Sirius Black, egy veszélyes fogoly megszökött az Azkabánból, és talán őt keresi. Ahogy múltbéli titkok kerülnek felszínre, Harry felfedezi az igazságot az árulásról, barátságról és saját történetéről.', 'ISBN123001', 1999, 'http://localhost:8080/coverImg/hp3.jpg', 15, 3, 3990, 0, NULL, '2026-01-22 21:02:28'),
 (4, 'Harry Potter and the Goblet of Fire', 'Harry negyedik évében váratlanul kiválasztják a veszélyes Tűz Serlege Tornára. Halálos kihívásokkal néz szembe, miközben egy sötétebb fenyegetés kezd emelkedni. A kaland sokkoló és életre szóló összecsapáshoz vezet.', 'ISBN123002', 2000, 'http://localhost:8080/coverImg/hp4.jpg', 15, 5, 4490, 0, NULL, '2026-01-22 21:02:28'),
@@ -1107,7 +1110,7 @@ INSERT INTO `user` (`id`, `username`, `email`, `password`, `role_id`, `last_logi
 (6, 'emma_johnson', 'emma.johnson@example.com', 'hashed_pw_6', 2, NULL, '2026-01-08 09:36:36', 0, NULL, 'asd', ''),
 (7, 'michael_brown', 'michael.brown@example.com', 'hashed_pw_7', 2, NULL, '2026-01-08 09:36:36', 0, NULL, 'asd', ''),
 (9, 'olivia_wilson', 'olivia.wilson@example.com', 'hashed_pw_8', 2, NULL, '2026-01-08 09:39:01', 0, NULL, 'asd', ''),
-(11, 'testElek', 'asd@gmail.com', '$argon2id$v=19$m=4096,t=3,p=1$xevbL65AfAo3cPoTOnNecA$m96Mv15eQLkKHmFwDuxAVYkC6kVKLoaE/b84iArXrn0', 1, '2026-02-27 11:30:32', '2026-02-08 17:08:10', 0, NULL, 'default', NULL);
+(11, 'testElek', 'asd@gmail.com', '$argon2id$v=19$m=4096,t=3,p=1$xevbL65AfAo3cPoTOnNecA$m96Mv15eQLkKHmFwDuxAVYkC6kVKLoaE/b84iArXrn0', 1, '2026-03-01 15:03:53', '2026-02-08 17:08:10', 0, NULL, 'default', NULL);
 
 --
 -- Indexek a kiírt táblákhoz
@@ -1268,7 +1271,7 @@ ALTER TABLE `basket`
 -- AUTO_INCREMENT a táblához `basket_product`
 --
 ALTER TABLE `basket_product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT a táblához `billing_detail`
