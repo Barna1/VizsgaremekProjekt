@@ -10,7 +10,7 @@ import { BasketProduct } from '../models/basket-product.model';
 export class BasketService {
   private baseUrl = "http://localhost:8080/basket"
   private http = inject(HttpClient)
-  usersBasket: Basket = new Basket(null, 0, []);
+  usersBasket!: Basket
 
   getBasketByUserId(userId: number): Observable<Basket> {
     return this.http.get<Basket>(`${this.baseUrl}/user/${userId}`)
