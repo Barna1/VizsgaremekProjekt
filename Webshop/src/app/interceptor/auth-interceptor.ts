@@ -16,10 +16,9 @@ export function AuthInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn):
   } else {
     const cloneOfRequest = req.clone({
       headers: req.headers
-        .append("Authorization", `Bearer ${cookieService.get("jwt")}`)
-        .append("refreshToken", cookieService.get("refreshToken"))
+        .set("Authorization", `Bearer ${cookieService.get("jwt")}`)
+        .set("refreshToken", cookieService.get("refreshToken"))
     })
     return next(cloneOfRequest)
   }
 }
-
