@@ -16,7 +16,7 @@
                 <div class="col-lg-12">
                   <label class="fw-bold" for="username">Felhasználó név</label><br>
                   <input id="username" formControlName="username" type="text" placeholder="Írja be a felhasználónevét"
-                    class="w-100" [ngClass]="{
+                    class="form-control" [ngClass]="{
                       'error-input': loginForm.get('username')?.invalid && loginForm.get('username')?.touched
                        }">
 
@@ -30,7 +30,7 @@
                 <div class="col-lg-12">
                   <label class="fw-bold" for="password">Jelszó</label><br>
                   <input id="password" formControlName="password" type="password" placeholder="Írjon be a jelszavat"
-                    class="w-100" [ngClass]="{
+                    class="form-control" [ngClass]="{
                           'error-input': loginForm.get('password')?.invalid && loginForm.get('password')?.touched
                         }">
 
