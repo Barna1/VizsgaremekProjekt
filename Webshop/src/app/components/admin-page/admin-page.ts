@@ -8,13 +8,9 @@ import { Popup } from './popup/popup';
   templateUrl: './admin-page.html',
   styleUrl: './admin-page.css',
 })
-export class AdminPage implements OnInit {
+export class AdminPage {
   isShowPopUp: boolean = false
   selectedType!: "genre" | "book" | "publisher"
-
-  ngOnInit(): void {
-
-  }
 
   showPopup(selectedType: "genre" | "book" | "publisher") {
     this.selectedType = selectedType

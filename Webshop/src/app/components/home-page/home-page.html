@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row my-5">
     <div class="col-lg-12 d-flex justify-content-center align-items-center">
-      <img src="assets/background-image.jpg" alt="" />
+      <img src="assets/background-image.jpg" alt="" class="img-fluid"/>
     </div>
   </div>
 
@@ -12,7 +12,7 @@
       <div class="container-fluid">
         <div class="row">
           @for (book of successfullyBooks; track $index) {
-            <div class="col-lg-4">
+            <div class="col-lg-4 my-3">
               <app-product-card [productDetail]="book"/>
             </div>
           }

@@ -1,8 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { PublisherService } from '../../services/publisher-service';
 import { Publisher } from '../../models/publisher.model';
-import { BookService } from '../../services/book-service';
 import { Book } from '../../models/book.model';
+import { BookService } from '../../services/book-service';
 import { RouterModule } from '@angular/router';
 
 @Component({
