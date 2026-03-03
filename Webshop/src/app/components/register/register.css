@@ -33,19 +33,14 @@ button {
 
 input {
   height: 45px;
-  border-radius: 5px;
 }
 
 button:disabled {
   opacity: 0.5;
 }
 
-.error-input {
-  border: 2px solid #dc3545;
-  outline: none;
-}
-
-.error-text {
-  color: #dc3545;
-  font-size: 0.9rem;
+@media screen and (max-width: 650px) {
+ #secondContainer {
+    width: 100% !important;
+  }
 }

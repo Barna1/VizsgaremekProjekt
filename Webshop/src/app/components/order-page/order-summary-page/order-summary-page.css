@@ -3,16 +3,16 @@
 }
 
 #secondContainer {
-  height: 600px;
+  height: 750px;
   width: 800px;
   background-color: #B0A695;
   border-radius: 12px;
 }
 
 button {
-  height: 65px;
-  width: 215px;
-  background-color: #EBE3D5;
+  width: auto;
+  padding: 5px 15px;
+  background-color: white;
   border: none;
   border-radius: 6px;
   font-weight: 600;

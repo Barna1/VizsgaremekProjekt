@@ -12,14 +12,14 @@
   border-radius: 12px;
 }
 
-button {
-  height: 60px;
-  width: 150px;
-  background-color: #EBE3D5;
+.publisherViewButton, .bookViewButton {
+  width: auto;
+  padding: 5px 15px;
+  background-color: white;
   border: none;
   border-radius: 6px;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 20px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
