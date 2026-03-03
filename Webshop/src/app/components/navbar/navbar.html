@@ -9,8 +9,6 @@
         <div class="d-flex flex-lg-row flex-column">
           <a class="nav-link text-lg-start text-center" routerLink="/productList">Termékek</a>
           <a class="nav-link text-lg-start text-center" routerLink="/publisherList">Kiadók</a>
-          <a class="nav-link text-lg-start text-center" routerLink="#">Sikerlista</a>
-          <a class="nav-link text-lg-start text-center" routerLink="#">Újdonságok</a>
           @if (userService.loggedUser?.role?.name == "ROLE_admin") {
             <a class="nav-link text-lg-start text-center" routerLink="/adminPage">Admin</a>
           }

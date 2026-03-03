@@ -8,35 +8,35 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-lg-12">
-            <h5>
+            <h5 class="text-lg-start text-center my-lg-0 my-3">
               @for (author of selectedBook.authors; track $index) {
                 <span>{{author.firstName + " " + author.middleName + " " + author.lastName}}</span>
               }
             </h5>
-            <h2>{{selectedBook.title}}</h2>
-            <h5>Kiadó: {{selectedBook.publisher.name}}</h5>
+            <h2 class="text-lg-start text-center">{{selectedBook.title}}</h2>
+            <h5 class="text-lg-start text-center">Kiadó: {{selectedBook.publisher.name}}</h5>
           </div>
         </div>
 
         <div class="row">
           <div class="col-lg-12">
-            <h4>Leírás:</h4>
-            <p>{{selectedBook.description}}</p>
+            <h4 class="text-lg-start text-center">Leírás:</h4>
+            <p class="text-lg-start text-center">{{selectedBook.description}}</p>
           </div>
         </div>
 
         <div class="row">
           <div class="col-lg-12">
-            <ul class="p-0">
-              <ol><span class="fw-bold">Kiadás éve: </span> {{selectedBook.publishingYear}}</ol>
-              <ol><span class="fw-bold">ISBN: </span> {{selectedBook.ISBN}}</ol>
-              <ol><span class="fw-bold">Oldalak száma: 0</span></ol>
+            <ul class="p-0 list-unstyled">
+              <li class="text-lg-start text-center"><span class="fw-bold">Kiadás éve: </span> {{selectedBook.publishingYear}}</li>
+              <li class="text-lg-start text-center"><span class="fw-bold">ISBN: </span> {{selectedBook.ISBN}}</li>
+              <li class="text-lg-start text-center"><span class="fw-bold">Oldalak száma: 0</span></li>
             </ul>
           </div>
         </div>
 
         <div class="row">
-          <div class="col-lg-12 d-flex flex-column justify-content-center align-items-end">
+          <div class="col-lg-12 d-flex flex-lg-column flex-row justify-content-lg-center justify-content-between align-items-end">
             <h2>{{selectedBook.price}} Ft</h2>
             <button (click)="addToCart()" class="text-white">Kosárba rakás</button>
           </div>
