@@ -22,8 +22,8 @@ public class UserSetter implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        User loggedUser = userRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException("userNotFound"));
+        User loggedUser = userRepository.findByUsername(email).orElseThrow(() -> new UsernameNotFoundException("userNotFound"));
         List<GrantedAuthority> authorities = List.of(new SimpleGrantedAuthority(loggedUser.getRole().getName()));
-        return new org.springframework.security.core.userdetails.User(loggedUser.getEmail(), loggedUser.getPassword(), authorities);
+        return new org.springframework.security.core.userdetails.User(loggedUser.getUsername(), loggedUser.getPassword(), authorities);
     }
 }

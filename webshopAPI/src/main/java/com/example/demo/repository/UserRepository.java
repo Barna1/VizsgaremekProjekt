@@ -20,5 +20,5 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     @Procedure(name = "deleteUserById", procedureName = "deleteUserById")
     void deleteUserById(@Param("idIN") Integer id);
 
-    Optional<User> findByEmail(String email);
+    Optional<User> findByUsername(String username);
 }

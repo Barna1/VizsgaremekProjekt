@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.config.email.EmailSender;
 import com.example.demo.entity.Basket;
+import com.example.demo.entity.Role;
 import com.example.demo.entity.User;
 import com.example.demo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -58,6 +59,7 @@ public class UserService {
             newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
             newUser.setBasket(new Basket());
             newUser.setPfpPath("http://localhost:8080/pfp/standardpfp.png");
+            newUser.setRole(new Role(1, "ROLE_user"));
             userRepository.save(newUser);
 
             try {

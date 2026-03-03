@@ -35,11 +35,12 @@ public class Role {
     @NotNull
     private Date deletedAt;
 
-
-    @OneToMany(
-            mappedBy = "role",
-            cascade = {}
-    )
+    @OneToMany(mappedBy = "role")
     @JsonIgnore
     private List<User> users;
+
+    public Role(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 }

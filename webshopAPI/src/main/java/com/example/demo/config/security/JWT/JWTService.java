@@ -33,7 +33,7 @@ public class JWTService {
 
     public String createJwtToken(UserDetails principal) {
         System.out.println(principal.getUsername());
-        com.example.demo.entity.User loggedUsers = userRepository.findByEmail(principal.getUsername()).orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        com.example.demo.entity.User loggedUsers = userRepository.findByUsername(principal.getUsername()).orElseThrow(() -> new UsernameNotFoundException("User not found"));
 
         System.out.println(jwtProperties.getIssuer());
 
@@ -58,7 +58,7 @@ public class JWTService {
             RefreshToken refreshToken = mapper.readValue(refreshTokenString, RefreshToken.class);
             if (!refreshToken.getExpiredDate().isBefore(Instant.now())) {
 
-                com.example.demo.entity.User loggedUser = userRepository.findByEmail(refreshToken.getEmail()).orElse(null);
+                com.example.demo.entity.User loggedUser = userRepository.findByUsername(refreshToken.getEmail()).orElse(null);
                 if (loggedUser != null && !loggedUser.getIsDeleted()) {
                     List<GrantedAuthority> authorities = List.of(new SimpleGrantedAuthority(loggedUser.getRole().getName()));
                     String newJwt = createJwtToken(new User(loggedUser.getEmail(), loggedUser.getPassword(), authorities));

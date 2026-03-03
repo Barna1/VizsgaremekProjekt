@@ -89,9 +89,9 @@ public class OrderService {
             return ResponseEntity.internalServerError().build();
         }
     }
-    public ResponseEntity<Object> sendOrder(OrderHistory newOrder, Integer basketId) {
+    public ResponseEntity<Object> sendOrder(OrderHistory newOrder, Integer userId) {
         try {
-            if (newOrder == null || basketId == null) {
+            if (newOrder == null || userId == null) {
                 return ResponseEntity.status(422).build();
             }
 
@@ -103,7 +103,7 @@ public class OrderService {
             }
 
             PaymentMethod searchedPaymentMethod = paymentMethodRepository.getPaymentMethodById(newOrder.getPaymentMethod().getId()).orElse(null);
-            Basket searchedBasket = basketRepository.getBasketById(basketId).orElse(null);
+            Basket searchedBasket = basketRepository.getBasketByUserId(userId).orElse(null);
 
             if (searchedPaymentMethod == null) {
                 return ResponseEntity.status(404).body("paymentMethodNotFound");
@@ -140,9 +140,10 @@ public class OrderService {
 
             newOrder.setOrderHistoryProductList(orderedProductList);
             newOrder.setStatus(statusRepository.findById(1).get());
+            newOrder.setOrderedAt(new Date());
             orderHistoryRepository.save(newOrder);
 
-            basketRepository.clearBasket(basketId);
+            basketRepository.clearBasket(searchedBasket.getId());
             return ResponseEntity.ok().build();
         } catch (Exception e) {
             e.printStackTrace();

@@ -25,6 +25,7 @@ import org.springframework.web.cors.CorsConfigurationSource;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -47,7 +48,7 @@ public class SecurityConfig {
                         config.setAllowedOrigins(Collections.singletonList("http://localhost:4200"));
                         config.setAllowedMethods(Collections.singletonList("*"));
                         config.setAllowCredentials(true);
-                        config.setAllowedHeaders(Collections.singletonList("*"));
+                        config.setAllowedHeaders(List.of("*"));
                         config.setExposedHeaders(Arrays.asList("Authorization", "refreshToken", "Bearer ", "TotalPage"));
                         config.setMaxAge(3600L);
                         return config;
@@ -79,7 +80,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.DELETE, "/order/cancel/*").authenticated()
                         .requestMatchers(HttpMethod.GET, "/order").hasRole("admin")
                         .requestMatchers(HttpMethod.POST, "/order/*").authenticated()
-                        .requestMatchers("/paymentMethods", "/addressType").permitAll()
+                        .requestMatchers("/paymentMethods", "/addressType").authenticated()
                         .requestMatchers("/publisher").permitAll()
                         .requestMatchers(HttpMethod.DELETE, "/publisher/*").hasRole("admin")
                         .requestMatchers(HttpMethod.GET, "/publisher/*").permitAll()
@@ -91,9 +92,9 @@ public class SecurityConfig {
                         .requestMatchers("/coverImg/**", "/pfp/**").permitAll()
                         .requestMatchers("/user/vCode", "/user/check", "/password").permitAll()
                 )
+                .authenticationProvider(authProvider())
                 .addFilterAfter(jwtGeneratorFilter, BasicAuthenticationFilter.class)
                 .addFilterBefore(jwtValidatorFilter, BasicAuthenticationFilter.class)
-                .authenticationProvider(authProvider())
                 .formLogin(f -> f.disable())
                 .csrf(crs -> crs.disable())
                 .httpBasic(Customizer.withDefaults());
