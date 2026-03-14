@@ -60,4 +60,9 @@ public class Basket {
             cascade = {CascadeType.REFRESH, CascadeType.MERGE}
     )
     private List<BasketProduct> productList;
+
+    public Basket(User basketUser) {
+        this.basketUser = basketUser;
+        this.isDeleted = false;
+    }
 }

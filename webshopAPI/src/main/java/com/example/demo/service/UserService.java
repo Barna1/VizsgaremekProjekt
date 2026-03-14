@@ -4,6 +4,7 @@ import com.example.demo.config.email.EmailSender;
 import com.example.demo.entity.Basket;
 import com.example.demo.entity.Role;
 import com.example.demo.entity.User;
+import com.example.demo.repository.BasketRepository;
 import com.example.demo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +25,7 @@ import java.util.regex.Pattern;
 public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final BasketRepository basketRepository;
     private final EmailSender emailSender;
 
     public ResponseEntity<Object> login(String username, String password) {
@@ -57,10 +59,12 @@ public class UserService {
             return ResponseEntity.status(415).body("invalidPassword");
         } else {
             newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
-            newUser.setBasket(new Basket());
+            newUser.setBasket(basketRepository.save(new Basket()));
             newUser.setPfpPath("http://localhost:8080/pfp/standardpfp.png");
             newUser.setRole(new Role(1, "ROLE_user"));
-            userRepository.save(newUser);
+            newUser.setIsDeleted(false);
+            newUser = userRepository.save(newUser);
+            Basket basket = basketRepository.save(new Basket(newUser));
 
             try {
                 emailSender.sendEmailAboutRegistration(newUser.getEmail());
