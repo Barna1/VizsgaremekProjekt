@@ -26,7 +26,7 @@ export class OrderSummaryPage implements OnInit{
 
   sendOrder() {
     this.orderService.actualOrder.ordererUser = this.userService.loggedUser!
-    this.orderService.sendOrder(this.basketService.usersBasket.id!).subscribe({
+    this.orderService.sendOrder(this.userService.loggedUser?.id!).subscribe({
       next: response => {
         this.orderService.actualOrder = new OrderHistory()
         this.router.navigate(["/homePage"])

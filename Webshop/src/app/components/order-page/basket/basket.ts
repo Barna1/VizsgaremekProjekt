@@ -16,7 +16,7 @@ export class BasketPage implements OnInit {
   userService = inject(UserService)
 
   ngOnInit(): void {
-    this.basketService.getBasketByUserId(11).subscribe({
+    this.basketService.getBasketByUserId(this.userService.loggedUser?.id!).subscribe({
       next: response => {
         this.basketService.usersBasket = response
       },
