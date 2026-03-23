@@ -26,7 +26,7 @@ public class OrderController {
     public ResponseEntity<Object> getAllOrder() {
         return orderService.getAllOrder();
     }
-    @PostMapping("/basket/{id}")
+    @PostMapping("/{id}")
     public ResponseEntity<Object> sendOrder(@RequestBody OrderHistory newOrder, @PathVariable("id") Integer basketId) {
         return orderService.sendOrder(newOrder, basketId);
     }
