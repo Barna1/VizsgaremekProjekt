@@ -1,4 +1,43 @@
 .container-fluid {
   background-color: #776B5D;
-  height: 175px;
+  height: 200px;
+}
+
+a {
+  text-decoration: none;
+  color: #F4F5F7;
+  font-family: "Anonymous Pro", monospace;
+  font-weight: 700px;
+  font-style: normal;
+  font-size: 20px;
+}
+
+@media (max-width: 768px) {
+  .custom-footer {
+    padding: 30px 0 15px;
+  }
+
+  .custom-footer h5 {
+    font-size: 16px;
+  }
+
+  .custom-footer p,
+  .custom-footer a {
+    font-size: 13px;
+  }
+
+  .footer-top {
+    text-align: center;
+  }
+}
+
+/* EXTRA KICSI TELÓK */
+@media (max-width: 480px) {
+  .custom-footer {
+    padding: 25px 0 10px;
+  }
+
+  .footer-bottom {
+    font-size: 12px;
+  }
 }
