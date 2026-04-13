@@ -14,7 +14,7 @@
             <form class="container-fluid" [formGroup]="registerForm">
               <div class="row">
                 <div class="col-lg-10 mx-auto">
-                  <label class="fw-bold" for="username">Felhasználó név</label><br>
+                  <label class="fw-bold" for="username">Felhasználónév</label><br>
                   <input id="username" formControlName="username" type="text" placeholder="Írja be a felhasználónevét"
                     class="w-100" [ngClass]="{
                       'error-input': registerForm.get('username')?.invalid && registerForm.get('username')?.touched
@@ -29,7 +29,7 @@
               <div class="row">
                 <div class="col-lg-10 mx-auto">
                   <label class="fw-bold" for="email">E-mail cím</label><br>
-                  <input id="email" formControlName="email" type="text" placeholder="Írja be az E-mail címát"
+                  <input id="email" formControlName="email" type="text" placeholder="Írja be az E-mail címét"
                     class="w-100" [ngClass]="{
                       'error-input': registerForm.get('email')?.invalid && registerForm.get('email')?.touched
                        }">
@@ -43,7 +43,7 @@
               <div class="row mt-3">
                 <div class="col-lg-10 mx-auto">
                   <label class="fw-bold" for="password">Jelszó</label><br>
-                  <input id="password" formControlName="password" type="password" placeholder="Írjon be a jelszavat"
+                  <input id="password" formControlName="password" type="password" placeholder="Írja be a jelszavát"
                     class="w-100" [ngClass]="{
                           'error-input': registerForm.get('password')?.invalid && registerForm.get('password')?.touched
                         }">
@@ -56,13 +56,13 @@
               <div class="row mt-3">
                 <div class="col-lg-10 mx-auto">
                   <label class="fw-bold" for="password">Jelszó</label><br>
-                  <input id="passwordAgain" formControlName="passwordAgain" type="password" placeholder="Írja be mégegyszer a jelszavat"
+                  <input id="passwordAgain" formControlName="passwordAgain" type="password" placeholder="Írja be mégegyszer a jelszavát"
                     class="w-100" [ngClass]="{
                           'error-input': registerForm.get('passwordAgain')?.invalid && registerForm.get('passwordAgain')?.touched
                         }">
 
                   <small class="error-text" *ngIf="registerForm.get('passwordAgain')?.invalid && registerForm.get('passwordAgain')?.touched">
-                    A két jelszó nem egyezzik
+                    A két jelszó nem egyezik
                   </small>
                 </div>
               </div>

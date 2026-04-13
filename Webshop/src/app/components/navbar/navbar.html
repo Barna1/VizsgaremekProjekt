@@ -1,24 +1,25 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <img src="assets/logo.png" alt="konyvaura_logo" routerLink="/homePage"  class="d-inline-block align-text-top">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <img src="assets/logo.png" alt="konyvaura_logo">
+
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav d-flex justify-content-between w-100">
         <div class="flex-grow-1 d-flex justify-content-center">
+          <a class="nav-link text-lg-start text-center" routerLink="/homePage">Főoldal</a>
           <a class="nav-link text-lg-start text-center" routerLink="/productList">Termékek</a>
           <a class="nav-link text-lg-start text-center" routerLink="/publisherList">Kiadók</a>
           @if (userService.loggedUser?.role?.name == "ROLE_admin") {
-            <a class="nav-link text-lg-start text-center" routerLink="/adminPage">Admin</a>
+          <a class="nav-link text-lg-start text-center" routerLink="/adminPage">Admin</a>
           }
         </div>
 
         <div class="d-flex flex-row justify-content-center align-items-center mb-lg-0 mb-3">
-          <button (click)="navigateUserButton()" class="mx-2 d-flex justify-content-center align-items-center iconButton">
-            <span class="material-symbols-outlined">account_circle</span>
+          <button (click)="navigateUserButton()"
+            class="mx-2 d-flex justify-content-center align-items-center iconButton">
+            <span class="material-symbols-outlined">person</span>
           </button>
-          <button routerLink="/orderPage/basket" class="mx-2 d-flex justify-content-center align-items-center iconButton">
+          <button routerLink="/orderPage/basket"
+            class="mx-2 d-flex justify-content-center align-items-center iconButton">
             <span class="material-symbols-outlined">shopping_cart</span>
           </button>
         </div>
