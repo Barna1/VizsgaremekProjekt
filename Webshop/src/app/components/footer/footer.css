@@ -31,7 +31,6 @@ a {
   }
 }
 
-/* EXTRA KICSI TELÓK */
 @media (max-width: 480px) {
   .custom-footer {
     padding: 25px 0 10px;
