@@ -13,8 +13,14 @@ export class BasketService {
   usersBasket!: Basket
 
   getBasketByUserId(userId: number): Observable<Basket> {
-    return this.http.get<Basket>(`${this.baseUrl}/user/${userId}`)
-  }
+  const token = localStorage.getItem('token');
+
+  return this.http.get<Basket>(`${this.baseUrl}/user/${userId}`, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  });
+}
 
   deleteProduct(basketProductId: number, basketId:number){
     return this.http.delete(`${this.baseUrl}/book?basketProductId=${basketProductId}&basketId=${basketId}`)

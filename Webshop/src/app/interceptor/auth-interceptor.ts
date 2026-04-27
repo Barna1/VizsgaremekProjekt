@@ -4,21 +4,22 @@ import { CookieService } from "ngx-cookie-service";
 import { Observable } from "rxjs";
 
 export function AuthInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> {
-  const cookieService = inject(CookieService)
+  const cookieService = inject(CookieService);
+  const jwt = cookieService.get("jwt");
 
-  if (req.url == "http://localhost:8080/user/login") {
-    const requestBody = req.body as { email: string, password: string }
-    const cloneOfRequest = req.clone({
-      headers: req.headers.append("Authorization", "Basic " + btoa(requestBody.email + ":" + requestBody.password))
-    })
-    return next(cloneOfRequest)
-
-  } else {
-    const cloneOfRequest = req.clone({
-      headers: req.headers
-        .append("Authorization", `Bearer ${cookieService.get("jwt")}`)
-        .append("refreshToken", cookieService.get("refreshToken"))
-    })
-    return next(cloneOfRequest)
+  if (req.url.includes('/user/login') || req.url.includes('/user/register')) {
+    return next(req);
   }
+
+  if (jwt) {
+    const cloneOfRequest = req.clone({
+      setHeaders: {
+        Authorization: `Bearer ${jwt}`,
+        refreshToken: cookieService.get("refreshToken") || ""
+      }
+    });
+    return next(cloneOfRequest);
+  }
+
+  return next(req);
 }
