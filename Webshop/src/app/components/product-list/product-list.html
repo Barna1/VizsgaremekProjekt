@@ -1,22 +1,39 @@
-<div class="container-fluid my-5" style="min-height: 100vh;">
-  @for (rows of getRows(); track $index) {
-    <div class="row">
-      @for (book of rows; track $index) {
-        <div class="col-lg-4 my-3">
-          <app-product-card [productDetail]="book" />
-        </div>
-      }
-    </div>
-  }
+<div class="container-fluid my-5" style="min-height: 100vh">
+  <div class="row">
+    <div class="col-lg-1">
+        <form class="w-100">
+          @for (genre of genreList; track $index) {
+            <div class="d-flex justify-content-between w-100">
+              <label [for]="genre.name">{{genre.name}}</label>
+              <input (change)="selectGenre(genre)" type="radio" name="genre" [value]="genre.id" [id]="genre.name">
+            </div>
+          }
+        </form>
 
-  <div class="row" style="position: sticky; bottom: 0px; background-color: #EBE3D5;">
+    </div>
+    <div class="col-lg-11">
+      <div class="container-fluid">
+        @for (rows of getRows(); track $index) {
+          <div class="row">
+            @for (book of rows; track $index) {
+              <div class="col-lg-4 my-3">
+                <app-product-card [productDetail]="book" />
+              </div>
+            }
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+
+  <div class="row" style="position: sticky; bottom: 0px; background-color: #ebe3d5">
     <div class="col-lg-12 d-flex justify-content-center align-items-center my-lg-0 my-3">
       <button class="iconButton" (click)="changePageWithArrows(false)">
         <span class="material-symbols-outlined">keyboard_arrow_left</span>
       </button>
       <select #pageSelect (change)="pageNumber = +pageSelect.value; getBookPage()" class="mx-2">
         @for (page of availablePages; track $index) {
-          <option [value]="$index" [selected]="$index == pageNumber">{{page}}</option>
+          <option [value]="$index" [selected]="$index == pageNumber">{{ page }}</option>
         } @empty {
           <option value="0">1</option>
         }

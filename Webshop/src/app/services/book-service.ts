@@ -14,8 +14,8 @@ export class BookService {
     return this.http.get<Book>(`${this.baseUrl}/${id}`)
   }
 
-  getBooksByGenre(genreId: number): Observable<Book[]> {
-    return this.http.get<Book[]>("")
+  getBooksByGenre(genreId: number, page: number) {
+    return this.http.get(`${this.baseUrl}/genre/${genreId}?page=${page}&size=9`, {observe: "response"})
   }
 
   getBookByPublisher(publisherId: number): Observable<Book[]> {
@@ -44,5 +44,9 @@ export class BookService {
 
   getBooksWithoutPaginator(): Observable<Book[]> {
     return this.http.get<Book[]>(this.baseUrl)
+  }
+
+  getBookByGenre(genreId: number, page: number, sortType: string, isAsc: boolean) {
+    return this.http.get(`${this.baseUrl}/genre/${genreId}?page=${page}&size=9&sort=${sortType},${isAsc ? "asc" : "desc"}`, {observe: "response"})
   }
 }
