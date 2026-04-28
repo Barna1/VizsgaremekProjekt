@@ -9,3 +9,42 @@
   color: white;
   border-radius: 5px;
 }
+
+.filter-box {
+  background-color: #7a6a58;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  min-width: 160px;
+
+  transition: all 0.3s ease;
+}
+
+.filter-box:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+}
+
+.filter-box label {
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-box div:hover label {
+  color: #f5e6d3;
+  transform: translateX(3px);
+}
+
+.filter-box input[type="radio"] {
+  accent-color: #d6c3a3;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.filter-box input[type="radio"]:hover {
+  transform: scale(1.2);
+}
+
+.filter-box input[type="radio"]:checked {
+  transform: scale(1.25);
+}
