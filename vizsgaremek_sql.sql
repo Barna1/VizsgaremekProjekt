@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: localhost:3306
--- Létrehozás ideje: 2026. Ápr 29. 21:42
+-- Létrehozás ideje: 2026. Ápr 29. 22:19
 -- Kiszolgáló verziója: 5.7.24
 -- PHP verzió: 8.3.1
 
@@ -702,7 +702,8 @@ INSERT INTO `basket` (`id`, `user_id`, `last_modified`, `total_price`, `is_delet
 (34, 31, NULL, NULL, 0, NULL),
 (35, NULL, NULL, NULL, NULL, NULL),
 (36, 32, NULL, NULL, 0, NULL),
-(37, 33, NULL, NULL, 0, NULL);
+(37, 33, NULL, NULL, 0, NULL),
+(38, 34, NULL, NULL, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -807,7 +808,8 @@ INSERT INTO `billing_detail` (`id`, `post_code`, `town`, `address`, `address_typ
 (8, 1234, 'Teszt', 'Teszt utca', NULL, 99, NULL, NULL, NULL),
 (9, 1234, 'Tesztváros', 'Teszt utca', NULL, 11, NULL, NULL, 'megjegyzés'),
 (10, 1234, 'Tesztváros', 'Teszt utca', NULL, 30, NULL, NULL, NULL),
-(11, 1111, 'Dombóvár', 'Kis', NULL, 1, NULL, NULL, NULL);
+(11, 1111, 'Dombóvár', 'Kis', NULL, 1, NULL, NULL, NULL),
+(12, 1111, 'c', 'd', NULL, 3, NULL, NULL, 'b');
 
 -- --------------------------------------------------------
 
@@ -837,7 +839,7 @@ CREATE TABLE `book` (
 INSERT INTO `book` (`id`, `title`, `description`, `ISBN`, `publishing_year`, `cover_image_path`, `stock_quantity`, `publisher_id`, `price`, `is_deleted`, `deleted_at`, `created_at`) VALUES
 (1, 'Harry Potter and the Sorcerer\'s Stone', 'Harry korai éveit követi a Hogwartsban, amikor egy titokzatos mágikus vihar kezd terjedni. Furcsa események történnek az iskolában, és Harrynek barátaival fel kell tárnia a vihar forrását. Ha nem sikerül, a varázsló- és a mugli világ egyaránt veszélybe kerülhet.', 'ISBN123456', 2002, 'http://localhost:8080/coverImg/hp1.jpg', 4, 1, 3500, 0, NULL, '2026-01-22 21:02:28'),
 (2, 'Harry Potter and the Chamber of Secrets', 'Harry visszatér a Hogwartsba a második évére, ahol egy rejtélyes erő támadja a diákokat és kővé változtatja őket. Harry nyomokat talál egy rejtett kamráról és egy sötét titokról. Az iskola múltja veszélybe kerül, miközben a félelem nő.', 'ISBN987654', 1998, 'http://localhost:8080/coverImg/hp2.jpg', 10, 2, 4200, 0, NULL, '2026-01-22 21:02:28'),
-(3, 'Harry Potter and the Prisoner of Azkaban', 'Harry harmadik évében megtudja, hogy Sirius Black, egy veszélyes fogoly megszökött az Azkabánból, és talán őt keresi. Ahogy múltbéli titkok kerülnek felszínre, Harry felfedezi az igazságot az árulásról, barátságról és saját történetéről.', 'ISBN123001', 1999, 'http://localhost:8080/coverImg/hp3.jpg', 13, 3, 3990, 0, NULL, '2026-01-22 21:02:28'),
+(3, 'Harry Potter and the Prisoner of Azkaban', 'Harry harmadik évében megtudja, hogy Sirius Black, egy veszélyes fogoly megszökött az Azkabánból, és talán őt keresi. Ahogy múltbéli titkok kerülnek felszínre, Harry felfedezi az igazságot az árulásról, barátságról és saját történetéről.', 'ISBN123001', 1999, 'http://localhost:8080/coverImg/hp3.jpg', 12, 3, 3990, 0, NULL, '2026-01-22 21:02:28'),
 (4, 'Harry Potter and the Goblet of Fire', 'Harry negyedik évében váratlanul kiválasztják a veszélyes Tűz Serlege Tornára. Halálos kihívásokkal néz szembe, miközben egy sötétebb fenyegetés kezd emelkedni. A kaland sokkoló és életre szóló összecsapáshoz vezet.', 'ISBN123002', 2000, 'http://localhost:8080/coverImg/hp4.jpg', 15, 5, 4490, 0, NULL, '2026-01-22 21:02:28'),
 (5, 'Harry Potter and the Order of the Phoenix', 'Harry ötödik évében Voldemort visszatérését sokan nem hiszik el, miközben egy szigorú új hatalom veszi át az iskola irányítását. A feszültség nő, és Harry titkos csoportot hoz létre. Céljuk felkészülni a veszélyekre és szembenézni a terjedő sötétséggel.', 'ISBN123003', 2003, 'http://localhost:8080/coverImg/hp5.jpg', 15, 2, 4290, 0, NULL, '2026-01-22 21:02:28'),
 (6, 'Harry Potter and the Half-Blood Prince', 'Harry hatodik évében felfedez egy régi bájitalkönyvet, amelyet a titokzatos „Félvér Herceg” jelöl. Többet tud meg Voldemort múltjáról, és Dumbledore-ral együtt felkészülnek a közelgő végső harcra.', 'ISBN123004', 2005, 'http://localhost:8080/coverImg/hp6.jpg', 15, 6, 4990, 0, NULL, '2026-01-22 21:02:28'),
@@ -961,7 +963,8 @@ INSERT INTO `order_history` (`id`, `first_name`, `last_name`, `phone`, `email`, 
 (8, 'teszt', 'teszt', '06301234567', 'teszt8@gmail.com', 20, 8, 8, 3, 1, '2026-03-04 09:58:48', NULL, NULL, NULL, NULL, NULL),
 (9, 'Teszt', 'Péter', '06301234567', 'teszt14@gmail.com', 26, 9, 9, 3, 1, '2026-03-26 10:10:55', NULL, NULL, NULL, NULL, NULL),
 (10, 'Teszt', 'Péter', '06201234567', 'teszt15@gmail.com', 27, 10, 10, 3, 1, '2026-03-26 10:15:34', NULL, NULL, NULL, NULL, NULL),
-(11, 'a', 'b', '06301234567', 'teszt04281@gmail.com', 30, 11, 11, 1, 1, '2026-04-28 22:09:55', NULL, NULL, NULL, NULL, NULL);
+(11, 'a', 'b', '06301234567', 'teszt04281@gmail.com', 30, 11, 11, 1, 1, '2026-04-28 22:09:55', NULL, NULL, NULL, NULL, NULL),
+(12, 'a', 'b', '06301234567', 'afwuhf@gmail.com', 34, 12, 12, 1, 1, '2026-04-30 00:11:41', NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1091,7 +1094,8 @@ INSERT INTO `order_history_product` (`id`, `order_history_id`, `product_id`, `am
 (108, NULL, 9, 1),
 (109, NULL, 1, 1),
 (110, NULL, 1, 1),
-(111, NULL, 3, 1);
+(111, NULL, 3, 1),
+(112, NULL, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -1109,9 +1113,9 @@ CREATE TABLE `payment_method` (
 --
 
 INSERT INTO `payment_method` (`id`, `name`) VALUES
-(1, 'Credit Card'),
-(2, 'PayPal'),
-(3, 'Bank Transfer');
+(1, 'Bankkártya'),
+(2, 'Utánvét'),
+(3, 'Utalás');
 
 -- --------------------------------------------------------
 
@@ -1240,7 +1244,8 @@ INSERT INTO `transport_detail` (`id`, `post_code`, `town`, `address`, `address_t
 (8, 1234, 'Teszt', 'Teszt utca', 1, 99, NULL),
 (9, 1234, 'Tesztváros', 'Teszt utca', 1, 11, 'megjegyzés'),
 (10, 1234, 'Tesztváros', 'Teszt utca', 1, 15, NULL),
-(11, 1111, 'Dombóvár', 'Kis', 1, 1, 'a');
+(11, 1111, 'Dombóvár', 'Kis', 1, 1, 'a'),
+(12, 1111, 'a', 'b', 1, 2, 'a');
 
 -- --------------------------------------------------------
 
@@ -1297,7 +1302,8 @@ INSERT INTO `user` (`id`, `username`, `email`, `password`, `role_id`, `last_logi
 (30, 'teszt04281', 'teszt04281@gmail.com', '$argon2id$v=19$m=4096,t=3,p=1$tM/P59tlrss5wPrp23ffHA$zTQ5uFi91ciuDS8ti9BYrD43CixjOPnP/5uzZYMd02c', 1, '2026-04-29 23:40:11', '2026-04-28 11:05:08', 0, NULL, 'http://localhost:8080/pfp/standardpfp.png', NULL),
 (31, 'teszt0429', 'teszt0429@gmail.com', '$argon2id$v=19$m=4096,t=3,p=1$+J9H0/49h9LkPejzisjmfg$dYmjRPXQLNWo8ba0/xXo718Tzc6CuwhloJsiWChKDkk', 1, '2026-04-29 23:10:53', '2026-04-29 21:10:42', 0, NULL, 'http://localhost:8080/pfp/standardpfp.png', NULL),
 (32, 'teszt04291', 'teszt04291@gmail.com', '$argon2id$v=19$m=4096,t=3,p=1$xtTWud42lGCImaLcqmJ+fA$qxs9vjYx9Sjz8z7JG5gvKmomEHyeDczTT5levZ5cRD4', 1, '2026-04-29 23:28:31', '2026-04-29 21:28:17', 0, NULL, 'http://localhost:8080/pfp/standardpfp.png', NULL),
-(33, 'teszt04292', 'teszt04292@gmail.com', '$argon2id$v=19$m=4096,t=3,p=1$XpiTH8hJ/4iXHe/G7ROF9Q$iZ3oeBUi2aG+LRTOKTL9bHDpdgze8dqD8vuwsqzywxE', 2, '2026-04-29 23:36:26', '2026-04-29 21:32:20', 0, NULL, 'http://localhost:8080/pfp/standardpfp.png', NULL);
+(33, 'teszt04292', 'teszt04292@gmail.com', '$argon2id$v=19$m=4096,t=3,p=1$XpiTH8hJ/4iXHe/G7ROF9Q$iZ3oeBUi2aG+LRTOKTL9bHDpdgze8dqD8vuwsqzywxE', 2, '2026-04-29 23:36:26', '2026-04-29 21:32:20', 0, NULL, 'http://localhost:8080/pfp/standardpfp.png', NULL),
+(34, 'teszt0430', 'teszt0430@gmail.com', '$argon2id$v=19$m=4096,t=3,p=1$NRH9VibzdP+LrxBKVuuTEw$W8m/KlneRecV0aEBT0/+azFMBkGHvu5tozl7rsdoodw', 2, '2026-04-30 00:10:47', '2026-04-29 22:10:37', 0, NULL, 'http://localhost:8080/pfp/standardpfp.png', NULL);
 
 --
 -- Indexek a kiírt táblákhoz
@@ -1452,19 +1458,19 @@ ALTER TABLE `author`
 -- AUTO_INCREMENT a táblához `basket`
 --
 ALTER TABLE `basket`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT a táblához `basket_product`
 --
 ALTER TABLE `basket_product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT a táblához `billing_detail`
 --
 ALTER TABLE `billing_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT a táblához `book`
@@ -1494,13 +1500,13 @@ ALTER TABLE `genre`
 -- AUTO_INCREMENT a táblához `order_history`
 --
 ALTER TABLE `order_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT a táblához `order_history_product`
 --
 ALTER TABLE `order_history_product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
 
 --
 -- AUTO_INCREMENT a táblához `payment_method`
@@ -1536,13 +1542,13 @@ ALTER TABLE `status`
 -- AUTO_INCREMENT a táblához `transport_detail`
 --
 ALTER TABLE `transport_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT a táblához `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- Megkötések a kiírt táblákhoz
