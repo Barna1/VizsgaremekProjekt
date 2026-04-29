@@ -59,12 +59,13 @@ public class UserService {
             return ResponseEntity.status(415).body("invalidPassword");
         } else {
             newUser.setPassword(passwordEncoder.encode(newUser.getPassword()));
-            newUser.setBasket(basketRepository.save(new Basket()));
             newUser.setPfpPath("http://localhost:8080/pfp/standardpfp.png");
-            newUser.setRole(new Role(1, "ROLE_user"));
+            newUser.setRole(new Role(2, "ROLE_user"));
             newUser.setIsDeleted(false);
             newUser = userRepository.save(newUser);
             Basket basket = basketRepository.save(new Basket(newUser));
+            newUser.setBasket(basket);
+            userRepository.save(newUser);
 
             try {
                 emailSender.sendEmailAboutRegistration(newUser.getEmail());

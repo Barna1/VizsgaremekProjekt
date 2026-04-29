@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.entity.Book;
 import com.example.demo.service.BookService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,8 +27,8 @@ public class BookController {
         return bookService.getBookByAuthor(authorId);
     }
     @GetMapping("/genre/{id}")
-    private ResponseEntity<Object> getBookByGenres(@PathVariable("id") Integer genreId) {
-        return bookService.getBookByGenres(genreId);
+    private ResponseEntity<Object> getBookByGenres(@PathVariable("id") Integer genreId, Pageable pageable) {
+        return bookService.getBookByGenres(genreId, pageable);
     }
     @GetMapping("/publisher/{id}")
     private ResponseEntity<Object> getBookByPublisher(@PathVariable("id") Integer publisherId) {

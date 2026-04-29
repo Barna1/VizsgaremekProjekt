@@ -61,6 +61,6 @@ public class JWTValidatorFilter extends OncePerRequestFilter {
                 "/user/login", "/user/register"
         ));
 
-        return allowedUrlPaths.contains(request.getServletPath());
+        return allowedUrlPaths.contains(request.getServletPath()) || request.getServletPath().contains("/book/genre");
     }
 }

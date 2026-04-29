@@ -81,13 +81,22 @@ public class BookService {
             return ResponseEntity.internalServerError().build();
         }
     }
-    public ResponseEntity<Object> getBookByGenres(Integer genreId) {
+    public ResponseEntity<Object> getBookByGenres(Integer genreId, Pageable pageable) {
         try {
             if (genreId == null) {
                 return ResponseEntity.status(422).build();
             }
 
-            return null;
+            Genre searchedGenre = genreRepository.getGenreById(genreId).orElse(null);
+            if (searchedGenre == null) {
+                return ResponseEntity.notFound().build();
+            }
+
+            Page<Book> returnList = bookRepository.findBooksByGenreId(genreId, pageable);
+            HttpHeaders header = new HttpHeaders();
+            header.add("TotalPage", returnList.getTotalPages()+"");
+
+            return new ResponseEntity<>(returnList.toList(), header, HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.internalServerError().build();
