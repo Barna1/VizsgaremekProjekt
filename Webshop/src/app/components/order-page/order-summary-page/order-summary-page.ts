@@ -26,6 +26,7 @@ export class OrderSummaryPage implements OnInit{
 
   sendOrder() {
     this.orderService.actualOrder.ordererUser = this.userService.loggedUser!
+    console.log(this.userService.loggedUser?.id!)
     this.orderService.sendOrder(this.userService.loggedUser?.id!).subscribe({
       next: response => {
         this.orderService.actualOrder = new OrderHistory()
