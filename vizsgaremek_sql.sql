@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: localhost:3306
--- Létrehozás ideje: 2026. Már 03. 17:18
+-- Létrehozás ideje: 2026. Ápr 29. 21:42
 -- Kiszolgáló verziója: 5.7.24
 -- PHP verzió: 8.3.1
 
@@ -670,7 +670,39 @@ INSERT INTO `basket` (`id`, `user_id`, `last_modified`, `total_price`, `is_delet
 (2, 3, '2025-12-02 09:40:40', 4200, 0, NULL),
 (3, NULL, NULL, NULL, NULL, NULL),
 (4, 11, NULL, 0, 0, NULL),
-(5, NULL, NULL, NULL, NULL, NULL);
+(5, NULL, NULL, NULL, NULL, NULL),
+(6, NULL, NULL, NULL, NULL, NULL),
+(7, NULL, NULL, NULL, NULL, NULL),
+(8, NULL, NULL, NULL, NULL, NULL),
+(9, NULL, NULL, NULL, NULL, NULL),
+(10, NULL, NULL, NULL, NULL, NULL),
+(11, NULL, NULL, NULL, NULL, NULL),
+(12, 18, NULL, NULL, NULL, NULL),
+(13, NULL, NULL, NULL, NULL, NULL),
+(14, 19, NULL, NULL, 0, NULL),
+(15, NULL, NULL, NULL, NULL, NULL),
+(16, 20, NULL, NULL, 0, NULL),
+(17, NULL, NULL, NULL, NULL, NULL),
+(18, 21, NULL, NULL, 0, NULL),
+(19, NULL, NULL, NULL, NULL, NULL),
+(20, 22, NULL, NULL, 0, NULL),
+(21, NULL, NULL, NULL, NULL, NULL),
+(22, 23, NULL, NULL, 0, NULL),
+(23, 24, NULL, NULL, 0, NULL),
+(24, NULL, NULL, NULL, NULL, NULL),
+(25, 25, NULL, NULL, 0, NULL),
+(26, 26, NULL, NULL, 0, NULL),
+(27, NULL, NULL, NULL, NULL, NULL),
+(28, 27, NULL, NULL, 0, NULL),
+(29, NULL, NULL, NULL, NULL, NULL),
+(30, 28, NULL, NULL, 0, NULL),
+(31, NULL, NULL, NULL, NULL, NULL),
+(32, 29, NULL, NULL, 0, NULL),
+(33, 30, NULL, NULL, 0, NULL),
+(34, 31, NULL, NULL, 0, NULL),
+(35, NULL, NULL, NULL, NULL, NULL),
+(36, 32, NULL, NULL, 0, NULL),
+(37, 33, NULL, NULL, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -693,7 +725,54 @@ CREATE TABLE `basket_product` (
 --
 
 INSERT INTO `basket_product` (`id`, `product_id`, `basket_id`, `amount`, `added_at`, `is_deleted`, `deleted_at`) VALUES
-(55, 17, 4, 1, '2026-03-03 17:57:16', 0, NULL);
+(1, 11, 22, 1, '2026-03-23 13:38:15', 0, NULL),
+(2, 11, 22, 1, '2026-03-23 13:38:16', 0, NULL),
+(3, 10, 22, 1, '2026-03-23 13:39:17', 0, NULL),
+(4, 1, 22, 1, '2026-03-23 13:39:30', 0, NULL),
+(5, 1, 22, 1, '2026-03-23 13:39:32', 0, NULL),
+(6, 1, 22, 1, '2026-03-23 13:39:32', 0, NULL),
+(7, 1, 22, 1, '2026-03-23 13:39:32', 0, NULL),
+(8, 1, 22, 1, '2026-03-23 13:39:33', 0, NULL),
+(9, 1, 22, 1, '2026-03-23 13:39:33', 0, NULL),
+(10, 1, 22, 1, '2026-03-23 13:39:33', 0, NULL),
+(11, 16, 4, 1, '2026-03-24 10:14:31', 0, NULL),
+(12, 16, 4, 1, '2026-03-24 10:14:32', 0, NULL),
+(13, 16, 4, 1, '2026-03-24 10:14:33', 0, NULL),
+(14, 16, 4, 1, '2026-03-24 10:14:33', 0, NULL),
+(15, 16, 4, 1, '2026-03-24 10:14:34', 0, NULL),
+(16, 1, 23, 1, '2026-03-24 10:15:11', 0, NULL),
+(17, 1, 23, 1, '2026-03-24 10:15:13', 0, NULL),
+(18, 17, 23, 1, '2026-03-24 10:15:56', 0, NULL),
+(19, 17, 23, 1, '2026-03-24 10:16:10', 0, NULL),
+(20, 3, 23, 1, '2026-03-24 10:16:26', 0, NULL),
+(21, 14, 23, 1, '2026-03-24 10:16:42', 0, NULL),
+(22, 14, 23, 1, '2026-03-24 10:16:42', 0, NULL),
+(23, 14, 23, 1, '2026-03-24 10:16:42', 0, NULL),
+(24, 14, 23, 1, '2026-03-24 10:16:42', 0, NULL),
+(25, 14, 23, 1, '2026-03-24 10:16:42', 0, NULL),
+(26, 14, 23, 1, '2026-03-24 10:16:43', 0, NULL),
+(27, 14, 23, 1, '2026-03-24 10:16:43', 0, NULL),
+(28, 14, 23, 1, '2026-03-24 10:16:43', 0, NULL),
+(29, 15, 23, 1, '2026-03-24 10:17:08', 0, NULL),
+(30, 15, 23, 1, '2026-03-24 10:17:09', 0, NULL),
+(31, 15, 23, 1, '2026-03-24 10:17:09', 0, NULL),
+(32, 15, 23, 1, '2026-03-24 10:17:09', 0, NULL),
+(33, 15, 23, 1, '2026-03-24 10:17:09', 0, NULL),
+(34, 15, 23, 1, '2026-03-24 10:17:09', 0, NULL),
+(35, 15, 23, 1, '2026-03-24 10:17:10', 0, NULL),
+(36, 15, 23, 1, '2026-03-24 10:17:10', 0, NULL),
+(37, 12, 23, 1, '2026-03-24 10:17:22', 0, NULL),
+(38, 12, 23, 1, '2026-03-24 10:17:24', 0, NULL),
+(39, 12, 23, 1, '2026-03-24 10:17:24', 0, NULL),
+(40, 12, 23, 1, '2026-03-24 10:17:24', 0, NULL),
+(41, 12, 23, 1, '2026-03-24 10:17:24', 0, NULL),
+(42, 12, 23, 1, '2026-03-24 10:17:24', 0, NULL),
+(43, 12, 23, 1, '2026-03-24 10:17:24', 0, NULL),
+(44, 1, 34, 1, '2026-04-29 23:15:00', 1, '2026-04-29 23:15:37'),
+(45, 1, 34, 1, '2026-04-29 23:15:19', 1, '2026-04-29 23:15:37'),
+(46, 3, 34, 1, '2026-04-29 23:15:28', 1, '2026-04-29 23:15:37'),
+(47, 16, 34, 1, '2026-04-29 23:16:09', 1, '2026-04-29 23:16:15'),
+(48, 14, 34, 1, '2026-04-29 23:16:22', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -722,7 +801,13 @@ INSERT INTO `billing_detail` (`id`, `post_code`, `town`, `address`, `address_typ
 (2, 5678, 'Debrecen', 'Market street', 2, 5, 'Tech Ltd.', 'HU12345678', NULL),
 (3, 32, 'asf', 'asf', NULL, 32, NULL, NULL, NULL),
 (4, 421, 'asf', 'fasfas', NULL, 42, NULL, NULL, NULL),
-(5, 414, 'afsaf', 'afsfasf', NULL, 24, NULL, NULL, NULL);
+(5, 414, 'afsaf', 'afsfasf', NULL, 24, NULL, NULL, NULL),
+(6, 1111, 'Pécs', 'Teszt utca 789', NULL, 789, NULL, NULL, NULL),
+(7, 1123, 'Pécs', 'Harmat utca', NULL, 13, NULL, NULL, NULL),
+(8, 1234, 'Teszt', 'Teszt utca', NULL, 99, NULL, NULL, NULL),
+(9, 1234, 'Tesztváros', 'Teszt utca', NULL, 11, NULL, NULL, 'megjegyzés'),
+(10, 1234, 'Tesztváros', 'Teszt utca', NULL, 30, NULL, NULL, NULL),
+(11, 1111, 'Dombóvár', 'Kis', NULL, 1, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -750,23 +835,23 @@ CREATE TABLE `book` (
 --
 
 INSERT INTO `book` (`id`, `title`, `description`, `ISBN`, `publishing_year`, `cover_image_path`, `stock_quantity`, `publisher_id`, `price`, `is_deleted`, `deleted_at`, `created_at`) VALUES
-(1, 'Harry Potter and the Sorcerer\'s Stone', 'Harry korai éveit követi a Hogwartsban, amikor egy titokzatos mágikus vihar kezd terjedni. Furcsa események történnek az iskolában, és Harrynek barátaival fel kell tárnia a vihar forrását. Ha nem sikerül, a varázsló- és a mugli világ egyaránt veszélybe kerülhet.', 'ISBN123456', 2002, 'http://localhost:8080/coverImg/hp1.jpg', 6, 1, 3500, 0, NULL, '2026-01-22 21:02:28'),
-(2, 'Harry Potter and the Chamber of Secrets', 'Harry visszatér a Hogwartsba a második évére, ahol egy rejtélyes erő támadja a diákokat és kővé változtatja őket. Harry nyomokat talál egy rejtett kamráról és egy sötét titokról. Az iskola múltja veszélybe kerül, miközben a félelem nő.', 'ISBN987654', 1998, 'http://localhost:8080/coverImg/hp2.jpg', -52, 2, 4200, 0, NULL, '2026-01-22 21:02:28'),
-(3, 'Harry Potter and the Prisoner of Azkaban', 'Harry harmadik évében megtudja, hogy Sirius Black, egy veszélyes fogoly megszökött az Azkabánból, és talán őt keresi. Ahogy múltbéli titkok kerülnek felszínre, Harry felfedezi az igazságot az árulásról, barátságról és saját történetéről.', 'ISBN123001', 1999, 'http://localhost:8080/coverImg/hp3.jpg', 15, 3, 3990, 0, NULL, '2026-01-22 21:02:28'),
+(1, 'Harry Potter and the Sorcerer\'s Stone', 'Harry korai éveit követi a Hogwartsban, amikor egy titokzatos mágikus vihar kezd terjedni. Furcsa események történnek az iskolában, és Harrynek barátaival fel kell tárnia a vihar forrását. Ha nem sikerül, a varázsló- és a mugli világ egyaránt veszélybe kerülhet.', 'ISBN123456', 2002, 'http://localhost:8080/coverImg/hp1.jpg', 4, 1, 3500, 0, NULL, '2026-01-22 21:02:28'),
+(2, 'Harry Potter and the Chamber of Secrets', 'Harry visszatér a Hogwartsba a második évére, ahol egy rejtélyes erő támadja a diákokat és kővé változtatja őket. Harry nyomokat talál egy rejtett kamráról és egy sötét titokról. Az iskola múltja veszélybe kerül, miközben a félelem nő.', 'ISBN987654', 1998, 'http://localhost:8080/coverImg/hp2.jpg', 10, 2, 4200, 0, NULL, '2026-01-22 21:02:28'),
+(3, 'Harry Potter and the Prisoner of Azkaban', 'Harry harmadik évében megtudja, hogy Sirius Black, egy veszélyes fogoly megszökött az Azkabánból, és talán őt keresi. Ahogy múltbéli titkok kerülnek felszínre, Harry felfedezi az igazságot az árulásról, barátságról és saját történetéről.', 'ISBN123001', 1999, 'http://localhost:8080/coverImg/hp3.jpg', 13, 3, 3990, 0, NULL, '2026-01-22 21:02:28'),
 (4, 'Harry Potter and the Goblet of Fire', 'Harry negyedik évében váratlanul kiválasztják a veszélyes Tűz Serlege Tornára. Halálos kihívásokkal néz szembe, miközben egy sötétebb fenyegetés kezd emelkedni. A kaland sokkoló és életre szóló összecsapáshoz vezet.', 'ISBN123002', 2000, 'http://localhost:8080/coverImg/hp4.jpg', 15, 5, 4490, 0, NULL, '2026-01-22 21:02:28'),
 (5, 'Harry Potter and the Order of the Phoenix', 'Harry ötödik évében Voldemort visszatérését sokan nem hiszik el, miközben egy szigorú új hatalom veszi át az iskola irányítását. A feszültség nő, és Harry titkos csoportot hoz létre. Céljuk felkészülni a veszélyekre és szembenézni a terjedő sötétséggel.', 'ISBN123003', 2003, 'http://localhost:8080/coverImg/hp5.jpg', 15, 2, 4290, 0, NULL, '2026-01-22 21:02:28'),
 (6, 'Harry Potter and the Half-Blood Prince', 'Harry hatodik évében felfedez egy régi bájitalkönyvet, amelyet a titokzatos „Félvér Herceg” jelöl. Többet tud meg Voldemort múltjáról, és Dumbledore-ral együtt felkészülnek a közelgő végső harcra.', 'ISBN123004', 2005, 'http://localhost:8080/coverImg/hp6.jpg', 15, 6, 4990, 0, NULL, '2026-01-22 21:02:28'),
 (7, 'Harry Potter and the Deathly Hallows', 'Harry elhagyja a Hogwartsot Ronnal és Hermionéval, hogy megsemmisítse Voldemort Horcruxait. A varázslóvilág a sötétségbe süllyed, miközben Harry végső harcot vív a gonosz ellen. Barátság, bátorság és áldozat formálja sorsukat.', 'ISBN123005', 2007, 'http://localhost:8080/coverImg/hp7.jpg', 15, 1, 3890, 0, NULL, '2026-01-22 21:02:28'),
 (8, 'Dune', 'Arrakis sivatagos bolygóján Paul Atreides családja a drága fűszer, a melange birtoklásáért küzd. Árulás, politikai játszmák és konfliktusok közepette Paulnak el kell fogadnia sorsát. A bolygó és népe jövője forog kockán.', 'ISBN123006', 1965, 'http://localhost:8080/coverImg/dune.jpg', 15, 7, 4190, 0, NULL, '2026-01-22 21:02:28'),
-(9, 'Children of Dune', 'Paul Atreides örökösei próbálják fenntartani hatalmukat Arrakison, miközben politikai összeesküvések és ökológiai kihívások fenyegetnek. Misztikus látomások és új képességek alakítják a bolygó és lakói sorsát.', 'ISBN123007', 1976, 'http://localhost:8080/coverImg/dune2.jpg', 15, 4, 4690, 0, NULL, '2026-01-22 21:02:28'),
-(10, 'Dune: The Prophet', 'Tizenkét évvel Dune után Paul Atreides a galaxis uralkodója. Politikai összeesküvések, vallási fanatizmus és személyes veszteségek próbára teszik. Paulnak meg kell védenie látomását és Arrakis jövőjét.', 'ISBN123008', 1969, 'http://localhost:8080/coverImg/dune3.jpg', 9, 3, 3790, 0, NULL, '2026-01-22 21:02:28'),
+(9, 'Children of Dune', 'Paul Atreides örökösei próbálják fenntartani hatalmukat Arrakison, miközben politikai összeesküvések és ökológiai kihívások fenyegetnek. Misztikus látomások és új képességek alakítják a bolygó és lakói sorsát.', 'ISBN123007', 1976, 'http://localhost:8080/coverImg/dune2.jpg', 13, 4, 4690, 0, NULL, '2026-01-22 21:02:28'),
+(10, 'Dune: The Prophet', 'Tizenkét évvel Dune után Paul Atreides a galaxis uralkodója. Politikai összeesküvések, vallási fanatizmus és személyes veszteségek próbára teszik. Paulnak meg kell védenie látomását és Arrakis jövőjét.', 'ISBN123008', 1969, 'http://localhost:8080/coverImg/dune3.jpg', 8, 3, 3790, 0, NULL, '2026-01-22 21:02:28'),
 (11, 'God Emperor of Dune', 'Évezredekkel Dune Messiah után Leto II szinte halhatatlan lényként uralja a galaxist. Kemény uralma az emberiség távoli jövőjét célozza, miközben az irányítás, a próféták és az áldozatok egyensúlyát keresi.', 'ISBN123009', 1981, 'http://localhost:8080/coverImg/dune4.jpg', 13, 5, 3490, 0, NULL, '2026-01-22 21:02:28'),
 (12, 'The Great Gatsby', 'A Roaring Twenties idején Jay Gatsby, egy gazdag és titokzatos férfi, a házas Daisy Buchanan után vágyakozik. A történet a szerelemről, ambícióról és az amerikai álomról szól. A fényűzés és erkölcsi romlás hátterében bontakozik ki a cselekmény.', 'ISBN123010', 1925, 'http://localhost:8080/coverImg/gatsby.jpg', 15, 2, 4090, 0, NULL, '2026-01-22 21:02:28'),
 (13, 'The Hobbit', 'Bilbo Baggins, egy békés hobbit, egy kalandos küldetésre indul, hogy segítse a törpéket, akik vissza akarják szerezni hazájukat Smaug sárkánytól. Útja során trollokkal, goblinokkal és varázslatos lényekkel találkozik, ami örökre megváltoztatja életét.', 'ISBN123011', 1937, 'http://localhost:8080/coverImg/hobbit.jpg', 15, 6, 3890, 0, NULL, '2026-01-22 21:02:28'),
 (14, 'The Lord of the Rings', 'Frodo Baggins veszélyes küldetésre indul, hogy megsemmisítse az Egy Gyűrűt és legyőzze Sauront. A Társaság tagjaival epikus csatákkal, veszélyes tájakkal és bátorságpróbákkal szembesül. Középfölde sorsa forog kockán.', 'ISBN123012', 1955, 'http://localhost:8080/coverImg/lord1.jpg', 13, 1, 3690, 0, NULL, '2026-01-22 21:02:28'),
 (15, 'The Return of the King', 'A The Lord of the Rings utolsó része a Középfölde végső csatáit követi. Frodo küzdelme az Egy Gyűrű megsemmisítéséért, a bátorság, barátság és áldozat története formálja a királyságok sorsát. A sötétség feletti végső győzelem bontakozik ki.', 'ISBN123013', 1955, 'http://localhost:8080/coverImg/lord2.jpg', 13, 7, 3590, 0, NULL, '2026-01-22 21:02:28'),
-(16, 'A Dance with Dragons', 'Westeros világában rivális frakciók harcolnak a hatalomért. Jon Snow a Fal védelméért küzd, míg Daenerys Targaryen próbálja irányítani Meereent. Politikailag intrikák, árulások és háborúk formálják a Hét Királyság sorsát.', 'ISBN123014', 2011, 'http://localhost:8080/coverImg/dance.jpg', 9, 4, 3290, 0, NULL, '2026-01-22 21:02:28'),
-(17, 'A Game of Thrones', 'A Hét Királyság nemesi családjai a Vastrónért küzdenek, miközben a Falon túl sötét erők gyülekeznek. Politikailag intrikák, árulások és háborúk közepette a döntések halálos következményekkel járhatnak. A hatalmi harcok alakítják a birodalom sorsát.', 'ISBN123015', 1996, 'http://localhost:8080/coverImg/thrones1.jpg', 11, 2, 3390, 0, NULL, '2026-01-22 21:02:28');
+(16, 'A Dance with Dragons', 'Westeros világában rivális frakciók harcolnak a hatalomért. Jon Snow a Fal védelméért küzd, míg Daenerys Targaryen próbálja irányítani Meereent. Politikailag intrikák, árulások és háborúk formálják a Hét Királyság sorsát.', 'ISBN123014', 2011, 'http://localhost:8080/coverImg/dance.jpg', 10, 4, 3290, 0, NULL, '2026-01-22 21:02:28'),
+(17, 'A Game of Thrones', 'A Hét Királyság nemesi családjai a Vastrónért küzdenek, miközben a Falon túl sötét erők gyülekeznek. Politikailag intrikák, árulások és háborúk közepette a döntések halálos következményekkel járhatnak. A hatalmi harcok alakítják a birodalom sorsát.', 'ISBN123015', 1996, 'http://localhost:8080/coverImg/thrones1.jpg', 10, 2, 3390, 0, NULL, '2026-01-22 21:02:28');
 
 -- --------------------------------------------------------
 
@@ -870,7 +955,13 @@ INSERT INTO `order_history` (`id`, `first_name`, `last_name`, `phone`, `email`, 
 (2, 'Jane', 'Smith', '444555666', 'jane@example.com', 11, 2, 2, 2, 1, '2025-12-02 09:42:37', '2025-12-02 09:42:37', 1, 1, 'admin@example.com', 'ABC123'),
 (3, 'asf', 'asf', '06706285232', 'sasd@gmail.com', 11, 3, 3, 2, 1, NULL, NULL, NULL, NULL, NULL, NULL),
 (4, 'asd', 'asd', '06706285232', 'asd@gmail.com', 11, 4, 4, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL),
-(5, 'asd', 'asd', '06706285232', 'asd@gmail.com', 11, 5, 5, 2, 1, NULL, NULL, NULL, NULL, NULL, NULL);
+(5, 'asd', 'asd', '06706285232', 'asd@gmail.com', 11, 5, 5, 2, 1, NULL, NULL, NULL, NULL, NULL, NULL),
+(6, 'tesztelő', 'tesztelés', '06301234567', 'teszteeszteszt@gmail.com', 11, 6, 6, 3, 1, '2026-03-04 09:29:45', NULL, NULL, NULL, NULL, NULL),
+(7, 'a', 'b', '06301234567', 'abc@gmail.com', 19, 7, 7, 3, 1, '2026-03-04 09:56:11', NULL, NULL, NULL, NULL, NULL),
+(8, 'teszt', 'teszt', '06301234567', 'teszt8@gmail.com', 20, 8, 8, 3, 1, '2026-03-04 09:58:48', NULL, NULL, NULL, NULL, NULL),
+(9, 'Teszt', 'Péter', '06301234567', 'teszt14@gmail.com', 26, 9, 9, 3, 1, '2026-03-26 10:10:55', NULL, NULL, NULL, NULL, NULL),
+(10, 'Teszt', 'Péter', '06201234567', 'teszt15@gmail.com', 27, 10, 10, 3, 1, '2026-03-26 10:15:34', NULL, NULL, NULL, NULL, NULL),
+(11, 'a', 'b', '06301234567', 'teszt04281@gmail.com', 30, 11, 11, 1, 1, '2026-04-28 22:09:55', NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -988,7 +1079,19 @@ INSERT INTO `order_history_product` (`id`, `order_history_id`, `product_id`, `am
 (96, NULL, 2, 1),
 (97, NULL, 2, 1),
 (98, NULL, 11, 1),
-(99, NULL, 1, 1);
+(99, NULL, 1, 1),
+(100, NULL, 17, 1),
+(101, NULL, 1, 1),
+(102, NULL, 3, 1),
+(103, NULL, 1, 1),
+(104, NULL, 1, 1),
+(105, NULL, 3, 1),
+(106, NULL, 10, 1),
+(107, NULL, 9, 1),
+(108, NULL, 9, 1),
+(109, NULL, 1, 1),
+(110, NULL, 1, 1),
+(111, NULL, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -1131,7 +1234,13 @@ INSERT INTO `transport_detail` (`id`, `post_code`, `town`, `address`, `address_t
 (2, 5678, 'Debrecen', 'Market street', 2, 5, 'Leave package at reception'),
 (3, 13, 'asfa', 'asfasf', 16, 23, NULL),
 (4, 142, 'asf', 'afsfsa', 16, 32, NULL),
-(5, 4214, 'asfasf', 'fsafafa', 18, 23, NULL);
+(5, 4214, 'asfasf', 'fsafafa', 18, 23, NULL),
+(6, 1111, 'Pécs', 'Teszt utca 789', 1, 789, NULL),
+(7, 1123, 'Pécs', 'Harmat utca', 1, 6, NULL),
+(8, 1234, 'Teszt', 'Teszt utca', 1, 99, NULL),
+(9, 1234, 'Tesztváros', 'Teszt utca', 1, 11, 'megjegyzés'),
+(10, 1234, 'Tesztváros', 'Teszt utca', 1, 15, NULL),
+(11, 1111, 'Dombóvár', 'Kis', 1, 1, 'a');
 
 -- --------------------------------------------------------
 
@@ -1166,8 +1275,29 @@ INSERT INTO `user` (`id`, `username`, `email`, `password`, `role_id`, `last_logi
 (6, 'emma_johnson', 'emma.johnson@example.com', 'hashed_pw_6', 2, NULL, '2026-01-08 09:36:36', 0, NULL, 'asd', ''),
 (7, 'michael_brown', 'michael.brown@example.com', 'hashed_pw_7', 2, NULL, '2026-01-08 09:36:36', 0, NULL, 'asd', ''),
 (9, 'olivia_wilson', 'olivia.wilson@example.com', 'hashed_pw_8', 2, NULL, '2026-01-08 09:39:01', 0, NULL, 'asd', ''),
-(11, 'testElek', 'asd@gmail.com', '$argon2id$v=19$m=4096,t=3,p=1$xevbL65AfAo3cPoTOnNecA$m96Mv15eQLkKHmFwDuxAVYkC6kVKLoaE/b84iArXrn0', 1, '2026-03-03 17:57:02', '2026-03-03 16:20:35', 0, NULL, 'http://localhost:8080/pfp/standardpfp.png', NULL),
-(12, 'testElek2', 'test@gmail.com', '$argon2id$v=19$m=4096,t=3,p=1$hVmKGNGhhocKF5HAh+fWgw$ZpXurwqPLFiQGroCUb045o3HSxAMHDiBCRXXAQlafkw', 1, NULL, '2026-03-03 15:54:04', NULL, NULL, 'http://localhost:8080/pfp/standardpfp.png', NULL);
+(11, 'testElek', 'asd@gmail.com', '$argon2id$v=19$m=4096,t=3,p=1$xevbL65AfAo3cPoTOnNecA$m96Mv15eQLkKHmFwDuxAVYkC6kVKLoaE/b84iArXrn0', 1, '2026-04-24 10:54:37', '2026-03-03 16:20:35', 0, NULL, 'http://localhost:8080/pfp/standardpfp.png', NULL),
+(12, 'testElek2', 'test@gmail.com', '$argon2id$v=19$m=4096,t=3,p=1$hVmKGNGhhocKF5HAh+fWgw$ZpXurwqPLFiQGroCUb045o3HSxAMHDiBCRXXAQlafkw', 1, NULL, '2026-03-03 15:54:04', NULL, NULL, 'http://localhost:8080/pfp/standardpfp.png', NULL),
+(13, 'efasf', 'asd@gmail.com', '$argon2id$v=19$m=4096,t=3,p=1$2feLm1NxUxhqPl2dVWrPQQ$dUqiBUeKqvF7X0Q9ahZToCXSyUBTbNtQ69Rz10BxxIo', 1, NULL, '2026-03-04 08:35:44', NULL, NULL, 'http://localhost:8080/pfp/standardpfp.png', NULL),
+(14, 'teszt1', 'teszt1@gmail.com', '$argon2id$v=19$m=4096,t=3,p=1$lcQKx2yXrLMODfdnbDl09Q$9bzNS951ZlpmCjL6zPKz8Qn0goQn4OQlRykAjBrVGSE', 1, NULL, '2026-03-04 08:39:57', NULL, NULL, 'http://localhost:8080/pfp/standardpfp.png', NULL),
+(15, 'teszt2', 'teszt2@gmail.com', '$argon2id$v=19$m=4096,t=3,p=1$UZwJFFQ0WFyI/Kwqa0f4qg$42Vs/uInX0SfScLYrK4NLrvEobS/3FvqBi9+SDzNmWE', 1, NULL, '2026-03-04 08:40:37', NULL, NULL, 'http://localhost:8080/pfp/standardpfp.png', NULL),
+(16, 'teszt3', 'teszt3@gmail.com', '$argon2id$v=19$m=4096,t=3,p=1$SqV2IQdpgGWOFYQc8d/EnQ$4izKw9V8cUKOL69lOXZCwdO2cMWiOhTE6ZulIR1jDjo', 1, '2026-03-04 09:42:55', '2026-03-04 08:42:43', 0, NULL, 'http://localhost:8080/pfp/standardpfp.png', NULL),
+(17, 'teszt4', 'teszt4@gmail.com', '$argon2id$v=19$m=4096,t=3,p=1$6rECUYPAGZ+zk96r7JcQKg$zq9+jY4PAp+fZFO+vNjr28Pp4h1i95+wp2HUlGZWJOA', 1, '2026-03-04 09:46:12', '2026-03-04 08:46:01', 0, NULL, 'http://localhost:8080/pfp/standardpfp.png', NULL),
+(18, 'teszt6', 'teszt6@gmail.com', '$argon2id$v=19$m=4096,t=3,p=1$6r8fiqvKi28Fucb1mtNMCQ$oGRwo0R32qUDgR5zYgpJ0LCnNvXXFcbNA1WM5/JK7ik', 1, '2026-03-04 09:50:36', '2026-03-04 08:48:31', 0, NULL, 'http://localhost:8080/pfp/standardpfp.png', NULL),
+(19, 'teszt7', 'teszt7@gmail.com', '$argon2id$v=19$m=4096,t=3,p=1$vT7eZMgATyW/VkNCE6U/VA$ELspRTOpSncN80Cd8zblql92VqCXPU93ncAk7aheTCI', 1, '2026-03-04 09:54:58', '2026-03-04 08:52:47', 0, NULL, 'http://localhost:8080/pfp/standardpfp.png', NULL),
+(20, 'teszt8', 'teszt8@gmail.com', '$argon2id$v=19$m=4096,t=3,p=1$UukSKHUenw2BjLf3JOgC2g$F123pyvyGcaDLEmtPFARbTHXRWEWImMqI4UT6kBgbxE', 1, '2026-03-04 09:57:44', '2026-03-04 08:57:32', 0, NULL, 'http://localhost:8080/pfp/standardpfp.png', NULL),
+(21, 'teszt9', 'teszt9@gmail.com', '$argon2id$v=19$m=4096,t=3,p=1$NC+y6sdskYWVOI10gtCYVA$fmbHriLx7rHK3xCRJRBJkApYE3AGxEacgfuhKLiSAFY', 1, '2026-03-04 10:38:26', '2026-03-04 09:38:08', 0, NULL, 'http://localhost:8080/pfp/standardpfp.png', NULL),
+(22, 'teszt10', 'teszt10@gmail.com', '$argon2id$v=19$m=4096,t=3,p=1$Uq/70MtS9ULoCYWsIKkG1g$vkBO+kGkEt/uLVQv7p9Nx6JUUC9nJY7ZkFKHGWE2E9M', 1, '2026-03-04 10:43:13', '2026-03-04 09:39:17', 0, NULL, 'http://localhost:8080/pfp/standardpfp.png', NULL),
+(23, 'teszt11', 'teszt11@gmail.com', '$argon2id$v=19$m=4096,t=3,p=1$xYzUbYzPKIgAQ8/23JsdLw$KKA47d/I3XxGs2qrR8PahLL9D25jKZV6cJAzuIR88/s', 1, '2026-03-23 13:37:52', '2026-03-23 12:37:43', 0, NULL, 'http://localhost:8080/pfp/standardpfp.png', NULL),
+(24, 'teszt12', 'teszt12@gmail.com', '$argon2id$v=19$m=4096,t=3,p=1$TYmlt2o7cwAzuc8hvp13ig$fSjluKGFWtedY4tbbjFC2PtbwK1eFc0N6VNFPrGZhiY', 1, '2026-03-24 10:15:07', '2026-03-24 09:12:25', 0, NULL, 'http://localhost:8080/pfp/standardpfp.png', NULL),
+(25, 'teszt13', 'teszt13@gmail.com', '$argon2id$v=19$m=4096,t=3,p=1$D3Qmv1ZF0Z+vuhuC+5JvvQ$xWfpBwE3geTHguE79WLxK5RwqX7bZ+FUQuXwXxCLhAg', 1, '2026-03-26 09:58:07', '2026-03-26 08:57:57', 0, NULL, 'http://localhost:8080/pfp/standardpfp.png', NULL),
+(26, 'teszt14', 'teszt14@gmail.com', '$argon2id$v=19$m=4096,t=3,p=1$Zuh5fiCJFuTlKf3lNUv9gA$pEOvQglITfQspWO6JSUB53vID8E1+lV2OWO2MYgzljM', 1, '2026-03-26 10:08:20', '2026-03-26 09:08:13', 0, NULL, 'http://localhost:8080/pfp/standardpfp.png', NULL),
+(27, 'teszt15', 'teszt15@gmail.com', '$argon2id$v=19$m=4096,t=3,p=1$TdjMKzdGvx5TVbQm67WdLQ$/XZxjK/EpN7HGVyEJK9R6FkhgPWO3JHjX/b7ssLGpW0', 1, '2026-03-26 10:13:11', '2026-03-26 09:13:02', 0, NULL, 'http://localhost:8080/pfp/standardpfp.png', NULL),
+(28, 'teszt20', 'teszt20@gmail.com', '$argon2id$v=19$m=4096,t=3,p=1$5HGrULzq6Ptw+qhxVcNLqg$8di7o+eWlGi/KIf8GZSyTtgMQsEExYoB/rh0luF8MvE', 1, NULL, '2026-04-24 08:41:42', 0, NULL, 'http://localhost:8080/pfp/standardpfp.png', NULL),
+(29, 'teszt0428', 'teszt0428@gmail.com', '$argon2id$v=19$m=4096,t=3,p=1$IQxLbiFPmqxJRA0uUZ2AsQ$GBDy3Hj+FKLU9fOmaIqAqNCwOUTFdFH3xq6zD3ixczo', 1, '2026-04-28 10:42:57', '2026-04-28 08:10:40', 0, NULL, 'http://localhost:8080/pfp/standardpfp.png', NULL),
+(30, 'teszt04281', 'teszt04281@gmail.com', '$argon2id$v=19$m=4096,t=3,p=1$tM/P59tlrss5wPrp23ffHA$zTQ5uFi91ciuDS8ti9BYrD43CixjOPnP/5uzZYMd02c', 1, '2026-04-29 23:40:11', '2026-04-28 11:05:08', 0, NULL, 'http://localhost:8080/pfp/standardpfp.png', NULL),
+(31, 'teszt0429', 'teszt0429@gmail.com', '$argon2id$v=19$m=4096,t=3,p=1$+J9H0/49h9LkPejzisjmfg$dYmjRPXQLNWo8ba0/xXo718Tzc6CuwhloJsiWChKDkk', 1, '2026-04-29 23:10:53', '2026-04-29 21:10:42', 0, NULL, 'http://localhost:8080/pfp/standardpfp.png', NULL),
+(32, 'teszt04291', 'teszt04291@gmail.com', '$argon2id$v=19$m=4096,t=3,p=1$xtTWud42lGCImaLcqmJ+fA$qxs9vjYx9Sjz8z7JG5gvKmomEHyeDczTT5levZ5cRD4', 1, '2026-04-29 23:28:31', '2026-04-29 21:28:17', 0, NULL, 'http://localhost:8080/pfp/standardpfp.png', NULL),
+(33, 'teszt04292', 'teszt04292@gmail.com', '$argon2id$v=19$m=4096,t=3,p=1$XpiTH8hJ/4iXHe/G7ROF9Q$iZ3oeBUi2aG+LRTOKTL9bHDpdgze8dqD8vuwsqzywxE', 2, '2026-04-29 23:36:26', '2026-04-29 21:32:20', 0, NULL, 'http://localhost:8080/pfp/standardpfp.png', NULL);
 
 --
 -- Indexek a kiírt táblákhoz
@@ -1322,19 +1452,19 @@ ALTER TABLE `author`
 -- AUTO_INCREMENT a táblához `basket`
 --
 ALTER TABLE `basket`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT a táblához `basket_product`
 --
 ALTER TABLE `basket_product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT a táblához `billing_detail`
 --
 ALTER TABLE `billing_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT a táblához `book`
@@ -1364,13 +1494,13 @@ ALTER TABLE `genre`
 -- AUTO_INCREMENT a táblához `order_history`
 --
 ALTER TABLE `order_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT a táblához `order_history_product`
 --
 ALTER TABLE `order_history_product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
 
 --
 -- AUTO_INCREMENT a táblához `payment_method`
@@ -1406,13 +1536,13 @@ ALTER TABLE `status`
 -- AUTO_INCREMENT a táblához `transport_detail`
 --
 ALTER TABLE `transport_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT a táblához `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- Megkötések a kiírt táblákhoz
