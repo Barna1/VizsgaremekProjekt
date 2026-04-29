@@ -8,20 +8,28 @@ export function AuthInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn):
 
   if (req.url === "http://localhost:8080/user/login") {
     const requestBody = req.body as { username: string, password: string }
-    const cloneOfRequest = req.clone({
-      headers: req.headers.append("Authorization", "Basic " + btoa(requestBody.username + ":" + requestBody.password))
-    })
-    return next(cloneOfRequest)
 
-  } else {
-    console.log("ASDASDASDASD")
-    const cloneOfRequest = req.clone({
-      headers: req.headers
-        .append("Authorization", `Bearer ${cookieService.get("jwt")}`)
-        .append("refreshToken", cookieService.get("refreshToken"))
-    })
-
-    console.log(cloneOfRequest)
-    return next(cloneOfRequest)
+    return next(req.clone({
+      setHeaders: {
+        Authorization: "Basic " + btoa(requestBody.username + ":" + requestBody.password)
+      }
+    }))
   }
+
+  const jwt = cookieService.get("jwt")
+  const refresh = cookieService.get("refreshToken")
+
+  let headers: any = {}
+
+  if (jwt) {
+    headers["Authorization"] = `Bearer ${jwt}`
+  }
+
+  if (refresh) {
+    headers["refreshToken"] = refresh
+  }
+
+  const clone = req.clone({ setHeaders: headers })
+
+  return next(clone)
 }
