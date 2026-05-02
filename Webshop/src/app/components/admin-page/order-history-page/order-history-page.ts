@@ -12,7 +12,7 @@ import { OrderHistoryCard } from '../../order-history-card/order-history-card';
 })
 export class OrderHistoryPage implements OnInit {
   orderService = inject(OrderService)
-  selectedOrderHistory!: OrderHistory
+  selectedOrderHistory: OrderHistory | null = null;
   orderHistories: OrderHistory[] = []
 
   ngOnInit(): void {
